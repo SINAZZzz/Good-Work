@@ -1,13 +1,35 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* bold */
+@font-face {
+  font-family: Dana-Bold;
+  font-weight: bold;
+  font-style: normal;
+  src: url("./Fonts/DanaPro(10Wt)/Old version (not supported)/Dana-Semipro/webfonts/fonts/eot/dana-extrabold.eot");
+  src: url("./Fonts/DanaPro(10Wt)/Old version (not supported)/Dana-Semipro/webfonts/fonts/eot/dana-extrabold.eot")
+      format("embedded-opentype"),
+    url("./Fonts/DanaPro(10Wt)/Webfonts/fonts/woff2/Dana-ExtraBold.woff2")
+      format("woff2"),
+    url("./Fonts/DanaPro(10Wt)/Webfonts/fonts/woff/Dana-ExtraBold.woff")
+      format("woff"),
+    url("./Fonts/DanaPro(10Wt)/Dana family/Dana-ExtraBold.ttf")
+      format("truetype");
+  font-display: swap;
+}
+/* normal */
+@font-face {
+  font-family: Dana;
+  font-weight: normal;
+  font-style: normal;
+  src: url("./Fonts/DanaPro(10Wt)/Old version (not supported)/Dana-Semipro/webfonts/fonts/eot/dana-regular.eot");
+  src: url("./Fonts/DanaPro(10Wt)/Old version (not supported)/Dana-Semipro/webfonts/fonts/eot/dana-regular.eot")
+      format("embedded-opentype"),
+    url("./Fonts/DanaPro(10Wt)/Farsi numerals/Webfonts/woff2/DanaFaNum-Regular.woff2")
+      format("woff2"),
+    url("./Fonts/DanaPro(10Wt)/Webfonts/fonts/woff/Dana-Regular.woff")
+      format("woff"),
+    url("./Fonts/DanaPro(10Wt)/Dana family/Dana-Regular.ttf") format("truetype");
+  font-display: swap;
 }
