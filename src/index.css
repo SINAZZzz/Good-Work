@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .card-message {
+    @apply w-full bg-white h-[100px] rounded-xl flex items-center;
+  }
+  .item-card {
+    @apply bg-[#B0F3B3] rounded-full mx-4 w-[3.6rem] h-[3.6rem] flex justify-center items-center;
+  }
+  .icon-card {
+    @apply text-[#4CAF50]  rounded-full w-[1.6rem] h-[1.6rem];
+  }
+  .icon {
+    @apply w-[25px] h-[28px];
+  }
+  .lable-font-des {
+    @apply text-[1.3rem];
+  }
+  .contract-color-text {
+    @apply text-[#444444];
+  }
+  .contract-style-icon {
+    @apply text-[#C5C7D4] w-6 h-6;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 /* bold */
 @font-face {
   font-family: Dana-Bold;

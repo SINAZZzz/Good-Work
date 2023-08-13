@@ -42,6 +42,10 @@ module.exports = {
       "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
     },
+    boxShadow: {
+      "3xl": " 0px 4px 15px 0px #00000040",
+      "contracts-shadow": "0px 4px 17px 0px #00000040",
+    },
   },
   plugins: [],
 };
