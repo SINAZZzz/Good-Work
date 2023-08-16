@@ -37,22 +37,16 @@ export const menus = [
     icon: ImStack,
     id: 2,
   },
-  {
-    name: "تنظیمات",
-    link: "/Settings",
-    Component: <Settings />,
-    AuthRequired: true,
-    icon: AiOutlineSetting,
-    margin: true,
-    id: 3,
-  },
+
   {
     name: "پیام ها",
     link: "/Messages",
+    margin: true,
+
     Component: <Messages />,
     AuthRequired: true,
     icon: MdOutlineNotifications,
-    id: 4,
+    id: 3,
   },
   {
     name: "خروج",
@@ -61,7 +55,19 @@ export const menus = [
     AuthRequired: true,
     icon: FaPowerOff,
     color: "#F44336",
-    id: 5,
+    id: 4,
+  },
+];
+
+export const Setting = [
+  {
+    name: "تنظیمات",
+    link: "/Settings",
+    Component: <button></button>,
+    AuthRequired: true,
+    icon: AiOutlineSetting,
+    margin: true,
+    id: 3,
   },
 ];
 
