@@ -42,12 +42,17 @@ export default function Login() {
     // ref5.current.click();
   };
 
+  const [code, setCode] = useState();
+
   function handleSubmitCode(e) {
-    const code = num1 + num2 + num3 + num4;
+    setCode(num1 + num2 + num3 + num4);
     console.log(code);
+    localStorage.setItem("code", JSON.stringify(code));
+
     if (code === LoginData.code) {
       setHidden(false);
       toast.success("کد تایید درسته");
+      // window.location.reload();
     } else {
       setHidden(true);
       toast.error("کد تایید اشتباهه");
@@ -55,8 +60,16 @@ export default function Login() {
     e.preventDefault();
   }
 
+  const dataLogin = [
+    {
+      phone: loginUser,
+      code: code,
+    },
+  ];
+
   function handleSubmit(e) {
     // const loginUser
+    localStorage.setItem("phone", JSON.stringify(loginUser));
     if (loginUser === LoginData.phone) {
       setHidden(true);
       toast.success("شماره تایید شد");
