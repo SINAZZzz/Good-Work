@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "./Rectangle 5.png";
 import Logo from "./logo 1.png";
 import "./input.css";
@@ -12,7 +12,7 @@ export default function Login() {
   const ref4 = React.createRef();
   const ref5 = React.createRef();
 
-  const [loginUser, setLoginUser] = useState("98123456789");
+  const [loginUser, setLoginUser] = useState();
   const [hidden, setHidden] = useState(false);
 
   // state input code
@@ -42,30 +42,23 @@ export default function Login() {
     // ref5.current.click();
   };
 
-  const [code, setCode] = useState();
+  // const [code, setCode] = useState();
 
   function handleSubmitCode(e) {
-    setCode(num1 + num2 + num3 + num4);
+    // setCode(num1 + num2 + num3 + num4);
+    const code = num1 + num2 + num3 + num4;
     console.log(code);
     localStorage.setItem("code", JSON.stringify(code));
-
     if (code === LoginData.code) {
       setHidden(false);
       toast.success("کد تایید درسته");
-      // window.location.reload();
+      window.location.reload();
     } else {
       setHidden(true);
       toast.error("کد تایید اشتباهه");
     }
     e.preventDefault();
   }
-
-  const dataLogin = [
-    {
-      phone: loginUser,
-      code: code,
-    },
-  ];
 
   function handleSubmit(e) {
     // const loginUser
@@ -98,7 +91,7 @@ export default function Login() {
           <form
             onSubmit={handleSubmit}
             className={`${
-              hidden == true ? "hidden" : ""
+              hidden === true ? "hidden" : ""
             } flex flex-col flex-nowrap justify-center items-center
             content-stretch sm:mr-7 sm:mt-10 lg:mt-0 lg:mr-0 `}
           >
@@ -135,7 +128,7 @@ export default function Login() {
           <form
             onSubmit={handleSubmitCode}
             className={`${
-              hidden == false ? "hidden" : ""
+              hidden === false ? "hidden" : ""
             } flex flex-col flex-nowrap justify-center  items-center
             content-stretch sm:mr-7 sm:mt-10 lg:mt-0 lg:mr-0`}
           >

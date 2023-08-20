@@ -1,5 +1,5 @@
-import Login from "./Component/Login/Login";
 import { useState, useEffect } from "react";
+import Login from "./Component/Login/Login";
 import Dashboard from "./Component/Dashboard/Dashboard";
 import { LoginData } from "./Component/Login/LoginData";
 
@@ -11,7 +11,7 @@ function App() {
       setState(true);
     } else {
       setState(false);
-    }
+    } 
   }, [state, code]);
 
   return <div>{state === false ? <Login /> : <Dashboard />}</div>;

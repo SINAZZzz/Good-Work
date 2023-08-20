@@ -8,7 +8,6 @@ import { FaPowerOff } from "react-icons/fa";
 import Home from "./Component/Home";
 import Contracts from "./Component/Contracts";
 import Messages from "./Component/Messages";
-import Settings from "./Component/Settings";
 import Requests from "./Component/Requests";
 import ExitComponent from "./Component/ExitComponent";
 
@@ -42,20 +41,10 @@ export const menus = [
     name: "پیام ها",
     link: "/Messages",
     margin: true,
-
     Component: <Messages />,
     AuthRequired: true,
     icon: MdOutlineNotifications,
     id: 3,
-  },
-  {
-    name: "خروج",
-    link: "/Exit",
-    Component: <ExitComponent />,
-    AuthRequired: true,
-    icon: FaPowerOff,
-    color: "#F44336",
-    id: 4,
   },
 ];
 
@@ -71,14 +60,15 @@ export const Setting = [
   },
 ];
 
-// export const Exit = [
-//   {
-//     name: "خروج",
-//     link: "/Exit",
-//     Component: <ExitComponent />,
-//     AuthRequired: true,
-//     icon: FaPowerOff,
-//     color: "#F44336",
-//     id: 5,
-//   },
-// ];
+export const Exit = [
+  {
+    name: "خروج",
+    link: "/Exit",
+    Component: <ExitComponent />,
+    AuthRequired: true,
+    icon: FaPowerOff,
+    color: "#F44336",
+    id: 4,
+  },
+];
+
