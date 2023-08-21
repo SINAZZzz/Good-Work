@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { CiDiscount1 } from "react-icons/ci";
+import { OpenContext } from "../../../Sidebar";
 
 export default function CardDiscount() {
+  const open = useContext(OpenContext);
   return (
     <div>
       <div
@@ -18,7 +20,11 @@ export default function CardDiscount() {
           <span className="text-[#1585D6]">بیشتر...</span>
         </div>
         <div>
-          <div className=" flex items-center  mr-[35rem] text-[22px]">
+          <div
+            className={` flex items-center ${
+              (open.open && "mr-[34rem]") || (!open.open && "mr-[45rem]")
+            }  text-[22px]`}
+          >
             <div>
               <p className="border-x-[1px] flex items-center h-[40px] px-6">
                 ۱۵ آذر ۱۴۰۰
