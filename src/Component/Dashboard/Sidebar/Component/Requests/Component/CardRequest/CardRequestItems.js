@@ -5,7 +5,7 @@ import {
   IoIosAddCircleOutline,
 } from "react-icons/io";
 import { ImAttachment } from "react-icons/im";
-import { AiOutlineSync, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineSync } from "react-icons/ai";
 
 export default function CardRequestItems() {
   const [contractExtension, setContractExtension] = useState(false);
@@ -263,9 +263,7 @@ export default function CardRequestItems() {
                         >
                           <div className="flex items-center justify-center pt-5 pb-6">
                             <ImAttachment className="ml-2 w-[20px] h-[20px]" />
-                            <p className="text-[20.52px] font-medium">
-                              پیوست
-                            </p>
+                            <p className="text-[20.52px] font-medium">پیوست</p>
                           </div>
                           <input
                             id="dropzone-file"

@@ -6,7 +6,6 @@ import { OpenContext } from "../../Sidebar";
 export default function Messages() {
   const [id, setId] = useState(0);
   const open = useContext(OpenContext);
-  console.log(open);
 
   return (
     <div className="bg-black/5 h-[100%] px-4 py-5">

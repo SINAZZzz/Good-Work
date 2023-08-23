@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { CiDiscount1 } from "react-icons/ci";
 import { OpenContext } from "../../../Sidebar";
 

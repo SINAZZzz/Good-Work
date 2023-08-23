@@ -9,7 +9,7 @@ import Home from "./Component/Home";
 import Contracts from "./Component/Contracts";
 import Messages from "./Component/Messages";
 import Requests from "./Component/Requests";
-import ExitComponent from "./Component/ExitComponent";
+// import ExitComponent from "./Component/ExitComponent";
 
 export const menus = [
   {
@@ -64,11 +64,10 @@ export const Exit = [
   {
     name: "خروج",
     link: "/Exit",
-    Component: <ExitComponent />,
+    // Component: <ExitComponent />,
     AuthRequired: true,
     icon: FaPowerOff,
     color: "#F44336",
     id: 4,
   },
 ];
-

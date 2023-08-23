@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { OpenContext } from "../../../Sidebar";
 
