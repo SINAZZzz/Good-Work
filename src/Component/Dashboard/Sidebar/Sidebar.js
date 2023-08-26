@@ -1,5 +1,5 @@
 // React and hooks
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 import { Link } from "react-router-dom";
 // react icons
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -14,8 +14,8 @@ import { menus, Setting, Exit } from "./DataSidebar";
 // data login
 import { LoginData } from "../../Login/LoginData";
 // context
+import { ThemeContext } from "../../../Context/ThemeContext";
 export const OpenContext = React.createContext();
-export const ThemeContext = React.createContext();
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
@@ -42,13 +42,15 @@ const Sidebar = () => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme }}>
       <OpenContext.Provider value={{ open, setOpen }}>
         <div className={`${theme}`}>
           <section className="flex font-Dana dark:bg-black">
             <div
-              className={`bg-[#FFFFFF] shadow-3xl h-[100%] ${
-                open ? "w-[20rem]" : "w-24"
+              className={`bg-[#FFFFFF]  shadow-3xl h-[100%] ${
+                open
+                  ? "w-[20rem] ease-out  duration-1000"
+                  : "w-24 ease-in  duration-1000"
               } `}
             >
               <div className="mt-4 flex flex-col gap-4 fixed">
@@ -73,7 +75,8 @@ const Sidebar = () => {
                 </div>
                 <hr
                   className={` ${
-                    (!open && "w-24") || (open && "w-[16.5rem]")
+                    (!open && "w-24 duration-1000") ||
+                    (open && "w-[16.5rem] duration-1000")
                   } `}
                 />
                 <div className="px-4">
@@ -88,9 +91,8 @@ const Sidebar = () => {
                       } group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
                         index === id && "bg-[#4F50FA] text-white"
                       }
-                ${index === 4 && "bg-red-500 text-white mt-2"} 
-              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem]"}
-              ${open && "px-6 py-3.5"} rounded-lg`}
+              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
+              ${open && "px-6 py-3.5 "} rounded-lg`}
                     >
                       <div>
                         {React.createElement(menu?.icon, { size: "25" })}
@@ -375,7 +377,7 @@ const Sidebar = () => {
                     onClick={() => setOpen(!open)}
                   />
                 </div>
-                <h1 className="mr-4 text-[25px]">
+                <h1 className="mr-4 text-[25px] w-full">
                   {menus[id].name === "تنظیمات" ? "" : menus[id].name}
                 </h1>
                 <div className="flex w-full justify-end">

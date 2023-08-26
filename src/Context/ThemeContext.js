@@ -1,3 +1,4 @@
-// import { createContext, useState } from "react";
+// theme Context
+import { createContext } from "react";
 
-// export const ThemeContext = createContext({ theme: "light", setTheme: "" });
+export const ThemeContext = createContext("light");
