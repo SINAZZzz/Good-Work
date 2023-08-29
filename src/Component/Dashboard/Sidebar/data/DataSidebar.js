@@ -22,13 +22,13 @@ export const SidebarData = [
     id: 2,
   },
   {
-    name: "پیام ها",
-    icon: MdOutlineNotifications,
+    name: "تنظیمات",
+    icon: AiOutlineSetting,
     id: 3,
   },
   {
-    name: "تنظیمات",
-    icon: AiOutlineSetting,
+    name: "پیام ها",
+    icon: MdOutlineNotifications,
     id: 4,
   },
   {

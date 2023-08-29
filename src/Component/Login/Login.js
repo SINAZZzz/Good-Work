@@ -52,11 +52,11 @@ export default function Login() {
     if (code === LoginData.code) {
       setHidden(false);
       toast.success("کد تایید درسته");
-      navigate("/dashboard");
+      navigate("/dashboard/home");
       window.location.reload();
     } else {
       setHidden(true);
-      navigate("/login");
+      navigate("/");
 
       toast.error("کد تایید اشتباهه");
     }

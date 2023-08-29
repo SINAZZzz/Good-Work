@@ -21,7 +21,7 @@ export default function CardDiscount() {
         </div>
         <div>
           <div
-            className={` flex items-center ${
+            className={` flex items-center transition-all duration-[500ms] ease-in-out ${
               (open.open && "mr-[34rem]") || (!open.open && "mr-[45rem]")
             }  text-[22px]`}
           >

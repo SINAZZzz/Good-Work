@@ -21,7 +21,7 @@ export default function CardNotification() {
         </div>
         <div>
           <div
-            className={` flex items-center  ${
+            className={` flex items-center transition-all duration-[500ms] ease-in-out ${
               (open.open && "mr-[10rem]") || (!open.open && "mr-[21rem]")
             } text-[22px]`}
           >

@@ -11,10 +11,9 @@ export default function CardRequestItems() {
   const [contractExtension, setContractExtension] = useState(false);
   const [newContract, setNewContract] = useState(false);
 
-  console.log(contractExtension);
 
   return (
-    <div>
+    <div className="pr-10">
       <CardRequest
         icon={IoMdCheckmarkCircleOutline}
         title={"تسویه قرارداد"}

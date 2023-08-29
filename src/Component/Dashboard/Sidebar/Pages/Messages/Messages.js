@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import { DataMessages } from "./DataMessages";
+import { Link, Outlet } from "react-router-dom";
 import { OpenContext } from "../../Sidebar";
 
 export default function Messages() {
@@ -16,6 +15,7 @@ export default function Messages() {
       >
         <Link
           onClick={() => setId(3)}
+          to="/dashboard/messages/AllMessages"
           className={`flex flex-col  items-center ${
             (open.open && " pl-[0rem]") || (!open.open && " pr-[2rem]")
           } h-[57px] justify-center ${
@@ -26,6 +26,7 @@ export default function Messages() {
         </Link>
         <Link
           onClick={() => setId(2)}
+          to="/dashboard/messages/NewMessages"
           className={`flex flex-col items-center border-x-[1px] ${
             (open.open && " px-[6rem]") || (!open.open && " px-[7rem]")
           } h-[57px] justify-center border-[#D3D4D6] ${
@@ -36,6 +37,7 @@ export default function Messages() {
         </Link>
         <Link
           onClick={() => setId(1)}
+          to="/dashboard/messages/Notification"
           className={`flex flex-col items-center border-l-[1px] ${
             (open.open && " pl-[7rem]") ||
             (!open.open && "-mr-[2rem] pl-[8rem]")
@@ -47,6 +49,7 @@ export default function Messages() {
         </Link>
         <Link
           onClick={() => setId(0)}
+          to="/dashboard/messages/Discount"
           className={`flex flex-col items-center h-[57px] justify-center ${
             id === 0 ? "text-[#4F50FA]" : "text-[#0b0b12]"
           } 
@@ -77,12 +80,11 @@ export default function Messages() {
       >
         <hr className="bg-[#4F50FA] w-[240px] h-[3.5px] rounded-full" />
       </div>
-      {DataMessages[id].Component}
-      {DataMessages[id].Component}
-      {DataMessages[id].Component}
-      {DataMessages[id].Component}
-      {DataMessages[id].Component}
-      {DataMessages[id].Component}
+      <Outlet />
+      <Outlet />
+      <Outlet />
+      <Outlet />
+      <Outlet />
     </div>
   );
 }

@@ -2,20 +2,21 @@ import { useState, useEffect } from "react";
 import Login from "./Component/Login/Login";
 import Dashboard from "./Component/Dashboard/Dashboard";
 import { LoginData } from "./Component/Login/LoginData";
-import {
-  Routes,
-  Route,
-  Link,
-  Navigate,
-  RouterProvider,
-} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Home from "./Component/Dashboard/Sidebar/Pages/Home";
-import Message from "./Component/Dashboard/Sidebar/Pages/Home/Component/Message";
+import Messages from "./Component/Dashboard/Sidebar/Pages/Messages";
 import Requests from "./Component/Dashboard/Sidebar/Pages/Requests";
-import Setting from "./Component/Dashboard/Sidebar/Pages/Settings";
 import Contracts from "./Component/Dashboard/Sidebar/Pages/Contracts";
-import Layout from "./Component/Layout";
+
+import CardDiscount from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardDiscount";
+import CardNotification from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardNotification";
+import CardNewMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardNewMessages";
+import CardAllMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardAllMessages";
+
+import CardBlocked from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardBlocked";
+import CardMaturity from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardMaturity";
+import CardMonthly from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardMonthly";
 
 export default function App() {
   const code = JSON.parse(localStorage.getItem("code"));
@@ -33,11 +34,42 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />}>
-          <Route path="/dashboard/Home" element={<Home />} />
-          <Route path="/dashboard/message" element={<Message />} />
+          <Route exact path="/dashboard/Home" element={<Home />} />
+          <Route path="/dashboard/messages" element={<Messages />}>
+            <Route
+              exact
+              path="/dashboard/messages/Discount"
+              element={<CardDiscount />}
+            />
+            <Route
+              path="/dashboard/messages/Notification"
+              element={<CardNotification />}
+            />
+            <Route
+              path="/dashboard/messages/NewMessages"
+              element={<CardNewMessages />}
+            />
+            <Route
+              path="/dashboard/messages/AllMessages"
+              element={<CardAllMessages />}
+            />
+          </Route>
+
           <Route path="/dashboard/requests" element={<Requests />} />
-          <Route path="/dashboard/Setting" element={<Setting />} />
-          <Route path="/dashboard/contracts" element={<Contracts />} />
+          <Route path="/dashboard/contracts" element={<Contracts />}>
+            <Route
+              path="/dashboard/contracts/blocked"
+              element={<CardBlocked />}
+            />
+            <Route
+              path="/dashboard/contracts/mturity"
+              element={<CardMaturity />}
+            />
+            <Route
+              path="/dashboard/contracts/monthly"
+              element={<CardMonthly />}
+            />
+          </Route>
         </Route>
       </Routes>
     </>

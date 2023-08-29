@@ -1,6 +1,6 @@
 // React and hooks
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 // react icons
 import { HiMenuAlt3 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
@@ -15,6 +15,8 @@ import { SidebarData } from "./data/DataSidebar";
 import { LoginData } from "../../Login/LoginData";
 // context
 import { ThemeContext } from "../../../Context/ThemeContext";
+// router Hooks
+import { useNavigate } from "react-router-dom";
 export const OpenContext = React.createContext();
 
 const Sidebar = () => {
@@ -30,10 +32,13 @@ const Sidebar = () => {
   const code = JSON.parse(localStorage.getItem("code"));
   const number = JSON.parse(localStorage.getItem("phone"));
 
+  const navigate = useNavigate();
+
   const handleClickExit = () => {
     if (code === LoginData.code && number === LoginData.phone) {
       localStorage.removeItem("code");
       localStorage.removeItem("phone");
+      navigate("/");
       window.location.reload();
       alert("Logout");
     } else {
@@ -47,16 +52,14 @@ const Sidebar = () => {
         <div className={`${theme}`}>
           <section className="flex font-Dana dark:bg-black">
             <div
-              className={`bg-[#FFFFFF]  shadow-3xl h-[100%] ${
-                open
-                  ? "w-[20rem] ease-out  duration-1000"
-                  : "w-24 ease-in  duration-1000"
+              className={`bg-[#ffffff] shadow-3xl h-[100%] transition-all duration-[200ms] ${
+                open ? "w-[20rem]" : "w-24"
               } `}
             >
-              <div className="mt-4 flex flex-col gap-4 fixed">
+              <div className="mt-4 flex flex-col justify-end gap-4 fixed ">
                 <div
                   className={`flex -mb-[2px] ${
-                    (!open && "mr-6") || (open && "px-8")
+                    (!open && "mr-5") || (open && "px-7")
                   }`}
                 >
                   <img
@@ -74,102 +77,155 @@ const Sidebar = () => {
                   </div>
                 </div>
                 <hr
-                  className={` ${
-                    (!open && "w-24 duration-1000") ||
-                    (open && "w-[16.5rem] duration-1000")
+                  className={`  ${
+                    (!open && "w-[6rem]") || (open && "w-[16.5rem]")
                   } `}
                 />
-                <div className="px-4">
-                  <Link
-                    onClick={() => setId(SidebarData[0].id)}
-                    to=""
-                    key={SidebarData[0].id}
-                    className={` group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
-                      SidebarData[0].id === id && "bg-[#4F50FA] text-white"
-                    }
-              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
-              ${open && "px-6 py-3.5 "} rounded-lg`}
-                  >
-                    <div>
-                      {React.createElement(SidebarData[0].icon, { size: "25" })}
-                    </div>
-                    <h2
-                      className={`whitespace-pre ${
-                        !open && "opacity-0 translate-x-28 overflow-hidden"
-                      }`}
-                    >
-                      {SidebarData[0].name}
-                    </h2>
-                  </Link>
-                  {/* {menus?.map((menu, index) => (
+                <div className="px-3">
+                  <div className="">
                     <Link
-                      onMouseDown={() => setId(menu.id)}
-                      to={menu?.link}
-                      key={index}
-                      className={` ${
-                        (!open && menu?.margin && "mt-[20rem]") ||
-                        (open && menu?.margin && "mt-[23.5rem]")
-                      } group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
-                        index === id && "bg-[#4F50FA] text-white"
+                      onClick={() => setId(SidebarData[0].id)}
+                      to="/dashboard/Home"
+                      key={SidebarData[0].id}
+                      className={`  group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
+                        SidebarData[0].id === id && "bg-[#4F50FA] text-white"
                       }
-              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
-              ${open && "px-6 py-3.5 "} rounded-lg`}
+              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem]"}
+              ${open && "px-6 py-3.5 ease-linear"} rounded-lg`}
                     >
                       <div>
-                        {React.createElement(menu?.icon, { size: "25" })}
+                        {React.createElement(SidebarData[0].icon, {
+                          size: "25",
+                        })}
                       </div>
                       <h2
                         className={`whitespace-pre ${
                           !open && "opacity-0 translate-x-28 overflow-hidden"
                         }`}
                       >
-                        {menu?.name}
+                        {SidebarData[0].name}
                       </h2>
                     </Link>
-                  ))}
-                  <button
-                    className={` ${
-                      (!open && Exit[0].margin && "-mt-[13rem]") ||
-                      (open && Exit[0].margin && "-mt-[11rem]")
-                    } group z-0 flex items-center text-[1rem] gap-3.5 font-medium
-            ${!open && "w-[4rem] h-[4rem] pr-[1.2rem]"}
-            ${
-              open && "w-full h-[3.4rem] px-6 py-3.5"
-            } bg-red-500 text-white mt-2 rounded-lg`}
-                    onClick={handleClickExit}
-                  >
-                    <div>
-                      {React.createElement(Exit[0].icon, { size: "25" })}
-                    </div>
-                    <h2
-                      className={`whitespace-pre ${
-                        !open && "opacity-0 translate-x-28 overflow-hidden"
-                      }`}
+                    <Link
+                      onClick={() => setId(SidebarData[1].id)}
+                      to="/dashboard/contracts/blocked"
+                      key={SidebarData[1].id}
+                      className={`mt-2 group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
+                        SidebarData[1].id === id && "bg-[#4F50FA] text-white"
+                      }
+              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
+              ${open && "px-6 py-3.5 "} rounded-lg`}
                     >
-                      {Exit[0].name}
-                    </h2>
-                  </button>
+                      <div>
+                        {React.createElement(SidebarData[1].icon, {
+                          size: "25",
+                        })}
+                      </div>
+                      <h2
+                        className={`whitespace-pre ${
+                          !open && "opacity-0 translate-x-28 overflow-hidden"
+                        }`}
+                      >
+                        {SidebarData[1].name}
+                      </h2>
+                    </Link>
+                    <Link
+                      onClick={() => setId(SidebarData[2].id)}
+                      to="/dashboard/requests"
+                      key={SidebarData[2].id}
+                      className={`mt-2 group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
+                        SidebarData[2].id === id && "bg-[#4F50FA] text-white"
+                      }
+              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
+              ${open && "px-6 py-3.5 "} rounded-lg`}
+                    >
+                      <div>
+                        {React.createElement(SidebarData[2].icon, {
+                          size: "25",
+                        })}
+                      </div>
+                      <h2
+                        className={`whitespace-pre ${
+                          !open && "opacity-0 translate-x-28 overflow-hidden"
+                        }`}
+                      >
+                        {SidebarData[2].name}
+                      </h2>
+                    </Link>
+                  </div>
+                  <div
+                    className={`${
+                      (!open && "mt-[14.5rem]") || (open && "mt-[19rem]")
+                    }`}
+                  >
+                    <Link
+                      onClick={() => setShowModal(true)}
+                      key={SidebarData[3].id}
+                      className={` group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
+                        SidebarData[3].id === id && "bg-[#4F50FA] text-white"
+                      }
+              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
+              ${open && "px-6 py-3.5 "} rounded-lg`}
+                    >
+                      <div>
+                        {React.createElement(SidebarData[3].icon, {
+                          size: "25",
+                        })}
+                      </div>
+                      <h2
+                        className={`whitespace-pre ${
+                          !open && "opacity-0 translate-x-28 overflow-hidden"
+                        }`}
+                      >
+                        {SidebarData[3].name}
+                      </h2>
+                    </Link>
+                    <Link
+                      onClick={() => setId(SidebarData[4].id)}
+                      to="/dashboard/messages/Discount"
+                      key={SidebarData[4].id}
+                      className={`mt-2 group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
+                        SidebarData[4].id === id && "bg-[#4F50FA] text-white"
+                      }
+              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
+              ${open && "px-6 py-3.5 "} rounded-lg`}
+                    >
+                      <div>
+                        {React.createElement(SidebarData[4].icon, {
+                          size: "25",
+                        })}
+                      </div>
+                      <h2
+                        className={`whitespace-pre ${
+                          !open && "opacity-0 translate-x-28 overflow-hidden"
+                        }`}
+                      >
+                        {SidebarData[4].name}
+                      </h2>
+                    </Link>
+                    <Link
+                      onClick={handleClickExit}
+                      to="/dashboard/requests"
+                      key={SidebarData[5].id}
+                      className={` mt-2 group z-0 flex items-center text-[1rem] gap-3.5 font-medium bg-red-500 text-white
+              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
+              ${open && "px-6 py-3.5 "} rounded-lg`}
+                    >
+                      <div>
+                        {React.createElement(SidebarData[5].icon, {
+                          size: "25",
+                        })}
+                      </div>
+                      <h2
+                        className={`whitespace-pre ${
+                          !open && "opacity-0 translate-x-28 overflow-hidden"
+                        }`}
+                      >
+                        {SidebarData[5].name}
+                      </h2>
+                    </Link>
+                  </div>
 
-                  <button
-                    className={` ${
-                      (!open && Setting[0].margin && "-mt-[13rem]") ||
-                      (open && Setting[0].margin && "-mt-[11rem]")
-                    } group z-0 flex items-center text-[1rem] gap-3.5 font-medium
-            ${!open && "w-[4rem] h-[4rem] pr-[1.2rem]"}
-            ${open && "w-full h-[3.4rem] px-6 py-3.5"} rounded-lg`}
-                    onClick={() => setShowModal(true)}
-                  >
-                    <div>
-                      {React.createElement(Setting[0].icon, { size: "25" })}
-                    </div>
-                    <h2
-                      className={`whitespace-pre ${
-                        !open && "opacity-0 translate-x-28 overflow-hidden"
-                      }`}
-                    >
-                      {Setting[0].name}
-                    </h2>
-                  </button> */}
                   {showModal ? (
                     <>
                       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -399,8 +455,9 @@ const Sidebar = () => {
                   />
                 </div>
                 <h1 className="mr-4 text-[25px] w-full">
-                  {/* {menus[id].name === "تنظیمات" ? "" : menus[id].name} */}
+                  {SidebarData[id].name}
                 </h1>
+                {/* Dark Mode */}
                 <div className="flex w-full justify-end">
                   <button
                     onClick={() =>
@@ -418,7 +475,8 @@ const Sidebar = () => {
                   </button>
                 </div>
               </nav>
-              {/* {menus[id].Component} */}
+              {/* Show component */}
+              <Outlet />
             </div>
           </section>
         </div>
