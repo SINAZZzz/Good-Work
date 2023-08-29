@@ -4,6 +4,7 @@ import Logo from "./logo 1.png";
 import "./input.css";
 import { LoginData } from "./LoginData";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const ref = React.createRef();
@@ -12,14 +13,14 @@ export default function Login() {
   const ref4 = React.createRef();
   const ref5 = React.createRef();
 
-  const [loginUser, setLoginUser] = useState();
+  const [loginUser, setLoginUser] = useState("98123456789");
   const [hidden, setHidden] = useState(false);
 
   // state input code
-  const [num1, setNum1] = useState("");
-  const [num2, setNum2] = useState("");
-  const [num3, setNum3] = useState("");
-  const [num4, setNum4] = useState("");
+  const [num1, setNum1] = useState("1");
+  const [num2, setNum2] = useState("2");
+  const [num3, setNum3] = useState("3");
+  const [num4, setNum4] = useState("4");
 
   const handleChangeNum1 = (e) => {
     e.preventDefault();
@@ -42,19 +43,21 @@ export default function Login() {
     // ref5.current.click();
   };
 
-  // const [code, setCode] = useState();
+  const navigate = useNavigate();
 
   function handleSubmitCode(e) {
     // setCode(num1 + num2 + num3 + num4);
     const code = num1 + num2 + num3 + num4;
-    console.log(code);
     localStorage.setItem("code", JSON.stringify(code));
     if (code === LoginData.code) {
       setHidden(false);
       toast.success("کد تایید درسته");
+      navigate("/dashboard");
       window.location.reload();
     } else {
       setHidden(true);
+      navigate("/login");
+
       toast.error("کد تایید اشتباهه");
     }
     e.preventDefault();
@@ -73,7 +76,6 @@ export default function Login() {
     e.preventDefault();
     setLoginUser("");
   }
-
   return (
     <div
       className="h-[100vh] overflow-y-hidden font-Dana

@@ -1,5 +1,5 @@
 // React and hooks
-import React, { useState, useContext, createContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // react icons
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -10,7 +10,7 @@ import { FaHashtag } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { MdOutlineModeEditOutline } from "react-icons/md";
 // data sidebar
-import { menus, Setting, Exit } from "./DataSidebar";
+import { SidebarData } from "./data/DataSidebar";
 // data login
 import { LoginData } from "../../Login/LoginData";
 // context
@@ -80,7 +80,28 @@ const Sidebar = () => {
                   } `}
                 />
                 <div className="px-4">
-                  {menus?.map((menu, index) => (
+                  <Link
+                    onClick={() => setId(SidebarData[0].id)}
+                    to=""
+                    key={SidebarData[0].id}
+                    className={` group z-0 flex items-center text-[1rem] gap-3.5 font-medium  ${
+                      SidebarData[0].id === id && "bg-[#4F50FA] text-white"
+                    }
+              ${!open && "w-[4rem] h-[4rem] pr-[1.2rem] "}
+              ${open && "px-6 py-3.5 "} rounded-lg`}
+                  >
+                    <div>
+                      {React.createElement(SidebarData[0].icon, { size: "25" })}
+                    </div>
+                    <h2
+                      className={`whitespace-pre ${
+                        !open && "opacity-0 translate-x-28 overflow-hidden"
+                      }`}
+                    >
+                      {SidebarData[0].name}
+                    </h2>
+                  </Link>
+                  {/* {menus?.map((menu, index) => (
                     <Link
                       onMouseDown={() => setId(menu.id)}
                       to={menu?.link}
@@ -148,7 +169,7 @@ const Sidebar = () => {
                     >
                       {Setting[0].name}
                     </h2>
-                  </button>
+                  </button> */}
                   {showModal ? (
                     <>
                       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -378,7 +399,7 @@ const Sidebar = () => {
                   />
                 </div>
                 <h1 className="mr-4 text-[25px] w-full">
-                  {menus[id].name === "تنظیمات" ? "" : menus[id].name}
+                  {/* {menus[id].name === "تنظیمات" ? "" : menus[id].name} */}
                 </h1>
                 <div className="flex w-full justify-end">
                   <button
@@ -397,7 +418,7 @@ const Sidebar = () => {
                   </button>
                 </div>
               </nav>
-              {menus[id].Component}
+              {/* {menus[id].Component} */}
             </div>
           </section>
         </div>
