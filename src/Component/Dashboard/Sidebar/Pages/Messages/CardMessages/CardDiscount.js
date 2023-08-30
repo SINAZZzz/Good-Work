@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { CiDiscount1 } from "react-icons/ci";
-import { OpenContext } from "../../../Sidebar";
+import { OpenContext } from "../../../../../../Context/OpenContext";
 
 export default function CardDiscount() {
-  const open = useContext(OpenContext);
+  const { open } = useContext(OpenContext);
   return (
     <div>
       <div
@@ -11,18 +11,20 @@ export default function CardDiscount() {
         mt-6 px-3 
        bg-white items-center rounded-[10px] shadow-contracts-shadow"
       >
-        <div className="w-[44px] h-[44px] text-white bg-[#F44336] flex justify-center items-center rounded-full">
-          <CiDiscount1 className="w-[30px] h-[30px]" />
+        <div className="flex justify-start items-center w-full">
+          <div className="w-[44px] h-[44px] text-white bg-[#F44336] flex justify-center items-center rounded-full">
+            <CiDiscount1 className="w-[30px] h-[30px]" />
+          </div>
+          <div className="w-[12px] h-[12px] bg-[#4F50FA] mr-3 rounded-full"></div>
+          <div className="mr-3 text-[20px]">
+            تخفیف خرید کالا از فروشگاه{" "}
+            <span className="text-[#1585D6]">بیشتر...</span>
+          </div>
         </div>
-        <div className="w-[12px] h-[12px] bg-[#4F50FA] mr-3 rounded-full"></div>
-        <div className="mr-3 text-[20px]">
-          تخفیف خرید کالا از فروشگاه چله{" "}
-          <span className="text-[#1585D6]">بیشتر...</span>
-        </div>
-        <div>
+        <div className="flex justify-end w-full">
           <div
             className={` flex items-center transition-all duration-[500ms] ease-in-out ${
-              (open.open && "mr-[34rem]") || (!open.open && "mr-[45rem]")
+              (open && "") || (!open && "")
             }  text-[22px]`}
           >
             <div>

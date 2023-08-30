@@ -1,63 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Image from "./Rectangle 5.png";
 import Logo from "./logo 1.png";
 import "./input.css";
 import { LoginData } from "./LoginData";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { CodeContext } from "../../Context/CodeContext";
+import { LoginContext } from "../../Context/LoginContext";
 
 export default function Login() {
-  const ref = React.createRef();
-  const ref2 = React.createRef();
-  const ref3 = React.createRef();
-  const ref4 = React.createRef();
-  const ref5 = React.createRef();
+  const {
+    num1,
+    num2,
+    num3,
+    num4,
+    ref,
+    ref2,
+    ref3,
+    ref4,
+    ref5,
+    handleChangeNum1,
+    handleChangeNum2,
+    handleChangeNum3,
+    handleChangeNum4,
+  } = useContext(CodeContext);
 
-  const [loginUser, setLoginUser] = useState("98123456789");
+  const { loginUser, setLoginUser } = useContext(LoginContext);
+
   const [hidden, setHidden] = useState(false);
-
-  // state input code
-  const [num1, setNum1] = useState("1");
-  const [num2, setNum2] = useState("2");
-  const [num3, setNum3] = useState("3");
-  const [num4, setNum4] = useState("4");
-
-  const handleChangeNum1 = (e) => {
-    e.preventDefault();
-    setNum1(e.target.value);
-    ref2.current.focus();
-  };
-  const handleChangeNum2 = (e) => {
-    e.preventDefault();
-    setNum2(e.target.value);
-    ref3.current.focus();
-  };
-  const handleChangeNum3 = (e) => {
-    e.preventDefault();
-    setNum3(e.target.value);
-    ref4.current.focus();
-  };
-  const handleChangeNum4 = (e) => {
-    setNum4(e.target.value);
-    e.preventDefault();
-    // ref5.current.click();
-  };
 
   const navigate = useNavigate();
 
   function handleSubmitCode(e) {
-    // setCode(num1 + num2 + num3 + num4);
     const code = num1 + num2 + num3 + num4;
     localStorage.setItem("code", JSON.stringify(code));
     if (code === LoginData.code) {
       setHidden(false);
       toast.success("کد تایید درسته");
       navigate("/dashboard/home");
-      window.location.reload();
     } else {
       setHidden(true);
       navigate("/");
-
       toast.error("کد تایید اشتباهه");
     }
     e.preventDefault();
@@ -66,7 +49,8 @@ export default function Login() {
   function handleSubmit(e) {
     // const loginUser
     localStorage.setItem("phone", JSON.stringify(loginUser));
-    if (loginUser === LoginData.phone) {
+    console.log(loginUser.length);
+    if (loginUser.length == 11) {
       setHidden(true);
       toast.success("شماره تایید شد");
     } else {

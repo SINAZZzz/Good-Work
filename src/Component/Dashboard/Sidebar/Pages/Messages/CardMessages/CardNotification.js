@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { OpenContext } from "../../../Sidebar";
+import { OpenContext } from "../../../../../../Context/OpenContext";
 
 export default function CardNotification() {
   const open = useContext(OpenContext);
@@ -11,22 +11,24 @@ export default function CardNotification() {
         mt-6 px-3 
        bg-white items-center rounded-[10px] shadow-contracts-shadow"
       >
-        <div className="w-[44px] h-[44px]  bg-[#4CAF50] flex justify-center items-center rounded-full">
-          <IoMdNotificationsOutline className="w-[25px] h-[25px] rotate-[30deg] text-white" />
+        <div className="flex justify-start items-center w-full">
+          <div className="w-[44px] h-[40px]  bg-[#4CAF50] flex justify-center items-center rounded-full">
+            <IoMdNotificationsOutline className="w-[25px] h-[25px] rotate-[30deg] text-white" />
+          </div>
+          <div className="w-[12px] h-[10px] bg-[#4F50FA] mr-3 rounded-full"></div>
+          <div className="mr-3 text-[20px]">
+            واریزی برای قرارداد شما به کد 1399122683 به میزان 50000000 به حساب
+            125489 <span className="text-[#1585D6]">بیشتر...</span>
+          </div>
         </div>
-        <div className="w-[12px] h-[12px] bg-[#4F50FA] mr-3 rounded-full"></div>
-        <div className="mr-3 text-[20px]">
-          واریزی برای قرارداد شما به کد 1399122683 به میزان 50000000 به حساب
-          125489 <span className="text-[#1585D6]">بیشتر...</span>
-        </div>
-        <div>
+        <div className="flex justify-end items-center w-full z-0">
           <div
             className={` flex items-center transition-all duration-[500ms] ease-in-out ${
-              (open.open && "mr-[10rem]") || (!open.open && "mr-[21rem]")
+              (open && "mr-[10rem]") || (!open && "mr-[21rem]")
             } text-[22px]`}
           >
             <div>
-              <p className="border-x-[1px] flex items-center h-[40px] px-6">
+              <p className="border-x-[1px] flex items-center w-[10rem] h-[40px] px-6">
                 ۱۵ آذر ۱۴۰۰
               </p>
             </div>
