@@ -1,5 +1,5 @@
 // React and hooks
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 // react icons
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -15,26 +15,27 @@ import { SidebarData } from "./data/DataSidebar";
 import { LoginData } from "../../Login/LoginData";
 // context
 import { ThemeContext } from "../../../Context/ThemeContext";
-import { OpenContext } from "../../../Context/OpenContext";
-import { ModalContext } from "../../../Context/ModalContext";
+import { SidebarContext } from "../../../Context/SidebarContext";
 // router Hooks
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   // use context
-  const { open, setOpen } = useContext(OpenContext);
   const {
+    id,
+    setId,
+    open,
+    setOpen,
     showModal,
     setShowModal,
     showModalMap,
     setShowModalMap,
     showModalSocial,
     setShowModalSocial,
-  } = useContext(ModalContext);
+  } = useContext(SidebarContext);
+
   const { theme, setTheme } = useContext(ThemeContext);
 
-  // use state
-  const [id, setId] = useState(0);
   // state route
   const navigate = useNavigate();
   // func exite
@@ -49,7 +50,7 @@ const Sidebar = () => {
       alert("you are Login");
     }
   };
-  
+
   localStorage.setItem("buttonOpen", JSON.stringify(open));
 
   const code = JSON.parse(localStorage.getItem("code"));

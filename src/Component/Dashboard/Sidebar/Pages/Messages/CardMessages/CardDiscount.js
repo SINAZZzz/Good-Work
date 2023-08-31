@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { CiDiscount1 } from "react-icons/ci";
-import { OpenContext } from "../../../../../../Context/OpenContext";
+import { SidebarContext } from "../../../../../../Context/SidebarContext";
 
 export default function CardDiscount() {
-  const { open } = useContext(OpenContext);
+  const { open } = useContext(SidebarContext);
   return (
     <div>
       <div

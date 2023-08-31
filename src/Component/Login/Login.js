@@ -5,11 +5,12 @@ import "./input.css";
 import { LoginData } from "./LoginData";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { CodeContext } from "../../Context/CodeContext";
 import { LoginContext } from "../../Context/LoginContext";
 
 export default function Login() {
   const {
+    loginUser,
+    setLoginUser,
     num1,
     num2,
     num3,
@@ -23,9 +24,7 @@ export default function Login() {
     handleChangeNum2,
     handleChangeNum3,
     handleChangeNum4,
-  } = useContext(CodeContext);
-
-  const { loginUser, setLoginUser } = useContext(LoginContext);
+  } = useContext(LoginContext);
 
   const [hidden, setHidden] = useState(false);
 
@@ -47,10 +46,8 @@ export default function Login() {
   }
 
   function handleSubmit(e) {
-    // const loginUser
     localStorage.setItem("phone", JSON.stringify(loginUser));
-    console.log(loginUser.length);
-    if (loginUser.length == 11) {
+    if (LoginData.phone == loginUser) {
       setHidden(true);
       toast.success("شماره تایید شد");
     } else {

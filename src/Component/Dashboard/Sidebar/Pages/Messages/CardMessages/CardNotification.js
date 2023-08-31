@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { OpenContext } from "../../../../../../Context/OpenContext";
+import { SidebarContext } from "../../../../../../Context/SidebarContext";
 
 export default function CardNotification() {
-  const open = useContext(OpenContext);
+  const open = useContext(SidebarContext);
   return (
     <div>
       <div

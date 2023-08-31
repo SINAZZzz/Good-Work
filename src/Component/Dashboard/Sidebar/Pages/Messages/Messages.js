@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { OpenContext } from "../../../../../Context/OpenContext";
+import { SidebarContext } from "../../../../../Context/SidebarContext";
 
 export default function Messages() {
   const [id, setId] = useState(0);
-  const open = useContext(OpenContext);
+  const open = useContext(SidebarContext);
 
   return (
     <div className="bg-black/5 h-[100%] px-4 py-5">
