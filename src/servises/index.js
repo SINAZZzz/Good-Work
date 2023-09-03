@@ -1,1 +1,1 @@
-export { postVerify, postLogin } from "./http";
+export { post } from "./http";

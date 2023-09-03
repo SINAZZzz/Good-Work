@@ -5,6 +5,7 @@ export const LoginContext = createContext();
 
 export const LoginContextProvider = ({ children }) => {
   const [loginUser, setLoginUser] = useState("9137427291");
+  const [token, setToken] = useState();
 
   const [num1, setNum1] = useState("6");
   const [num2, setNum2] = useState("6");
@@ -67,7 +68,8 @@ export const LoginContextProvider = ({ children }) => {
       value={{
         loginUser,
         setLoginUser,
-
+        token,
+        setToken,
         num1,
         num2,
         num3,

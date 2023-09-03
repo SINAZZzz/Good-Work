@@ -9,12 +9,14 @@ import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../../Context/LoginContext";
 
-import { postVerify, postLogin } from "../../servises/http";
+import { post } from "../../servises/http";
 
 export default function Login() {
   const {
     loginUser,
     setLoginUser,
+    token,
+    setToken,
     num1,
     num2,
     num3,
@@ -33,44 +35,56 @@ export default function Login() {
   const [hidden, setHidden] = useState(false);
 
   const navigate = useNavigate();
-  const code = num1 + num2 + num3 + num4;
 
   function handleSubmitCode(e) {
-    postVerify()
+    const code = num1 + num2 + num3 + num4;
+    post("user/auth/verify", {
+      mobile: loginUser,
+      code: code,
+    })
       .then((res) => {
-        const message = res.data.Message;
-        // code 400 code 200
-        if () {
+        const response = res.data;
+        const messageCode = response.Message;
+        if (response.Code == 200) {
           setHidden(true);
-          const token = res.data.token;
+          setToken(response.Data.token);
           document.cookie = token;
           navigate("/dashboard/home");
-          toast.success(message);
-        } else {
-          setHidden(true);
-          navigate("/");
-          toast.error(message);
+          toast.success(messageCode);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        const response = error.response.data;
+        const messageCode = response.Message;
+        if (response.Code == 400) {
+          setHidden(true);
+          navigate("/");
+          toast.error(messageCode);
+        }
+      });
     e.preventDefault();
   }
 
   function handleSubmit(e) {
-    localStorage.setItem("phone", JSON.stringify(loginUser));
-
-    postLogin()
+    post("user/auth/login", {
+      mobile: loginUser,
+    })
       .then((res) => {
-        const message = res.data.Message;
-        if (mobile == loginUser) {
+        const response = res.data;
+        const messageLogin = response.Message;
+        if (response.Code == 200) {
           setHidden(true);
-          toast.success(message);
-        } else {
-          setHidden(false);
-          toast.error(message);
+          toast.success(messageLogin);
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        const response = error.response.data;
+        const messageLogin = response.Message;
+        if (response.Code == 400) {
+          setHidden(false);
+          toast.error(messageLogin);
+        }
+      });
     e.preventDefault();
     setLoginUser("");
   }
