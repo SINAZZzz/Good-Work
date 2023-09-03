@@ -1,11 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
+
 import Image from "./Rectangle 5.png";
 import Logo from "./logo 1.png";
 import "./input.css";
-import { LoginData } from "./LoginData";
+// import { LoginData } from "./LoginData";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../../Context/LoginContext";
+
+import { postVerify, postLogin } from "../../servises/http";
 
 export default function Login() {
   const {
@@ -29,31 +33,44 @@ export default function Login() {
   const [hidden, setHidden] = useState(false);
 
   const navigate = useNavigate();
+  const code = num1 + num2 + num3 + num4;
 
   function handleSubmitCode(e) {
-    const code = num1 + num2 + num3 + num4;
-    localStorage.setItem("code", JSON.stringify(code));
-    if (code === LoginData.code) {
-      setHidden(false);
-      toast.success("کد تایید درسته");
-      navigate("/dashboard/home");
-    } else {
-      setHidden(true);
-      navigate("/");
-      toast.error("کد تایید اشتباهه");
-    }
+    postVerify()
+      .then((res) => {
+        const message = res.data.Message;
+        // code 400 code 200
+        if () {
+          setHidden(true);
+          const token = res.data.token;
+          document.cookie = token;
+          navigate("/dashboard/home");
+          toast.success(message);
+        } else {
+          setHidden(true);
+          navigate("/");
+          toast.error(message);
+        }
+      })
+      .catch((error) => console.log(error));
     e.preventDefault();
   }
 
   function handleSubmit(e) {
     localStorage.setItem("phone", JSON.stringify(loginUser));
-    if (LoginData.phone == loginUser) {
-      setHidden(true);
-      toast.success("شماره تایید شد");
-    } else {
-      setHidden(false);
-      toast.error("شماره اشتباهه");
-    }
+
+    postLogin()
+      .then((res) => {
+        const message = res.data.Message;
+        if (mobile == loginUser) {
+          setHidden(true);
+          toast.success(message);
+        } else {
+          setHidden(false);
+          toast.error(message);
+        }
+      })
+      .catch((error) => console.log(error));
     e.preventDefault();
     setLoginUser("");
   }

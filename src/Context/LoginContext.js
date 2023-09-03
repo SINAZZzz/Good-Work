@@ -4,12 +4,12 @@ import { createContext, useState, createRef } from "react";
 export const LoginContext = createContext();
 
 export const LoginContextProvider = ({ children }) => {
-  const [loginUser, setLoginUser] = useState();
+  const [loginUser, setLoginUser] = useState("9137427291");
 
-  const [num1, setNum1] = useState();
-  const [num2, setNum2] = useState();
-  const [num3, setNum3] = useState();
-  const [num4, setNum4] = useState();
+  const [num1, setNum1] = useState("6");
+  const [num2, setNum2] = useState("6");
+  const [num3, setNum3] = useState("3");
+  const [num4, setNum4] = useState("3");
 
   const ref = createRef();
   const ref2 = createRef();

@@ -1,5 +1,5 @@
 // React and hooks
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 // react icons
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -35,6 +35,8 @@ const Sidebar = () => {
   } = useContext(SidebarContext);
 
   const { theme, setTheme } = useContext(ThemeContext);
+
+ 
 
   // state route
   const navigate = useNavigate();
