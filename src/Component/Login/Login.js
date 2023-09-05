@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
-import Image from "./Rectangle 5.png";
-import Logo from "./logo 1.png";
 import "./input.css";
 // import { LoginData } from "./LoginData";
 import toast, { Toaster } from "react-hot-toast";
@@ -10,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../../Context/LoginContext";
 
 import { post } from "../../servises/http";
-
+import Banear from "./Component/Banear";
+let count = 0;
 export default function Login() {
   const {
     loginUser,
@@ -18,14 +17,17 @@ export default function Login() {
     token,
     setToken,
     num1,
+    // object
     num2,
     num3,
     num4,
+    // state by id
     ref,
     ref2,
     ref3,
     ref4,
     ref5,
+    //  state num and id next document by id
     handleChangeNum1,
     handleChangeNum2,
     handleChangeNum3,
@@ -38,6 +40,7 @@ export default function Login() {
 
   function handleSubmitCode(e) {
     const code = num1 + num2 + num3 + num4;
+    // object {map}
     post("user/auth/verify", {
       mobile: loginUser,
       code: code,
@@ -199,22 +202,15 @@ export default function Login() {
             >
               ثبت
             </button>
+            <div className="flex pt-2">
+              <p>ارسال مجدد کد (59)</p>
+              <span className="border-e w-[1px] bg-black/20 mx-6"></span>
+              <p>اصلاح شماره موبایل</p>
+            </div>
           </form>
         </div>
       </div>
-      <div className="absolute -left-0 z-0 h-full">
-        <img
-          src={Logo}
-          alt=""
-          className="z-0 absolute lg:left-20 lg:top-[18rem] lg:w-[18rem] 
-          sm:w-[261px] sm:top-[103px] sm:left-[60px]"
-        />
-        <img
-          src={Image}
-          alt=""
-          className="lg:w-[33rem] lg:h-[104.1vh] sm:w-[25rem] sm:h-[28rem] sm:-mt-[2rem] z-10"
-        />
-      </div>
+      <Banear />
     </div>
   );
 }
