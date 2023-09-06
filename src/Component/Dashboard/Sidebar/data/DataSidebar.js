@@ -1,45 +1,55 @@
-import { VscHome } from "react-icons/vsc";
-import { LuNewspaper } from "react-icons/lu";
-import { ImStack } from "react-icons/im";
-import { AiOutlineSetting } from "react-icons/ai";
-import { MdOutlineNotifications } from "react-icons/md";
-import { FaPowerOff } from "react-icons/fa";
+import Home from "../../../../assets/Img/Sidebar/Home.svg";
+import Contracts from "../../../../assets/Img/Sidebar/Contracts.svg";
+import Exit from "../../../../assets/Img/Sidebar/Exit.svg";
+import Messages from "../../../../assets/Img/Sidebar/Messages.svg";
+import Requests from "../../../../assets/Img/Sidebar/Requests.svg";
+import Settings from "../../../../assets/Img/Sidebar/Settings.svg";
 
 export const SidebarData = [
   {
     name: "خانه",
     path: "/dashboard/Home",
-    icon: VscHome,
+    icon: Home,
     id: 0,
   },
   {
     name: "قراردادها",
     path: "/dashboard/contracts/blocked",
-    icon: LuNewspaper,
+    icon: Contracts,
     id: 1,
   },
   {
     name: "درخواست ها",
     path: "/dashboard/requests",
-    icon: ImStack,
+    icon: Requests,
     id: 2,
   },
+];
+
+export const SettingsData = [
   {
     name: "تنظیمات",
+    margin: true,
     path: "",
-    icon: AiOutlineSetting,
+    icon: Settings,
     id: 3,
   },
+];
+
+export const MessagesData = [
   {
     name: "پیام ها",
     path: "/dashboard/messages/Discount",
-    icon: MdOutlineNotifications,
+    icon: Messages,
     id: 4,
   },
+];
+
+export const ExitData = [
   {
     name: "خروج",
     path: "",
-    icon: FaPowerOff,
+    icon: Exit,
     id: 5,
   },
 ];
