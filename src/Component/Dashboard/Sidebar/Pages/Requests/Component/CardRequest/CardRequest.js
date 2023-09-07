@@ -9,7 +9,7 @@ export default function CardRequest(props) {
          p-6`}
       >
         <div className="flex mb-4 items-center">
-          <props.icon className="w-[35px] h-[35px]" />
+          <img src={props.icon} className="w-[35px] h-[35px]" />
           <p
             className="font-DanaBold text-[20px] mr-2"
             onClick={() => props.state}

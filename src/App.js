@@ -14,9 +14,7 @@ import CardNotification from "./Component/Dashboard/Sidebar/Pages/Messages/CardM
 import CardNewMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardNewMessages";
 import CardAllMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardAllMessages";
 
-import CardBlocked from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardBlocked";
-import CardMaturity from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardMaturity";
-import CardMonthly from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardMonthly";
+import CardBox from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardBox";
 
 export default function App() {
   const code = JSON.parse(localStorage.getItem("code"));
@@ -57,18 +55,9 @@ export default function App() {
 
           <Route path="/dashboard/requests" element={<Requests />} />
           <Route path="/dashboard/contracts" element={<Contracts />}>
-            <Route
-              path="/dashboard/contracts/blocked"
-              element={<CardBlocked />}
-            />
-            <Route
-              path="/dashboard/contracts/mturity"
-              element={<CardBlocked />}
-            />
-            <Route
-              path="/dashboard/contracts/monthly"
-              element={<CardBlocked />}
-            />
+            <Route path="/dashboard/contracts/blocked" element={<CardBox />} />
+            <Route path="/dashboard/contracts/mturity" element={<CardBox />} />
+            <Route path="/dashboard/contracts/monthly" element={<CardBox />} />
           </Route>
         </Route>
       </Routes>

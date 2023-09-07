@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import CardRequest from "./CardRequest";
+import Checkmark from "../../../../../../../assets/Img/Pages/Requests/Checkmark.svg";
+import add from "../../../../../../../assets/Img/Pages/Requests/add.svg";
+import sync from "../../../../../../../assets/Img/Pages/Requests/sync.svg";
 import {
   IoMdCheckmarkCircleOutline,
   IoIosAddCircleOutline,
@@ -11,23 +14,23 @@ export default function CardRequestItems() {
   const [contractExtension, setContractExtension] = useState(false);
   const [newContract, setNewContract] = useState(false);
 
-
   return (
     <div className="pr-10">
       <CardRequest
-        icon={IoMdCheckmarkCircleOutline}
+        icon={Checkmark}
         title={"تسویه قرارداد"}
         des={
           "برای تسویه قرارداد روی این گزینه کلیک کنید و در قسمت بعد قراردادی که برای تسویه مدنظر دارید انتخاب کنید."
         }
       />
+
       <div
         className={`block mt-8
          bg-white w-[500px] h-[150px] rounded-[15px] shadow-Requests
          p-6`}
       >
         <div className="flex mb-4 items-center">
-          <AiOutlineSync className="w-[35px] h-[35px]" />
+          <img src={sync} alt="" className="w-[35px] h-[35px]" />
           <p
             className="font-DanaBold text-[20px] cursor-pointer mr-2"
             onClick={() => setContractExtension(true)}

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import calendar from "../../../../../../assets/Img/Pages/Contracts/Card/calendar.svg";
 import note from "../../../../../../assets/Img/Pages/Contracts/Card/note.svg";
 import print from "../../../../../../assets/Img/Pages/Contracts/Card/print.svg";
@@ -6,7 +6,7 @@ import time from "../../../../../../assets/Img/Pages/Contracts/Card/time.svg";
 import wallet from "../../../../../../assets/Img/Pages/Contracts/Card/wallet.svg";
 import { ContractContext } from "../../../../../../Context/ContractContext";
 
-export default function CardBlocked() {
+export default function CardBox() {
   const { state } = useContext(ContractContext);
   return (
     <div>
@@ -53,9 +53,9 @@ export default function CardBlocked() {
               وضعیت:{" "}
               <span
                 className={`text-white ${
-                  (state == "مسدود" && "bg-[#F44336]") ||
-                  (state == "ماهانه" && "bg-[#4CAF50]") ||
-                  (state == "سررسید" && "bg-[#4CAF50]")
+                  (state === "مسدود" && "bg-[#F44336]") ||
+                  (state === "ماهانه" && "bg-[#4CAF50]") ||
+                  (state === "سررسید" && "bg-[#4CAF50]")
                 }
              mr-4 text-[18px] px-2 py-[4px] w-[60px] h-[30px] rounded-[5px]`}
               >

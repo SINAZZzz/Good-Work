@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CiDiscount1 } from "react-icons/ci";
+import takhfif from "../../../../../../assets/Img/Pages/Messages/takhfif.svg";
 import { SidebarContext } from "../../../../../../Context/SidebarContext";
 
 export default function CardDiscount() {
@@ -13,7 +13,7 @@ export default function CardDiscount() {
       >
         <div className="flex justify-start items-center w-full">
           <div className="w-[44px] h-[44px] text-white bg-[#F44336] flex justify-center items-center rounded-full">
-            <CiDiscount1 className="w-[30px] h-[30px]" />
+            <img src={takhfif} alt="" className="w-[30px] h-[30px]" />
           </div>
           <div className="w-[12px] h-[12px] bg-[#4F50FA] mr-3 rounded-full"></div>
           <div className="mr-3 text-[20px]">
