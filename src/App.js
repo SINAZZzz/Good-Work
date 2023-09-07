@@ -63,11 +63,11 @@ export default function App() {
             />
             <Route
               path="/dashboard/contracts/mturity"
-              element={<CardMaturity />}
+              element={<CardBlocked />}
             />
             <Route
               path="/dashboard/contracts/monthly"
-              element={<CardMonthly />}
+              element={<CardBlocked />}
             />
           </Route>
         </Route>

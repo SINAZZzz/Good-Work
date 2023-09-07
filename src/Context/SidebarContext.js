@@ -4,7 +4,8 @@ import { createContext, useState } from "react";
 export const SidebarContext = createContext();
 
 export const SidebarContextProvider = ({ children }) => {
-  const [id, setId] = useState(0);
+  const [path, setPath] = useState();
+  const [name, setName] = useState();
   const [open, setOpen] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [showModalMap, setShowModalMap] = useState(false);
@@ -13,8 +14,10 @@ export const SidebarContextProvider = ({ children }) => {
   return (
     <SidebarContext.Provider
       value={{
-        id,
-        setId,
+        name,
+        setName,
+        path,
+        setPath,
         showModal,
         setShowModal,
         showModalMap,

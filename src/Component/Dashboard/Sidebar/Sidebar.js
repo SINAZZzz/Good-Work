@@ -1,16 +1,12 @@
 // React and hooks
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+// router
 import { Link, Outlet } from "react-router-dom";
 // img
 import User from "../../../assets/Img/Sidebar/User.svg";
 import menu from "../../../assets/Img/Sidebar/menu.svg";
 // react icons
-import { AiOutlineClose } from "react-icons/ai";
-import { BiMapAlt } from "react-icons/bi";
 import { BsSun, BsFillMoonFill } from "react-icons/bs";
-import { FaHashtag } from "react-icons/fa";
-import { IoIosArrowBack } from "react-icons/io";
-import { MdOutlineModeEditOutline } from "react-icons/md";
 // data sidebar
 import {
   SidebarData,
@@ -29,8 +25,10 @@ import { useNavigate } from "react-router-dom";
 const Sidebar = () => {
   // use context
   const {
-    id,
-    setId,
+    name,
+    setName,
+    path,
+    setPath,
     open,
     setOpen,
     showModal,
@@ -42,7 +40,6 @@ const Sidebar = () => {
   } = useContext(SidebarContext);
 
   const { theme, setTheme } = useContext(ThemeContext);
-  const [name, setName] = useState();
   // state route
   const navigate = useNavigate();
   // func exite
@@ -102,13 +99,13 @@ const Sidebar = () => {
               <div className="flex h-full flex-col">
                 {SidebarData?.map((data, index) => (
                   <Link
-                    onMouseDown={() => setId(data.id)}
+                    onMouseDown={() => setPath(data.path)}
                     onClick={() => setName(data.name)}
-                    to={data?.path}
+                    to={path}
                     key={index}
                     className={`group z-0 my-1 flex items-center
                     text-[1rem] font-medium rounded-lg
-                   ${index === id && "bg-[#4F50FA] text-white"}
+                   ${data.path === path && "bg-[#4F50FA] text-white"}
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
                     (open && "px-4 py-4")
@@ -125,7 +122,7 @@ const Sidebar = () => {
                       />
                     </div>
                     <h2
-                      className={`whitespace-pre ${
+                      className={`whitespace-pre mr-2 ${
                         !open && "opacity-0 translate-x-28 overflow-hidden"
                       }`}
                     >
@@ -136,13 +133,12 @@ const Sidebar = () => {
               </div>
               <div className="flex flex-col">
                 <Link
-                  onMouseDown={() => setId(SettingsData[0].id)}
                   onClick={() => setName(SettingsData[0].name)}
-                  to={SettingsData[0].path}
+                  to={path}
                   key={SettingsData[0].id}
                   className={`group z-0 flex my-1 items-center
                     text-[1rem] font-medium rounded-lg  ${
-                      SettingsData[0].id === id && "bg-[#4F50FA] text-white"
+                      SettingsData[0].path === path && "bg-[#4F50FA] text-white"
                     }
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
@@ -160,7 +156,7 @@ const Sidebar = () => {
                     />
                   </div>
                   <h2
-                    className={`whitespace-pre ${
+                    className={`whitespace-pre mr-2 ${
                       !open && "opacity-0 translate-x-28 overflow-hidden"
                     }`}
                   >
@@ -168,13 +164,15 @@ const Sidebar = () => {
                   </h2>
                 </Link>
                 <Link
-                  onMouseDown={() => setId(MessagesData[0].id)}
+                  onMouseDown={() => setPath(MessagesData[0].path)}
                   onClick={() => setName(MessagesData[0].name)}
-                  to={MessagesData[0].path}
+                  to={path}
                   key={MessagesData[0].id}
                   className={`group z-0 my-1 flex items-center
                     text-[1rem] font-medium rounded-lg
-                    ${MessagesData[0].id === id && "bg-[#4F50FA] text-white"}
+                    ${
+                      MessagesData[0].path === path && "bg-[#4F50FA] text-white"
+                    }
                 
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
@@ -192,7 +190,7 @@ const Sidebar = () => {
                     />
                   </div>
                   <h2
-                    className={`whitespace-pre ${
+                    className={`whitespace-pre mr-2 first-letter:${
                       !open && "opacity-0 translate-x-28 overflow-hidden"
                     }`}
                   >
@@ -200,9 +198,8 @@ const Sidebar = () => {
                   </h2>
                 </Link>
                 <Link
-                  onMouseDown={() => setId(ExitData[0].id)}
                   onClick={() => setName(ExitData[0].name)}
-                  to={ExitData[0].path}
+                  to={path}
                   key={ExitData[0].id}
                   className={`group z-0 my-1 flex items-center
                     text-[1rem] font-medium rounded-lg
@@ -223,7 +220,7 @@ const Sidebar = () => {
                     />
                   </div>
                   <h2
-                    className={`whitespace-pre ${
+                    className={`whitespace-pre mr-2 ${
                       !open && "opacity-0 translate-x-28 overflow-hidden"
                     }`}
                   >

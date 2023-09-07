@@ -1,16 +1,19 @@
-import React from "react";
-import { BsCalendar3 } from "react-icons/bs";
-import { LuTimer } from "react-icons/lu";
-import { FiPrinter } from "react-icons/fi";
-import { PiNoteThin, PiWalletLight } from "react-icons/pi";
+import React, { useContext, useRef } from "react";
+import calendar from "../../../../../../assets/Img/Pages/Contracts/Card/calendar.svg";
+import note from "../../../../../../assets/Img/Pages/Contracts/Card/note.svg";
+import print from "../../../../../../assets/Img/Pages/Contracts/Card/print.svg";
+import time from "../../../../../../assets/Img/Pages/Contracts/Card/time.svg";
+import wallet from "../../../../../../assets/Img/Pages/Contracts/Card/wallet.svg";
+import { ContractContext } from "../../../../../../Context/ContractContext";
 
 export default function CardBlocked() {
+  const { state } = useContext(ContractContext);
   return (
-    <div> 
+    <div>
       <div
         className="w-full flex h-[150px]
-        mt-6 pr-14 pl-32 
-       bg-white items-center justify-between  rounded-[10px] shadow-contracts-shadow"
+        mt-6 pr-10 pl-20 
+       bg-white items-center justify-between rounded-[10px] shadow-contracts-shadow"
       >
         <div>
           {/* price */}
@@ -26,19 +29,19 @@ export default function CardBlocked() {
         <div>
           {/* calendar */}
           <div className="flex">
-            <BsCalendar3 className="text-[#C5C7D4] w-5 h-5" />
+            <img src={calendar} alt="" className="text-[#C5C7D4] w-7 h-7" />
             <p className="contract-color-text mr-2 text-[18px]">۲۵ تیر ۱۴۰۰</p>
           </div>
           {/* time */}
           <div className="flex mt-5">
-            <LuTimer className="contract-style-icon" />
+            <img src={time} alt="" className="contract-style-icon w-7 h-7" />
             <p className="contract-color-text mr-2 text-[18px]">۳ ماهه</p>
           </div>
         </div>
         <div>
           {/* code */}
           <div className="flex mb-5">
-            <PiNoteThin className="contract-style-icon text-[18px w-7 h-7" />
+            <img src={note} alt="" className="contract-style-icon w-7 h-7" />
             <p className="contract-color-text mr-2 text-[18px]">
               {" "}
               کد : ۱۴۰۰۰۴۲۹۳۲
@@ -49,10 +52,14 @@ export default function CardBlocked() {
             <p className="contract-color-text text-[18px]">
               وضعیت:{" "}
               <span
-                className="text-white bg-[#F44336]
-             mr-4 text-[18px] px-2 py-[4px] w-[60px] h-[30px] rounded-[5px]"
+                className={`text-white ${
+                  (state == "مسدود" && "bg-[#F44336]") ||
+                  (state == "ماهانه" && "bg-[#4CAF50]") ||
+                  (state == "سررسید" && "bg-[#4CAF50]")
+                }
+             mr-4 text-[18px] px-2 py-[4px] w-[60px] h-[30px] rounded-[5px]`}
               >
-                مسدود
+                {state}
               </span>
             </p>
           </div>
@@ -60,17 +67,17 @@ export default function CardBlocked() {
         <div className="text-[#3F51B5]">
           {/* wallet */}
           <div className="flex ">
-            <PiWalletLight className="w-5 h-5" />
+            <img src={wallet} alt="" className="w-5 h-5" />
             <p className="text-[14px] mr-2">سودهای واریزی</p>
           </div>
           {/* wallet */}
           <div className="flex mt-4">
-            <PiWalletLight className="w-5 h-5" />
+            <img src={wallet} alt="" className="w-5 h-5" />
             <p className="text-[14px] mr-2">پرداختی ها</p>
           </div>
           {/* print */}
           <div className="flex mt-4">
-            <FiPrinter className="w-5 h-5" />
+            <img src={print} alt="" className="w-5 h-5" />
             <p className="text-[14px] mr-2">نسخه پرینت</p>
           </div>
         </div>
