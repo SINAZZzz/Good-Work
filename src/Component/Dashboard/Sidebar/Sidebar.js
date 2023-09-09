@@ -96,9 +96,9 @@ const Sidebar = () => {
                     onClick={() => setName(data.name)}
                     to={path}
                     key={index}
-                    className={`group z-0 my-1 flex items-center
-                    text-[1rem] font-medium rounded-lg
-                   ${data.path === path && "bg-[#4F50FA] text-white"}
+                    className={`button-side ${
+                      data.path === path && "active-button"
+                    }
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
                     (open && "px-4 py-4")
@@ -109,8 +109,8 @@ const Sidebar = () => {
                       <img
                         src={data?.icon}
                         alt=""
-                        className={`${
-                          (!open && "w-[2rem]") || (open && "w-[1.5rem]")
+                        className={` ${
+                          (!open && "w-[8rem] ") || (open && "w-[1.5rem]")
                         }`}
                       />
                     </div>
@@ -129,10 +129,9 @@ const Sidebar = () => {
                   onClick={() => setName(SettingsData[0].name)}
                   to={path}
                   key={SettingsData[0].id}
-                  className={`group z-0 flex my-1 items-center
-                    text-[1rem] font-medium rounded-lg  ${
-                      SettingsData[0].path === path && "bg-[#4F50FA] text-white"
-                    }
+                  className={`button-side ${
+                    SettingsData[0].path === path && "bg-[#4F50FA] text-white"
+                  }
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
                     (open && "px-4 py-4")
@@ -161,11 +160,8 @@ const Sidebar = () => {
                   onClick={() => setName(MessagesData[0].name)}
                   to={path}
                   key={MessagesData[0].id}
-                  className={`group z-0 my-1 flex items-center
-                    text-[1rem] font-medium rounded-lg
-                    ${
-                      MessagesData[0].path === path && "bg-[#4F50FA] text-white"
-                    }
+                  className={`button-side
+                    ${MessagesData[0].path === path && "active-button"}
                 
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
@@ -177,7 +173,7 @@ const Sidebar = () => {
                     <img
                       src={MessagesData[0].icon}
                       alt=""
-                      className={`${
+                      className={` ${
                         (!open && "w-[2rem]") || (open && "w-[1.5rem]")
                       }`}
                     />
@@ -194,8 +190,7 @@ const Sidebar = () => {
                   onClick={() => setName(ExitData[0].name)}
                   to={path}
                   key={ExitData[0].id}
-                  className={`group z-0 my-1 flex items-center
-                    text-[1rem] font-medium rounded-lg
+                  className={`button-side
                     bg-[#ff3b3b] text-white
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||

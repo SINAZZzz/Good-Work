@@ -8,32 +8,28 @@ export default function CardDiscount() {
     <div>
       <div
         className="w-full flex h-[79px]
-        mt-6 px-3 
+        mt-6 px-3
        bg-white items-center rounded-[10px] shadow-contracts-shadow"
       >
-        <div className="flex justify-start items-center w-full">
-          <div className="w-[44px] h-[44px] text-white bg-[#F44336] flex justify-center items-center rounded-full">
-            <img src={takhfif} alt="" className="w-[25px]" />
+        <div className="flex items-center w-full justify-between">
+          <div className="flex items-center">
+            <div className="w-[44px] h-[44px] text-white bg-[#F44336] flex justify-center items-center rounded-full">
+              <img src={takhfif} alt="" className="w-[20px]" />
+            </div>
+            <div className="w-[12px] h-[12px] bg-[#4F50FA] mr-3 rounded-full"></div>
+            <div className="mr-3 text-[20px]">
+              تخفیف خرید کالا از فروشگاه{" "}
+              <span className="text-[#1585D6]">بیشتر...</span>
+            </div>
           </div>
-          <div className="w-[12px] h-[12px] bg-[#4F50FA] mr-3 rounded-full"></div>
-          <div className="mr-3 text-[20px]">
-            تخفیف خرید کالا از فروشگاه{" "}
-            <span className="text-[#1585D6]">بیشتر...</span>
-          </div>
-        </div>
-        <div className="flex justify-end w-full">
-          <div
-            className={` flex items-center transition-all duration-[500ms] ease-in-out ${
-              (open && "") || (!open && "")
-            }  text-[22px]`}
-          >
+          <div className="flex items-center text-[22px]">
             <div>
-              <p className="border-x-[1px] flex items-center h-[40px] px-6">
+              <p className="border-x-[1px] flex items-center px-6">
                 ۱۵ آذر ۱۴۰۰
               </p>
             </div>
             <div>
-              <p className="px-6">۲۲:۵۰</p>
+              <p className="px-8">۲۲:۵۰</p>
             </div>
           </div>
         </div>
