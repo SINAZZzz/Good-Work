@@ -8,35 +8,41 @@ export default function CardNotification() {
     <div>
       <div
         className="w-full flex h-[79px]
-        mt-6 px-3 
+        mt-6 px-3
        bg-white items-center rounded-[10px] shadow-contracts-shadow"
       >
-        <div className="flex justify-start items-center w-full">
-          <div className="w-[44px] h-[40px]  bg-[#4CAF50] flex justify-center items-center rounded-full">
-            <img src={notif} alt="" className="w-[25px] h-[25px] text-white" />
+        <div className="flex items-center w-full justify-between">
+          <div className="w-[44px] h-[44px] bg-[#4CAF50] flex justify-center items-center rounded-full">
+            <img src={notif} alt="" className="w-[20px] text-white" />
           </div>
-          <div className="w-[12px] h-[10px] bg-[#4F50FA] mr-3 rounded-full"></div>
-          <div className="mr-3 text-[20px]">
+          {/* <div className="w-[12px] h-[12px] bg-[#4F50FA] rounded-full"></div> */}
+          <div
+            className={`${
+              (open && "-mr-[9rem]") || (!open && "-mr-[calc(10rem-15rem)]")
+            }
+           text-[20px]`}
+          >
             واریزی برای قرارداد شما به کد 1399122683 به میزان 50000000 به حساب
             125489 <span className="text-[#1585D6]">بیشتر...</span>
           </div>
-        </div>
-        <div className="flex justify-end items-center w-full z-0">
           <div
-            className={` flex items-center transition-all duration-[500ms] ease-in-out ${
-              (open && "mr-[10rem]") || (!open && "mr-[21rem]")
-            } text-[22px]`}
+            className={` flex items-center transition-all duration-[500ms] ease-in-out 
+            text-[22px]`}
           >
+            {/* ${(open && "justify-end") || (!open && "mr-[21rem]")}  */}
             <div>
-              <p className="border-x-[1px] flex items-center w-[10rem] h-[40px] px-6">
+              <p className="border-x-[1px] flex items-center px-6">
                 ۱۵ آذر ۱۴۰۰
               </p>
             </div>
             <div>
-              <p className="px-6">۲۲:۵۰</p>
+              <p className="px-8">۲۲:۵۰</p>
             </div>
           </div>
         </div>
+        {/* <div className="flex items-center w-full z-0">
+          
+        </div> */}
       </div>
     </div>
   );

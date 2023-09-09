@@ -1,12 +1,10 @@
 // React and hooks
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext } from "react";
 // router
 import { Link, Outlet } from "react-router-dom";
 // img
 import User from "../../../assets/Img/Sidebar/User.svg";
 import menu from "../../../assets/Img/Sidebar/menu.svg";
-// react icons
-import { BsSun, BsFillMoonFill } from "react-icons/bs";
 // data sidebar
 import {
   SidebarData,
@@ -17,7 +15,6 @@ import {
 // data login
 import { LoginData } from "../../Login/LoginData";
 // context
-import { ThemeContext } from "../../../Context/ThemeContext";
 import { SidebarContext } from "../../../Context/SidebarContext";
 // router Hooks
 import { useNavigate } from "react-router-dom";
@@ -39,7 +36,6 @@ const Sidebar = () => {
     setShowModalSocial,
   } = useContext(SidebarContext);
 
-  const { theme, setTheme } = useContext(ThemeContext);
   // state route
   const navigate = useNavigate();
   // func exite
@@ -61,7 +57,7 @@ const Sidebar = () => {
   const number = JSON.parse(localStorage.getItem("phone"));
 
   return (
-    <div className={`${theme}`}>
+    <div>
       <section className="flex font-Dana dark:bg-black">
         <div
           className={`bg-[#ffffff] shadow-3xl h-full transition-all duration-[200ms] ${
@@ -74,10 +70,7 @@ const Sidebar = () => {
                 (!open && "mr-5") || (open && "px-7")
               }`}
             >
-              <img
-                src={"https://s8.uupload.ir/files/user_0p1a.png"}
-                alt="User"
-              />
+              <img src={User} alt="User" />
               <div
                 className={`flex flex-col justify-center items-center mr-4
             ${!open && "hidden"}`}
@@ -237,26 +230,11 @@ const Sidebar = () => {
               <img
                 src={menu}
                 alt=""
-                className="cursor-pointer w-[3rem]"
+                className="cursor-pointer w-[1.5rem]"
                 onClick={() => setOpen(!open)}
               />
             </div>
             <h1 className="mr-4 text-[25px] w-full">{name}</h1>
-            {/* Dark Mode */}
-            <div className="flex w-full justify-end">
-              <button
-                onClick={() => setTheme(theme === "ligth" ? "dark" : "ligth")}
-                className="absolute top-4 left-4 h-12 w-12 rounded-xl 
-                    p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-center
-                    items-center"
-              >
-                {theme === "dark" ? (
-                  <BsFillMoonFill className="h-5 w-5" />
-                ) : (
-                  <BsSun className="h-5 w-5" />
-                )}
-              </button>
-            </div>
           </nav>
           {/* Show component */}
           <Outlet />
