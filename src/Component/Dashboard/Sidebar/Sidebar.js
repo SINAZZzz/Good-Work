@@ -58,38 +58,42 @@ const Sidebar = () => {
 
   return (
     <div>
-      <section className="flex font-Dana dark:bg-black">
+      <section className="flex font-Dana h-full">
         <div
-          className={`bg-[#ffffff] shadow-3xl h-full transition-all duration-[200ms] ${
+          className={`bg-[#c6c9c6] shadow-3xl transition-all duration-[200ms] ${
             open ? "w-[20rem]" : "w-24"
           } `}
         >
-          <div className="mt-4 flex flex-col h-full gap-4 fixed ">
-            <div
-              className={`flex -mb-[2px] ${
-                (!open && "mr-5") || (open && "px-7")
-              }`}
-            >
-              <img src={User} alt="User" />
-              <div
-                className={`flex flex-col justify-center items-center mr-4
+          <div className="pt-4 flex flex-col h-full gap-1 fixed bg-slate-700">
+            {/* profile */}
+            <div>
+              {/* ${(!open && "") || (open && "px-5")} */}
+              <div className={`flex px-5`}>
+                <img src={User} alt="User" />
+                <div
+                  className={`flex flex-col justify-center items-center mr-4
             ${!open && "hidden"}`}
-              >
-                <span className="font-normal text-[18px]">علی علوی</span>
-                <span className="text-[#A2A2AC] text-[12px]">سرمایه گذار</span>
+                >
+                  <span className="font-normal text-[18px]">علی علوی</span>
+                  <span className="text-[#A2A2AC] text-[12px]">
+                    سرمایه گذار
+                  </span>
+                </div>
               </div>
+              <hr
+                className={`mt-[1rem]  ${
+                  (!open && "w-[6rem]") || (open && "w-[16.5rem]")
+                } `}
+              />
             </div>
-            <hr
-              className={`  ${
-                (!open && "w-[6rem]") || (open && "w-[16.5rem]")
-              } `}
-            />
+
+            {/*  ${
+                (!open && "min-h-[58vh]") || (open && "pl-[1.5rem] pr-[1rem]")
+              } */}
             <div
-              className={`px-3  ${
-                (!open && "min-h-[58vh]") || (open && "min-h-[60.5vh]")
-              }`}
+              className={`h-full w-full flex flex-col justify-between pt-1 pb-2 px-4`}
             >
-              <div className="flex h-full flex-col">
+              <div className="flex flex-col">
                 {SidebarData?.map((data, index) => (
                   <Link
                     onMouseDown={() => setPath(data.path)}
@@ -101,7 +105,7 @@ const Sidebar = () => {
                     }
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
-                    (open && "px-4 py-4")
+                    (open && " px-4 py-4")
                   }
                    `}
                   >
@@ -218,21 +222,6 @@ const Sidebar = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="w-full">
-          <nav className="border w-full h-20 flex items-center bg-white ">
-            <div className="mr-4 flex justify-start">
-              <img
-                src={menu}
-                alt=""
-                className="cursor-pointer w-[1.5rem]"
-                onClick={() => setOpen(!open)}
-              />
-            </div>
-            <h1 className="mr-4 text-[25px] w-full">{name}</h1>
-          </nav>
-          {/* Show component */}
-          <Outlet />
         </div>
       </section>
     </div>

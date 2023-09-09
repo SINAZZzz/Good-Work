@@ -25,7 +25,7 @@
     @apply text-[#C5C7D4] w-6 h-6;
   }
   .button-side {
-    @apply z-0 my-1 flex items-center text-[1rem] font-medium rounded-lg;
+    @apply my-1 flex items-center text-[1rem] font-medium rounded-lg;
   }
   .active-button {
     @apply bg-[#4F50FA] text-white;
