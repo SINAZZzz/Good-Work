@@ -9,7 +9,6 @@ import { LoginContext } from "../../Context/LoginContext";
 
 import { post } from "../../servises/http";
 import Banear from "./Component/Banear";
-let count = 0;
 export default function Login() {
   const {
     loginUser,
@@ -38,13 +37,32 @@ export default function Login() {
 
   const navigate = useNavigate();
 
+  const [time, setTime] = useState(60);
+  const [resend, setResend] = useState(false);
+  // for resend code
+  useEffect(() => {
+    let interval = null;
+    if (time === 0) setResend(true);
+
+    if (time !== 0) {
+      interval = setInterval(() => {
+        setTime((prev) => prev - 1);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  }, [time]);
+
   function handleSubmitCode(e) {
     const code = num1 + num2 + num3 + num4;
     // object {map}
-    post("user/auth/verify", {
+    var data = JSON.stringify({
       mobile: loginUser,
       code: code,
-    })
+    });
+    post("user/auth/verify", data)
       .then((res) => {
         const response = res.data;
         const messageCode = response.Message;
@@ -69,9 +87,18 @@ export default function Login() {
   }
 
   function handleSubmit(e) {
-    post("user/auth/login", {
+    //     Post("user/message/send", data)
+    //     .then((res) => {
+    //       console.log(res.data);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // };
+    var data = JSON.stringify({
       mobile: loginUser,
-    })
+    });
+    post("user/auth/login", data)
       .then((res) => {
         const response = res.data;
         const messageLogin = response.Message;
@@ -203,10 +230,28 @@ export default function Login() {
               ثبت
             </button>
             <div className="flex pt-2">
-              <p>ارسال مجدد کد (59)</p>
+              <div
+                className={`${resend ? "resend" : ""} flex text-center`}
+                onClick={() => {
+                  // setTime(60);
+                  setResend(false);
+                }}
+              >
+                ارسال مجدد کد {""} ({time})
+              </div>
+              <span className="border-e w-[1px] bg-black/20 mx-6"></span>
+              <div
+                className="flex text-center "
+                // onClick={() => handleStep(1)}
+              >
+                اصلاح شماره موبایل
+              </div>
+            </div>
+            {/* <div className="flex pt-2">
+              <p>ارسال مجدد کد ({time})</p>
               <span className="border-e w-[1px] bg-black/20 mx-6"></span>
               <p>اصلاح شماره موبایل</p>
-            </div>
+            </div> */}
           </form>
         </div>
       </div>

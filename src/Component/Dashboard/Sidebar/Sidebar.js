@@ -1,5 +1,5 @@
 // React and hooks
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 // router
 import { Link, Outlet } from "react-router-dom";
 // img
@@ -32,7 +32,6 @@ const Sidebar = () => {
     setShowModal,
     showModal,
   } = useContext(SidebarContext);
-  console.log(showModal);
   // state route
   const navigate = useNavigate();
   // func exite
@@ -57,7 +56,7 @@ const Sidebar = () => {
     <div>
       <section className="flex font-Dana h-full">
         <div
-          className={`   h-full transition-all duration-[200ms] ${
+          className={`h-full transition-all duration-[200ms] ${
             open ? "w-[20rem]" : "w-24"
           } `}
         >
@@ -149,37 +148,7 @@ const Sidebar = () => {
                     {SettingsData[0].name}
                   </h2>
                 </button>
-                {/* <Link
-                  onClick={() => setName(SettingsData[0].name)}
-                  onMouseDown={() => setShowModal(true)}
-                  to={path}
-                  key={SettingsData[0].id}
-                  className={`button-side ${
-                    SettingsData[0].path === path && "bg-[#4F50FA] text-white"
-                  }
-                  ${
-                    (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
-                    (open && "px-4 py-4")
-                  }
-                   `}
-                >
-                  <div>
-                    <img
-                      src={SettingsData[0].icon}
-                      alt=""
-                      className={`${
-                        (!open && "w-[2rem]") || (open && "w-[1.5rem]")
-                      }`}
-                    />
-                  </div>
-                  <h2
-                    className={`whitespace-pre mr-2 ${
-                      !open && "opacity-0 translate-x-28 overflow-hidden"
-                    }`}
-                  >
-                    {SettingsData[0].name}
-                  </h2>
-                </Link> */}
+
                 <Link
                   onMouseDown={() => setPath(MessagesData[0].path)}
                   onClick={() => setName(MessagesData[0].name)}
