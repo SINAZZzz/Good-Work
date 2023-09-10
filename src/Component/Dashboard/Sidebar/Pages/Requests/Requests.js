@@ -4,8 +4,8 @@ import ContractExtension from "./Component/ContractExtension/ContractExtension";
 
 export default function Requests() {
   return (
-    <div className="bg-black/5 h-[100%] p-8">
-      <div className="flex">
+    <div className="bg-black/5 h-full">
+      <div className="flex pt-[2rem] pr-[2rem]">
         <div className="block w-1/2">
           <CardRequestItems />
         </div>

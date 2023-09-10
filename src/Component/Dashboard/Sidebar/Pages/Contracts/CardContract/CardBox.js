@@ -21,7 +21,7 @@ export default function CardBox() {
             ۴۱٬۷۵۰٬۰۰۰ تومان
           </p>
           {/* des */}
-          <p className="text-[17px] w-60 text-[#4CAF50] ">
+          <p className="text-[17px] text-[#4CAF50] ">
             {" "}
             تقریبی: هر ماه ۱،۴۶۱،۲۵۰ تومان با سود
           </p>

@@ -28,7 +28,7 @@ export const SidebarData = [
 
 export const SettingsData = [
   {
-    name: "تنظیمات",
+    name: "تنظیمات", 
     margin: true,
     path: "",
     icon: Settings,

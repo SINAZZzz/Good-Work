@@ -4,7 +4,7 @@ export default function CardRequest(props) {
   return (
     <div>
       <div
-        className={`block ${props.margin}
+        className={`${props.margin}
          bg-white w-[500px] h-[150px] rounded-[15px] shadow-Requests
          p-6`}
       >

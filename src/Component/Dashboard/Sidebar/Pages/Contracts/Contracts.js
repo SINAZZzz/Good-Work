@@ -7,13 +7,13 @@ import { ContractContext } from "../../../../../Context/ContractContext";
 
 export default function Contracts() {
   const [id, setId] = useState(0);
-  const { state, setState } = useContext(ContractContext);
+  const { setState } = useContext(ContractContext);
 
   return (
     <div className="bg-black/5 h-[100%] px-4 py-5">
       <div
-        className="w-full flex justify-between h-[90px]
-       bg-white items-center px-[12rem] rounded-[10px] shadow-contracts-shadow"
+        className="w-full flex justify-center h-[90px]
+       bg-white items-center  rounded-[10px] shadow-contracts-shadow"
       >
         <Link
           onClick={() => setId(1)}
@@ -30,7 +30,7 @@ export default function Contracts() {
           onClick={() => setId(2)}
           onMouseDown={() => setState(id == 2 ? "ماهانه" : "")}
           to="/dashboard/contracts/monthly"
-          className={`flex flex-col items-center ${
+          className={`flex flex-col items-center px-[12rem] ${
             id === 2 ? "text-[#4F50FA]" : "text-[#0b0b12]"
           } `}
         >
@@ -50,15 +50,25 @@ export default function Contracts() {
         </Link>
       </div>
       <div
-        className={`flex  ml-[4rem] -mt-[1px]
-      ${
-        // (id === 0 && "hidden") ||
-        (id === 0 && "justify-end") ||
-        (id === 2 && "justify-center mr-[4rem]") ||
-        (id === 1 && "justify-between mr-[4rem]")
-      }`}
+        className={`flex  mr-[9rem] -mt-[1px] max-[1300px]:hidden  ${
+          (id === 2 && "hidden") || (id === 0 && "hidden")
+        }`}
       >
-        <hr className="bg-[#4F50FA] w-[390px] h-[3.5px] rounded-full" />
+        <hr className="bg-[#4F50FA] w-[310px] h-[3.5px] rounded-full" />
+      </div>
+      <div
+        className={`flex justify-center  mr-[0.5rem] -mt-[1px] max-[1300px]:hidden ${
+          (id === 1 && "hidden") || (id === 0 && "hidden")
+        }`}
+      >
+        <hr className="bg-[#4F50FA] w-[310px] h-[3.5px] rounded-full" />
+      </div>
+      <div
+        className={`flex justify-end ml-[8.5rem] -mt-[1px] max-[1300px]:hidden ${
+          (id === 2 && "hidden") || (id === 1 && "hidden")
+        }`}
+      >
+        <hr className="bg-[#4F50FA] w-[310px] h-[3.5px] rounded-full" />
       </div>
       <Outlet />
       <Outlet />

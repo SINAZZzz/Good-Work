@@ -18,6 +18,7 @@ import { LoginData } from "../../Login/LoginData";
 import { SidebarContext } from "../../../Context/SidebarContext";
 // router Hooks
 import { useNavigate } from "react-router-dom";
+import Modal from "./Modal";
 
 const Sidebar = () => {
   // use context
@@ -28,14 +29,10 @@ const Sidebar = () => {
     setPath,
     open,
     setOpen,
-    showModal,
     setShowModal,
-    showModalMap,
-    setShowModalMap,
-    showModalSocial,
-    setShowModalSocial,
+    showModal,
   } = useContext(SidebarContext);
-
+  console.log(showModal);
   // state route
   const navigate = useNavigate();
   // func exite
@@ -60,11 +57,11 @@ const Sidebar = () => {
     <div>
       <section className="flex font-Dana h-full">
         <div
-          className={`bg-[#c6c9c6] shadow-3xl transition-all duration-[200ms] ${
+          className={`   h-full transition-all duration-[200ms] ${
             open ? "w-[20rem]" : "w-24"
           } `}
         >
-          <div className="pt-4 flex flex-col h-full gap-1 fixed bg-slate-700">
+          <div className="pt-4 flex flex-col shadow-3xl h-full gap-1 fixed bg-[#FFFFFF]">
             {/* profile */}
             <div>
               {/* ${(!open && "") || (open && "px-5")} */}
@@ -81,15 +78,12 @@ const Sidebar = () => {
                 </div>
               </div>
               <hr
-                className={`mt-[1rem]  ${
+                className={`mt-[0.9rem]  ${
                   (!open && "w-[6rem]") || (open && "w-[16.5rem]")
                 } `}
               />
             </div>
 
-            {/*  ${
-                (!open && "min-h-[58vh]") || (open && "pl-[1.5rem] pr-[1rem]")
-              } */}
             <div
               className={`h-full w-full flex flex-col justify-between pt-1 pb-2 px-4`}
             >
@@ -103,18 +97,15 @@ const Sidebar = () => {
                     className={`button-side ${
                       data.path === path && "active-button"
                     }
-                  ${
-                    (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
-                    (open && " px-4 py-4")
-                  }
+                  ${(!open && "w-[4rem] py-4") || (open && "px-4 py-4")}
                    `}
                   >
                     <div>
                       <img
                         src={data?.icon}
                         alt=""
-                        className={` ${
-                          (!open && "w-[8rem] ") || (open && "w-[1.5rem]")
+                        className={`${
+                          (!open && "w-[31px] mr-4") || (open && "w-[1.5rem]")
                         }`}
                       />
                     </div>
@@ -129,8 +120,38 @@ const Sidebar = () => {
                 ))}
               </div>
               <div className="flex flex-col">
-                <Link
+                <button
+                  onClick={() => setShowModal(true)}
+                  key={SettingsData[0].id}
+                  className={`button-side ${
+                    SettingsData[0].path === path && "bg-[#4F50FA] text-white"
+                  }
+                  ${
+                    (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
+                    (open && "px-4 py-4")
+                  }
+                   `}
+                >
+                  <div>
+                    <img
+                      src={SettingsData[0].icon}
+                      alt=""
+                      className={`${
+                        (!open && "w-[2rem]") || (open && "w-[1.5rem]")
+                      }`}
+                    />
+                  </div>
+                  <h2
+                    className={`whitespace-pre mr-2 ${
+                      !open && "opacity-0 translate-x-28 overflow-hidden"
+                    }`}
+                  >
+                    {SettingsData[0].name}
+                  </h2>
+                </button>
+                {/* <Link
                   onClick={() => setName(SettingsData[0].name)}
+                  onMouseDown={() => setShowModal(true)}
                   to={path}
                   key={SettingsData[0].id}
                   className={`button-side ${
@@ -158,7 +179,7 @@ const Sidebar = () => {
                   >
                     {SettingsData[0].name}
                   </h2>
-                </Link>
+                </Link> */}
                 <Link
                   onMouseDown={() => setPath(MessagesData[0].path)}
                   onClick={() => setName(MessagesData[0].name)}
@@ -222,6 +243,24 @@ const Sidebar = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="w-full">
+          {/* navbar */}
+          <nav className="border border-r-0 w-full h-20 flex items-center bg-white ">
+            <div className="mr-4 flex justify-start">
+              <img
+                src={menu}
+                alt=""
+                className="cursor-pointer w-[1.5rem]"
+                onClick={() => setOpen(!open)}
+              />
+            </div>
+            {/* header name */}
+            <h1 className="mr-4 text-[25px] w-full">{name}</h1>
+          </nav>
+          {/* Show component */}
+          <Outlet />
+          <Modal />
         </div>
       </section>
     </div>

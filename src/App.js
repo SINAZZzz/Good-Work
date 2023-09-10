@@ -15,6 +15,7 @@ import CardNewMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMe
 import CardAllMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardAllMessages";
 
 import CardBox from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardBox";
+import Modal from "./Component/Dashboard/Sidebar/Modal";
 
 export default function App() {
   const code = JSON.parse(localStorage.getItem("code"));

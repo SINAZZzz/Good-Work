@@ -117,14 +117,6 @@ export default function CardRequestItems() {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
-      {/* <CardRequest
-        margin={"mt-8"}
-        icon={AiOutlineSync}
-        title={"تمدید قرارداد"}
-        des={
-          " برای تمدید قرارداد روی این گزینه کلیک کنید و در قسمت بعد قراردادی که برای تمدید مدنظر دارید انتخاب کنید."
-        }
-      /> */}
 
       <div
         className={`block mt-8
@@ -296,15 +288,6 @@ export default function CardRequestItems() {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
-      {/* <CardRequest
-        margin={"mt-8"}
-        icon={IoIosAddCircleOutline}
-        title={"قرارداد جدید"}
-        des={
-          "شما می‌توانید از این طریق به صورت آنلاین درخواست قرارداد جدید بدهید."
-        }
-        openModal={setNewContract}
-      /> */}
     </div>
   );
 }

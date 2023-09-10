@@ -6,7 +6,7 @@ export default function ContractExtensionItem(props) {
       <div className="w-[400px] h-[186px] mt-7 shadow-Requests rounded-[13px] font-Dana bg-white  border-solid border-[#D3D4D06] border-[1px]">
         <div>
           <div>
-            <h1 className="text-[25.38px] pt-6 font-DanaBold mr-[25%]">
+            <h1 className="text-[25.38px] pt-6 font-DanaBold flex justify-center">
               {props.price}
             </h1>
           </div>
