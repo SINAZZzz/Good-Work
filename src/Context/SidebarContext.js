@@ -7,6 +7,7 @@ export const SidebarContextProvider = ({ children }) => {
   const [path, setPath] = useState();
   const [name, setName] = useState();
   const [open, setOpen] = useState(true);
+  const [locationTitle, setLocationTitle] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showModalMap, setShowModalMap] = useState(false);
   const [showModalSocial, setShowModalSocial] = useState(false);
@@ -16,7 +17,7 @@ export const SidebarContextProvider = ({ children }) => {
       value={{
         name,
         setName,
-        path,
+        path: path,
         setPath,
         showModal,
         setShowModal,
@@ -26,6 +27,8 @@ export const SidebarContextProvider = ({ children }) => {
         setShowModalSocial,
         open,
         setOpen,
+        locationTitle: locationTitle,
+        setLocationTitle,
       }}
     >
       {children}

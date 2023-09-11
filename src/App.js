@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import Login from "./Component/Login/Login";
 import Dashboard from "./Component/Dashboard/Dashboard";
-import { LoginData } from "./Component/Login/LoginData";
 import { Routes, Route } from "react-router-dom";
 
 import Home from "./Component/Dashboard/Sidebar/Pages/Home";
@@ -15,19 +14,8 @@ import CardNewMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMe
 import CardAllMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardAllMessages";
 
 import CardBox from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardBox";
-import Modal from "./Component/Dashboard/Sidebar/Modal";
 
 export default function App() {
-  const code = JSON.parse(localStorage.getItem("code"));
-  const [state, setState] = useState(false);
-  useEffect(() => {
-    if (code === LoginData.code) {
-      setState(true);
-    } else {
-      setState(false);
-    }
-  }, [state, code]);
-
   return (
     <>
       <Routes>

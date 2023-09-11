@@ -1,8 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import { useContext } from "react";
-import { LoginContext } from "../Context/LoginContext";
+// import { useContext } from "react";
+// import { LoginContext } from "../Context/LoginContext";
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 // const { token } = useContext(LoginContext);
@@ -20,8 +20,8 @@ const headersPost = {
 //   Cookie: "ci_session=625ck10cgm2pm19icjkedob0t3ak2fdf",
 // };
 
-export function post(url, data, config = {}) {
-  return axios.post(baseURL + url, data, config, {
+export function post(url, data) {
+  return axios.post(baseURL + url, data, {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",

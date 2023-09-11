@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
+import Cookies from "js-cookie";
 
 import "./input.css";
-// import { LoginData } from "./LoginData";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../../Context/LoginContext";
@@ -54,6 +53,10 @@ export default function Login() {
 
     return () => clearInterval(interval);
   }, [time]);
+  // console.log(Cookies.get("imsToken"));
+  // useEffect(() => {
+
+  // }, [Cookies]);
 
   function handleSubmitCode(e) {
     const code = num1 + num2 + num3 + num4;
@@ -66,18 +69,21 @@ export default function Login() {
       .then((res) => {
         const response = res.data;
         const messageCode = response.Message;
-        if (response.Code == 200) {
-          setHidden(true);
-          setToken(response.Data.token);
-          document.cookie = token;
-          navigate("/dashboard/home");
+        if (response.Code === 200) {
           toast.success(messageCode);
+          setHidden(true);
+          Cookies.set("imsToken", JSON.stringify(res.data.Data.token), {
+            expires: 30,
+          });
+          if (Cookies.get("imsToken")) {
+            navigate("/dashboard/home");
+          }
         }
       })
       .catch((error) => {
         const response = error.response.data;
         const messageCode = response.Message;
-        if (response.Code == 400) {
+        if (response.Code === 400) {
           setHidden(true);
           navigate("/");
           toast.error(messageCode);
@@ -87,14 +93,6 @@ export default function Login() {
   }
 
   function handleSubmit(e) {
-    //     Post("user/message/send", data)
-    //     .then((res) => {
-    //       console.log(res.data);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // };
     var data = JSON.stringify({
       mobile: loginUser,
     });
@@ -104,6 +102,7 @@ export default function Login() {
         const messageLogin = response.Message;
         if (response.Code == 200) {
           setHidden(true);
+          setTime(60);
           toast.success(messageLogin);
         }
       })
@@ -243,15 +242,11 @@ export default function Login() {
               <div
                 className="flex text-center "
                 // onClick={() => handleStep(1)}
+                // goto back to form login
               >
                 اصلاح شماره موبایل
               </div>
             </div>
-            {/* <div className="flex pt-2">
-              <p>ارسال مجدد کد ({time})</p>
-              <span className="border-e w-[1px] bg-black/20 mx-6"></span>
-              <p>اصلاح شماره موبایل</p>
-            </div> */}
           </form>
         </div>
       </div>

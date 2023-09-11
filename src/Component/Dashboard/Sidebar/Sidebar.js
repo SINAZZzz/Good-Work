@@ -1,5 +1,5 @@
 // React and hooks
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // router
 import { Link, Outlet } from "react-router-dom";
 // img
@@ -12,15 +12,20 @@ import {
   ExitData,
   MessagesData,
 } from "./data/DataSidebar";
-// data login
-import { LoginData } from "../../Login/LoginData";
 // context
 import { SidebarContext } from "../../../Context/SidebarContext";
 // router Hooks
 import { useNavigate } from "react-router-dom";
+// component
 import Modal from "./Modal";
+// api
+import { post } from "../../../servises";
+// Cookies
+import Cookies from "js-cookie";
 
 const Sidebar = () => {
+  const [user, setUser] = useState();
+
   // use context
   const {
     name,
@@ -34,23 +39,30 @@ const Sidebar = () => {
   } = useContext(SidebarContext);
   // state route
   const navigate = useNavigate();
+  // Api
+  useEffect(() => {
+    post("/user/profile")
+      .then((res) => {
+        setUser(res.data.Data.userdetail);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
   // func exite
-  const handleClickExit = () => {
-    if (code === LoginData.code && number === LoginData.phone) {
-      localStorage.removeItem("code");
-      localStorage.removeItem("phone");
-      navigate("/");
-      window.location.reload();
-      alert("Logout");
-    } else {
-      alert("you are Login");
-    }
+  const logout = () => {
+    post("user/logout")
+      .then((res) => {
+        if (res.status === 200) {
+          Cookies.remove("imsToken");
+          // setUser(null);
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-
-  localStorage.setItem("buttonOpen", JSON.stringify(open));
-
-  const code = JSON.parse(localStorage.getItem("code"));
-  const number = JSON.parse(localStorage.getItem("phone"));
 
   return (
     <div>
@@ -70,7 +82,10 @@ const Sidebar = () => {
                   className={`flex flex-col justify-center items-center mr-4
             ${!open && "hidden"}`}
                 >
-                  <span className="font-normal text-[18px]">علی علوی</span>
+                  <span className="font-normal text-[18px]">
+                    {user?.fname}
+                    {user?.lname}
+                  </span>
                   <span className="text-[#A2A2AC] text-[12px]">
                     سرمایه گذار
                   </span>
@@ -181,7 +196,7 @@ const Sidebar = () => {
                   </h2>
                 </Link>
                 <Link
-                  onClick={() => setName(ExitData[0].name)}
+                  onClick={() => logout()}
                   to={path}
                   key={ExitData[0].id}
                   className={`button-side
