@@ -11,12 +11,15 @@ export const SidebarContextProvider = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalMap, setShowModalMap] = useState(false);
   const [showModalSocial, setShowModalSocial] = useState(false);
+  const [user, setUser] = useState();
 
   return (
     <SidebarContext.Provider
       value={{
         name,
         setName,
+        user: user,
+        setUser,
         path: path,
         setPath,
         showModal,

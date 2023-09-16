@@ -24,18 +24,17 @@ import { post } from "../../../servises";
 import Cookies from "js-cookie";
 
 const Sidebar = () => {
-  const [user, setUser] = useState();
-
   // use context
   const {
     name,
     setName,
+    user,
+    setUser,
     path,
     setPath,
     open,
     setOpen,
     setShowModal,
-    showModal,
   } = useContext(SidebarContext);
   // state route
   const navigate = useNavigate();

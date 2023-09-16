@@ -20,7 +20,7 @@ const headersPost = {
 //   Cookie: "ci_session=625ck10cgm2pm19icjkedob0t3ak2fdf",
 // };
 
-export function post(url, data) {
+export function post(url, data, header) {
   return axios.post(baseURL + url, data, {
     headers: {
       "Content-Type": "application/json",
@@ -32,8 +32,14 @@ export function post(url, data) {
   });
 }
 
-export function get(url, data, config = {}) {
-  return axios.get(`${baseURL}${url}`, data, config, {
-    headersPost,
+export function get(url, header) {
+  return axios.get(baseURL + url, {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      authorization: Cookies.get("imsToken")
+        ? JSON.parse(Cookies.get("imsToken"))
+        : "",
+    },
   });
 }

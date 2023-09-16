@@ -15,7 +15,7 @@ export default function CardRequestItems() {
   const [newContract, setNewContract] = useState(false);
 
   return (
-    <div className="pr-10">
+    <div className="pr-8">
       <CardRequest
         icon={Checkmark}
         title={"تسویه قرارداد"}
