@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import cancel from "../../../../../assets/Img/Pages/Contracts/Head/cancel.svg";
 import calendar from "../../../../../assets/Img/Pages/Contracts/Head/calendar.svg";
 import ok from "../../../../../assets/Img/Pages/Contracts/Head/ok.svg";
 import { ContractContext } from "../../../../../Context/ContractContext";
 import { SidebarContext } from "../../../../../Context/SidebarContext";
 import { get } from "../../../../../servises";
-import CardBox from "../Home/Component/Cards/CardBox";
+import CardBox from "./CardContract/CardBox";
 
 export default function Contracts({ title }) {
   const [id, setId] = useState(0);
@@ -21,6 +21,7 @@ export default function Contracts({ title }) {
     setInvestments,
   } = useContext(ContractContext);
   const { setLocationTitle } = useContext(SidebarContext);
+  const [selectedId, setSelectedId] = useState(0);
   useEffect(() => {
     setLocationTitle(title);
   });
@@ -83,10 +84,8 @@ export default function Contracts({ title }) {
        bg-white items-center  rounded-[10px] shadow-contracts-shadow"
       >
         <Link
-          // onClick={() => setId(1)}
           onMouseDown={() => setId(1)}
           onClick={() => handleClick("deadline")}
-          // onMouseDown={() => setState(id === 1 ? "سررسید" : "")}
           to="/dashboard/contracts/mturity"
           className={`flex flex-col items-center ${
             id === 1 ? "text-[#4F50FA]" : "text-[#0b0b12]"
@@ -98,9 +97,7 @@ export default function Contracts({ title }) {
         </Link>
         <Link
           onMouseDown={() => setId(2)}
-          // onClick={() => setId(2)}
           onClick={() => handleClick("monthly")}
-          // onMouseDown={() => setState(id == 2 ? "ماهانه" : "")}
           to="/dashboard/contracts/monthly"
           className={`flex flex-col items-center px-[12rem] ${
             id === 2 ? "text-[#4F50FA]" : "text-[#0b0b12]"
@@ -113,7 +110,6 @@ export default function Contracts({ title }) {
         <Link
           onMouseDown={() => setId(0)}
           onClick={() => handleClick("block")}
-          // onMouseDown={() => setState(id == 0 ? "مسدود" : "")}
           to="/dashboard/contracts/blocked"
           className={`flex flex-col items-center ${
             id === 0 ? "text-[#4F50FA]" : "text-[#0b0b12]"
@@ -147,7 +143,13 @@ export default function Contracts({ title }) {
       </div>
       {category.length !== 0 ? (
         category.map((item) => {
-          return <Outlet key={item.code} item={item} />;
+          return (
+            <CardBox
+              key={item.code}
+              item={item}
+              setSelectedId={setSelectedId}
+            />
+          );
         })
       ) : (
         <h1 className="text-center mt-5"> لیست خالی است!</h1>

@@ -7,10 +7,6 @@ export default function CardNewMessages() {
   return (
     <div>
       <CardNotification />
-      <CardNotification />
-      <CardDiscount />
-      <CardDiscount />
-      <CardDiscount />
       <CardDiscount />
     </div>
   );

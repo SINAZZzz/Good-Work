@@ -7,20 +7,31 @@ import wallet from "../../../../../../assets/Img/Pages/Contracts/Card/wallet.svg
 import { ContractContext } from "../../../../../../Context/ContractContext";
 import { get } from "../../../../../../servises";
 
-export default function CardBox() {
+export default function CardBox({ item }) {
   const [details, setDetails] = useState("");
   const { categoryId } = useContext(ContractContext);
-
   useEffect(() => {
-    get(`user/investment/detail/1400090676`)
+    get(`user/investment/detail/${item.code}`)
       .then((res) => {
         setDetails(res.data.Data.investment);
-        // console.log(res.data.Data.investment.date);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  function renderSwitch(categoryId) {
+    switch (categoryId) {
+      case "block":
+        return "مسدود";
+      case "monthly":
+        return "ماهانه";
+      case "deadline":
+        return "سررسید";
+      default:
+        return "";
+    }
+  }
 
   return (
     <div>
@@ -69,20 +80,19 @@ export default function CardBox() {
           </div>
           {/* state */}
           <div className="mr-1">
-            {/* <span> وضعیت: </span>
-            <span
-              className={`bgState__ py-1 px-2  mx-2`}
-            >
-              {categoryId}
-            </span> */}
             <p className="contract-color-text text-[18px]">
               وضعیت:{" "}
               <span
                 className={`text-white
-                ${details?.status === "open" ? "bg-[#4CAF50]" : "bg-[#F44336]"}
+          onClick={() => handleClick("monthly")}
+          ${
+            categoryId === "deadline" && categoryId === "monthly"
+              ? "bg-[#4CAF50]"
+              : "bg-[#F44336]"
+          }
              mr-4 text-[18px] px-2 py-[4px] w-[60px] h-[30px] rounded-[5px]`}
               >
-                {categoryId}
+                {renderSwitch(categoryId)}
               </span>
             </p>
           </div>

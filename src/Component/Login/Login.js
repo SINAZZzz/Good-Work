@@ -53,10 +53,11 @@ export default function Login() {
 
     return () => clearInterval(interval);
   }, [time]);
-  // console.log(Cookies.get("imsToken"));
-  // useEffect(() => {
-
-  // }, [Cookies]);
+  useEffect(() => {
+    if (Cookies.get("imsToken")) {
+      navigate("/dashboard/home");
+    }
+  }, []);
 
   function handleSubmitCode(e) {
     const code = num1 + num2 + num3 + num4;
