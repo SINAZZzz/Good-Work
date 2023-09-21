@@ -3,6 +3,7 @@ import { RequestsContext } from "../../../../../../Context/RequestsContext";
 import { AiOutlineClose } from "react-icons/ai";
 import { ImAttachment } from "react-icons/im";
 import { post } from "../../../../../../servises";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Modal() {
   const {
@@ -25,13 +26,19 @@ export default function Modal() {
       investment_code: code.toString(),
       user_description: description,
     });
+    console.log(code);
     post("user/investment/request", data)
       .then((res) => {
-        console.log(res.data.Data);
-        setShowModal(false);
+        if (res.data.Code === 200) {
+          toast.success(res.data.Message);
+          setShowModal(false);
+        }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.data.Code === 400) {
+          console.log(err);
+          toast.error(err.response.data.Message);
+        }
       });
   };
   //api
@@ -43,16 +50,23 @@ export default function Modal() {
     });
     post("user/investment/request", data)
       .then((res) => {
-        console.log(res.data.Data);
-        setShowModal(false);
+        if (res.data.Code === 200) {
+          toast.success(res.data.Message);
+          setShowModal(false);
+        }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.data.Code === 400) {
+          console.log(err);
+          toast.error(err.response.data.Message);
+        }
       });
   };
 
   return (
     <div>
+      <Toaster position="bottom-center" reverseOrder={false} />
+
       {title == "تسویه" ? (
         showModal ? (
           <>
@@ -217,11 +231,18 @@ export default function Modal() {
       {/* قرارداد جدید*/}
       {addModal ? (
         <>
-          <div className=" items-center flex overflow-x-hidden overflow-y-hidden fixed inset-0 z-50 outline-none focus:outline-none">
+          <div
+            className="items-center
+           flex overflow-x-hidden overflow-y-hidden fixed inset-0 
+           z-50 outline-none focus:outline-none"
+          >
             {" "}
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-[25px] shadow-lg relative flex flex-col px-[3rem] py-4 w-[860px] h-fit bg-white outline-none focus:outline-none">
+              <div
+                className="border-0
+               rounded-[25px] shadow-lg relative flex flex-col px-12 py-3 w-[860px] h-fit bg-white outline-none focus:outline-none"
+              >
                 {/*header*/}
                 <div className="w-full flex flex-col">
                   <div className="flex items-center justify-center">
@@ -238,18 +259,14 @@ export default function Modal() {
                     اطمینان دارید؟
                   </p>
                 </div>
-                inputs
-                <div className="flex mt-[2rem]">
+                {/* inputs */}
+                <div className="flex mt-[1rem]">
                   <div>
                     <div className="flex flex-col">
                       <label for="price" className="text-[17.81px] pr-1">
                         مبلغ قرارداد{" "}
                       </label>
-                      <input
-                        id="price"
-                        type="text"
-                        className="w-[350px] outline-none pr-2 mt-1 border-[#00000033] border-[1px] rounded-[5px] h-[44px]"
-                      />
+                      <input id="price" type="text" className="input-add" />
                       <span className="text-[12px] mt-1 pr-1 text-[#444444]">
                         مبلغ قرارداد باید از 50 میلیون تومان بالاتر باشد
                       </span>
@@ -264,7 +281,7 @@ export default function Modal() {
                       <input
                         id="contract-period"
                         type="text"
-                        className="w-[350px] outline-none pr-2 mt-1 border-[#00000033] border-[1px] rounded-[5px] h-[44px]"
+                        className="input-add"
                       />
                       <span className="text-[12px] mt-1 pr-1 text-[#444444]">
                         تعداد ماه‌های قرارداد را وارد کنید
@@ -278,10 +295,7 @@ export default function Modal() {
                         تحصیل سود
                       </label>
 
-                      <select
-                        id="Learning-profit"
-                        className="w-[350px] pl-[2rem] outline-none px-2 mt-1 border-[#00000033] border-[1px] rounded-[5px] h-[44px]"
-                      >
+                      <select id="Learning-profit" className="input-add">
                         <option>انتخاب کنید</option>
                         <option>Saab</option>
                         <option>Mercedes</option>
@@ -293,46 +307,39 @@ export default function Modal() {
                       </span>
                     </div>
                   </div>
-                  <hr className="h-[500px] bg-[#C5C7D4] w-[1px] mx-7" />
+                  <hr className="h-[400px] bg-[#C5C7D4] w-[1px] mx-7" />
                   <div>
                     <div className="flex flex-col">
                       <label for="Date" className="text-[17.81px] pr-1">
                         تاریخ
                       </label>
-                      <input
-                        id="Date"
-                        type="text"
-                        className="w-[350px] outline-none pr-2 mt-1 border-[#00000033] border-[1px] rounded-[5px] h-[44px]"
-                      />
+                      <input id="Date" type="text" className="input-add" />
                     </div>
-                    <div className="flex flex-col mt-[4rem]">
+                    <div className="flex flex-col mt-[2rem]">
                       <label for="Serial-code" className="text-[17.81px] pr-1">
                         سریال یا کد رهگیری
                       </label>
                       <input
                         id="Serial-code"
                         type="text"
-                        className="w-[350px] outline-none pr-2 mt-1 border-[#00000033] border-[1px] rounded-[5px] h-[44px]"
+                        className="input-add"
                       />
                     </div>
-                    <div className="flex flex-col mt-[3rem]">
+                    <div className="flex flex-col mt-[2rem]">
                       <label
                         for="Remittance-type"
                         className="text-[17.81px] pr-1"
                       >
                         نوع حواله
                       </label>
-                      <select
-                        id="Remittance-type"
-                        className="w-[350px] pl-[2rem] outline-none px-2 mt-1 border-[#00000033] border-[1px] rounded-[5px] h-[44px]"
-                      >
+                      <select id="Remittance-type" className="input-add">
                         <option>انتخاب کنید</option>
                         <option>Saab</option>
                         <option>Mercedes</option>
                         <option>Audi</option>
                       </select>
                     </div>
-                    <div className="flex flex-col mt-[4rem]">
+                    <div className="flex flex-col mt-[2rem]">
                       <label for="Serial-code" className="text-[17.81px] pr-1">
                         سند حواله
                       </label>
@@ -358,11 +365,11 @@ export default function Modal() {
                     </div>
                   </div>
                 </div>
-                Button save
+                {/* Button save */}
                 <div>
                   <button
                     onClick={() => setAddModal(false)}
-                    className="w-full mt-10 h-[60px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
+                    className="w-full mt-6 h-[60px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
                   >
                     ارسال درخواست
                   </button>

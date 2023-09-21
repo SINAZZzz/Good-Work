@@ -33,6 +33,11 @@
   .active-button svg path {
     @apply fill-black;
   }
+
+  .input-add {
+    @apply w-[350px] outline-none pr-2 mt-1
+     border-[#00000033] border-[1px] rounded-[5px] h-[44px];
+  }
 }
 
 /* width */
