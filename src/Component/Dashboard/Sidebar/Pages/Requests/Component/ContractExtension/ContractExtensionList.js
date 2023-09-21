@@ -1,37 +1,46 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import ContractExtensionItem from "./ContractExtensionItem";
+import { RequestsContext } from "../../../../../../../Context/RequestsContext";
+import Modal from "../Modal";
 
-export default function ContractExtensionList() {
+export default function ContractExtensionList({ item }) {
+  const {
+    setShowModal,
+    setPrice,
+    setDate,
+    setCode,
+    setMonth,
+    setStats,
+    code,
+    date,
+    month,
+    price,
+    stats,
+  } = useContext(RequestsContext);
+
+  useEffect(() => {
+    setCode(item.code);
+    setDate(item.date);
+    setMonth(item.period_amount);
+    setPrice(item.amount);
+    setStats("سررسید");
+  }, []);
+
+  const handleClick = () => {
+    setShowModal(true);
+  };
+
   return (
     <div>
       <ContractExtensionItem
-        price={"۵۰٬۰۰۰٬۰۰۰"}
-        data={" تاریخ: ۱۳ آذر ۱۴۰۰"}
-        code={" کد : ۱۴۰۰۰۴۲۹۳۲"}
-        month={"۳ ماهه"}
-        stats={"سررسید"}
+        price={price}
+        date={" تاریخ : " + date}
+        code={" کد : " + code}
+        month={month + " ماهه "}
+        stats={stats}
+        handle={handleClick}
       />
-      <ContractExtensionItem
-        price={"۵۰٬۰۰۰٬۰۰۰"}
-        data={" تاریخ: ۱۳ آذر ۱۴۰۰"}
-        code={" کد : ۱۴۰۰۰۴۲۹۳۲"}
-        month={"۳ ماهه"}
-        stats={"سررسید"}
-      />
-      <ContractExtensionItem
-        price={"۵۰٬۰۰۰٬۰۰۰"}
-        data={" تاریخ: ۱۳ آذر ۱۴۰۰"}
-        code={" کد : ۱۴۰۰۰۴۲۹۳۲"}
-        month={"۳ ماهه"}
-        stats={"سررسید"}
-      />
-      <ContractExtensionItem
-        price={"۵۰٬۰۰۰٬۰۰۰"}
-        data={" تاریخ: ۱۳ آذر ۱۴۰۰"}
-        code={" کد : ۱۴۰۰۰۴۲۹۳۲"}
-        month={"۳ ماهه"}
-        stats={"سررسید"}
-      />
+      <Modal />
     </div>
   );
 }

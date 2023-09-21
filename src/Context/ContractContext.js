@@ -4,7 +4,6 @@ import { createContext, useState } from "react";
 export const ContractContext = createContext();
 
 export const ContractContextProvider = ({ children }) => {
-  // const [state, setState] = useState("مسدود");
   const [categoryId, setCategoryId] = useState("");
   const [mounted, setMounted] = useState(true);
   const [category, setCategory] = useState([]);

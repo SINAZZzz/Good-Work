@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { LoginContextProvider } from "./Context/LoginContext";
 import { SidebarContextProvider } from "./Context/SidebarContext";
 import { ContractContextProvider } from "./Context/ContractContext";
+import { RequestsContextProvider } from "./Context/RequestsContext";
 import "./index.css";
 import App from "./App";
 
@@ -12,9 +13,11 @@ root.render(
   <BrowserRouter>
     <SidebarContextProvider>
       <ContractContextProvider>
-        <LoginContextProvider>
-          <App />
-        </LoginContextProvider>
+        <RequestsContextProvider>
+          <LoginContextProvider>
+            <App />
+          </LoginContextProvider>
+        </RequestsContextProvider>
       </ContractContextProvider>
     </SidebarContextProvider>
   </BrowserRouter>
