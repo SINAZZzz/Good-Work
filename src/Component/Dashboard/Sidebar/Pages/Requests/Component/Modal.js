@@ -19,6 +19,14 @@ export default function Modal() {
     stats,
   } = useContext(RequestsContext);
   const [description, setDescription] = useState();
+  // for add form
+  const [priceAdd, setPriceAdd] = useState();
+  const [periodAdd, setPeriodAdd] = useState();
+  const [investment_typeAdd, setInvestment_typeAdd] = useState();
+  const [dateAdd, setDateAdd] = useState();
+  const [serialAdd, setSerialAdd] = useState();
+  const [payment_typeAdd, setPayment_typeAdd] = useState();
+  const [imageAdd, setImageAdd] = useState();
   //api
   const close = () => {
     var data = JSON.stringify({
@@ -53,6 +61,34 @@ export default function Modal() {
         if (res.data.Code === 200) {
           toast.success(res.data.Message);
           setShowModal(false);
+        }
+      })
+      .catch((err) => {
+        if (err.response.data.Code === 400) {
+          console.log(err);
+          toast.error(err.response.data.Message);
+        }
+      });
+  };
+
+  //api
+  const add = () => {
+    var data = JSON.stringify({
+      request_type: "add",
+      amount: priceAdd,
+      period_amount: periodAdd,
+      investment_type: investment_typeAdd,
+
+      date: dateAdd,
+      serial: serialAdd,
+      payment_type: payment_typeAdd,
+      image: imageAdd,
+    });
+    post("user/investment/request", data)
+      .then((res) => {
+        if (res.data.Code === 200) {
+          toast.success(res.data.Message);
+          setAddModal(false);
         }
       })
       .catch((err) => {
@@ -266,7 +302,13 @@ export default function Modal() {
                       <label for="price" className="text-[17.81px] pr-1">
                         مبلغ قرارداد{" "}
                       </label>
-                      <input id="price" type="text" className="input-add" />
+                      <input
+                        id="price"
+                        type="text"
+                        className="input-add"
+                        onChange={(e) => setPriceAdd(e.target.value)}
+                        value={priceAdd}
+                      />
                       <span className="text-[12px] mt-1 pr-1 text-[#444444]">
                         مبلغ قرارداد باید از 50 میلیون تومان بالاتر باشد
                       </span>
@@ -282,6 +324,8 @@ export default function Modal() {
                         id="contract-period"
                         type="text"
                         className="input-add"
+                        onChange={(e) => setPeriodAdd(e.target.value)}
+                        value={periodAdd}
                       />
                       <span className="text-[12px] mt-1 pr-1 text-[#444444]">
                         تعداد ماه‌های قرارداد را وارد کنید
@@ -295,11 +339,15 @@ export default function Modal() {
                         تحصیل سود
                       </label>
 
-                      <select id="Learning-profit" className="input-add">
+                      <select
+                        id="Learning-profit"
+                        className="input-add"
+                        onClick={(e) => setInvestment_typeAdd(e.target.value)}
+                      >
                         <option>انتخاب کنید</option>
-                        <option>Saab</option>
-                        <option>Mercedes</option>
-                        <option>Audi</option>
+                        <option>deadline</option>
+                        <option>deadline</option>
+                        <option>deadline</option>
                       </select>
                       <span className="text-[12px] mt-1 w-[350px] pr-1 text-[#444444]">
                         در صورتی که سررسید را انتخاب کنید، سود بیشتری به شما
@@ -313,7 +361,13 @@ export default function Modal() {
                       <label for="Date" className="text-[17.81px] pr-1">
                         تاریخ
                       </label>
-                      <input id="Date" type="text" className="input-add" />
+                      <input
+                        id="Date"
+                        type="date"
+                        className="input-add"
+                        onChange={(e) => setDateAdd(e.target.value)}
+                        value={dateAdd}
+                      />
                     </div>
                     <div className="flex flex-col mt-[2rem]">
                       <label for="Serial-code" className="text-[17.81px] pr-1">
@@ -323,6 +377,8 @@ export default function Modal() {
                         id="Serial-code"
                         type="text"
                         className="input-add"
+                        onChange={(e) => setSerialAdd(e.target.value)}
+                        value={serialAdd}
                       />
                     </div>
                     <div className="flex flex-col mt-[2rem]">
@@ -332,11 +388,15 @@ export default function Modal() {
                       >
                         نوع حواله
                       </label>
-                      <select id="Remittance-type" className="input-add">
+                      <select
+                        id="Remittance-type"
+                        className="input-add"
+                        onClick={(e) => setPayment_typeAdd(e.target.value)}
+                      >
                         <option>انتخاب کنید</option>
-                        <option>Saab</option>
-                        <option>Mercedes</option>
-                        <option>Audi</option>
+                        <option>satna</option>
+                        <option>satna</option>
+                        <option>satna</option>
                       </select>
                     </div>
                     <div className="flex flex-col mt-[2rem]">
@@ -356,6 +416,7 @@ export default function Modal() {
                             id="dropzone-file"
                             type="file"
                             className="hidden"
+                            onClick={(e) => setImageAdd(e.target.value)}
                           />
                         </label>
                       </div>
@@ -368,7 +429,7 @@ export default function Modal() {
                 {/* Button save */}
                 <div>
                   <button
-                    onClick={() => setAddModal(false)}
+                    onClick={add}
                     className="w-full mt-6 h-[60px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
                   >
                     ارسال درخواست

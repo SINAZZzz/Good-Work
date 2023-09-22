@@ -87,7 +87,6 @@
   transition: border-color 0.2s;
 }
 
-
 .form__field1::placeholder {
   color: transparent;
 }

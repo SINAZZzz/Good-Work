@@ -64,18 +64,23 @@ const Sidebar = () => {
   };
 
   return (
-    <div>
-      <section className="flex font-Dana h-full">
+    <div cal>
+      <section className="flex font-Dana h-full ">
         <div
-          className={`h-full transition-all duration-[200ms] ${
-            open ? "w-[20rem]" : "w-24"
-          } `}
+          className={`lg:h-full lg:transition-all lg:duration-[200ms]
+           sm:w-full sm:h-[100vh] sm:flex
+           sm:items-end  ${open ? "lg:w-[20rem]" : "lg:w-24"} `}
         >
-          <div className="pt-4 flex flex-col shadow-3xl h-full gap-1 fixed bg-[#FFFFFF]">
+          <div
+            className="lg:pt-4 lg:flex lg:flex-col
+           lg:shadow-3xl lg:h-full
+            sm:h-[5rem] sm:w-full lg:gap-1 fixed bg-[#FFFFFF]
+           sm:border-t "
+          >
             {/* profile */}
             <div>
               {/* ${(!open && "") || (open && "px-5")} */}
-              <div className={`flex px-5`}>
+              <div className={`flex px-5 sm:hidden lg:flex`}>
                 <img src={User} alt="User" />
                 <div
                   className={`flex flex-col justify-center items-center mr-4
@@ -91,34 +96,40 @@ const Sidebar = () => {
                 </div>
               </div>
               <hr
-                className={`mt-[0.9rem]  ${
+                className={`mt-[0.9rem] sm:hidden lg:flex ${
                   (!open && "w-[6rem]") || (open && "w-[16.5rem]")
                 } `}
               />
             </div>
 
             <div
-              className={`h-full w-full flex flex-col justify-between pt-1 pb-2 px-4`}
+              className={`h-full w-full
+               flex lg:flex-col lg:justify-between lg:pt-1 lg:pb-2 lg:px-4
+               sm:justify-center sm:items-center sm:pb-2 sm:px-4`}
             >
-              <div className="flex flex-col">
+              <div className="flex lg:flex-col">
                 {SidebarData?.map((data, index) => (
                   <Link
                     onMouseDown={() => setPath(data.path)}
                     onClick={() => setName(data.name)}
                     to={path}
                     key={index}
-                    className={`button-side ${
+                    className={`button-side sm:flex sm:flex-col ${
                       data.path === path && "active-button"
                     }
-                  ${(!open && "w-[4rem] py-4") || (open && "px-4 py-4")}
+                  ${
+                    (!open && "lg:w-[4rem] lg:py-4") ||
+                    (open && "lg:px-4 lg:py-4")
+                  }
                    `}
                   >
-                    <div>
+                    <div className="">
                       <img
                         src={data?.icon}
                         alt=""
                         className={`${
-                          (!open && "w-[31px] mr-4") || (open && "w-[1.5rem]")
+                          (!open && "lg:w-[31px] lg:mr-4") ||
+                          (open && "lg:w-[1.5rem]")
                         }`}
                       />
                     </div>
@@ -136,7 +147,7 @@ const Sidebar = () => {
                 <button
                   onClick={() => setShowModal(true)}
                   key={SettingsData[0].id}
-                  className={`button-side ${
+                  className={`button-side sm:hidden lg:flex ${
                     SettingsData[0].path === path && "bg-[#4F50FA] text-white"
                   }
                   ${
@@ -149,7 +160,7 @@ const Sidebar = () => {
                     <img
                       src={SettingsData[0].icon}
                       alt=""
-                      className={`${
+                      className={` ${
                         (!open && "w-[2rem]") || (open && "w-[1.5rem]")
                       }`}
                     />
@@ -168,12 +179,12 @@ const Sidebar = () => {
                   onClick={() => setName(MessagesData[0].name)}
                   to={path}
                   key={MessagesData[0].id}
-                  className={`button-side
+                  className={`button-side lg:flex sm:flex sm:flex-col
                     ${MessagesData[0].path === path && "active-button"}
                 
                   ${
-                    (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
-                    (open && "px-4 py-4")
+                    (!open && "lg:w-[4rem] lg:h-[4rem] lg:pr-[1.2rem]") ||
+                    (open && "lg:px-4 lg:py-4")
                   }
                    `}
                 >
@@ -198,7 +209,7 @@ const Sidebar = () => {
                   onClick={() => logout()}
                   to={path}
                   key={ExitData[0].id}
-                  className={`button-side
+                  className={`button-side sm:hidden lg:flex
                     bg-[#ff3b3b] text-white
                   ${
                     (!open && "w-[4rem] h-[4rem] pr-[1.2rem]") ||
@@ -227,7 +238,7 @@ const Sidebar = () => {
             </div>
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full sm:hidden">
           {/* navbar */}
           <nav className="border border-r-0 w-full h-20 flex items-center bg-white ">
             <div className="mr-4 flex justify-start">

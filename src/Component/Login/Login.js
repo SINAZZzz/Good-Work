@@ -120,15 +120,16 @@ export default function Login() {
   }
   return (
     <div
-      className="h-[100vh] overflow-y-hidden font-Dana
-    lg:flex sm:flex sm:flex-col-reverse "
+      className="h-[100vh] font-Dana overflow-y-hidden
+    lg:flex sm:flex sm:flex-col-reverse"
     >
       <Toaster position="bottom-center" reverseOrder={false} />
       <div
         className="
-      lg:w-[70%] lg:h-full z-20 static 
-    bg-slate-50 lg:items-center lg:rounded-l-[70px] lg:flex lg:justify-center 
-      sm:flex sm:flex-col sm:justify-start sm:content-center sm:w-full sm:h-[45%]
+      lg:w-[71%] lg:h-full z-20 static 
+    bg-slate-50 lg:mt-0 lg:items-center lg:rounded-l-[70px] overflow-y-hidden lg:flex lg:justify-center 
+
+      sm:flex sm:flex-col sm:justify-start sm:w-full sm:h-[45%] sm:-mt-8
        sm:rounded-t-[25px]"
       >
         <div className="absolute z-10">
@@ -137,9 +138,9 @@ export default function Login() {
             className={`${
               hidden === true ? "hidden" : ""
             } flex flex-col flex-nowrap justify-center items-center
-            content-stretch sm:mr-7 sm:mt-10 lg:mt-0 lg:mr-0 `}
+            content-stretch sm:mr-7 sm:mt-6 lg:mt-0 lg:mr-0 `}
           >
-            <h1 className="mb-10 text-[1.1rem]">
+            <h1 className="lg:mb-10 sm:mb-2 text-[1.1rem]">
               برای ورود شماره تلفن همراه خود را وارد کنید
             </h1>
             <div className="form__group field">
@@ -160,7 +161,7 @@ export default function Login() {
               کد فعالسازی به این شماره ارسال می شود
             </span>
             <button
-              className="w-[20rem] mt-8 
+              className="w-[20rem] mt-8 sm:mb-10
              bg-black/20 text-black/50 duration-700 hover:bg-blue-700 
              hover:text-white py-2 px-4 rounded"
             >
@@ -222,14 +223,14 @@ export default function Login() {
               />
             </div>
             <button
-              className="lg:w-[20rem] sm:w-[16.8rem] lg:mt-8 sm:mt-12 
+              className="lg:w-[20rem] sm:w-[16.8rem] lg:mt-8 sm:mt-4 
              bg-black/20 text-black/50 duration-700 hover:bg-blue-700 
              hover:text-white py-2 px-4 rounded text-lg"
               ref={ref5}
             >
               ثبت
             </button>
-            <div className="flex pt-2">
+            <div className="flex pt-2 sm:pb-4">
               <div
                 className={`${resend ? "resend" : ""} flex text-center`}
                 onClick={() => {

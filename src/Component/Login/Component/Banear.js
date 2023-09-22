@@ -6,18 +6,14 @@ export default function Banear() {
   return (
     <div>
       {" "}
-      <div className="absolute -left-0 z-0 h-full">
+      <div className="lg:absolute sm:relative -left-0 z-0 h-full">
         <img
           src={Logo}
           alt=""
           className="z-0 absolute lg:left-20 lg:top-[18rem] lg:w-[18rem] 
-      sm:w-[261px] sm:top-[103px] sm:left-[60px]"
+             sm:w-[260px] sm:top-[103px] sm:left-[60px]"
         />
-        <img
-          src={Image}
-          alt=""
-          className="lg:w-[33rem] lg:h-[104.1vh] sm:w-[25rem] sm:h-[28rem] sm:-mt-[2rem] z-10"
-        />
+        <img src={Image} alt="" className="w-full h-full z-10" />
       </div>
     </div>
   );
