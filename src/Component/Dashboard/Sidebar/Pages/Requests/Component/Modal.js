@@ -1,11 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { RequestsContext } from "../../../../../../Context/RequestsContext";
-import { AiOutlineClose } from "react-icons/ai";
 import { ImAttachment } from "react-icons/im";
 import { post } from "../../../../../../servises";
 import toast, { Toaster } from "react-hot-toast";
+import { DatePicker } from "react-advance-jalaali-datepicker";
+// import moment from "moment";
 
-export default function Modal() {
+export default function ModaL() {
   const {
     setShowModal,
     showModal,
@@ -27,6 +28,15 @@ export default function Modal() {
   const [serialAdd, setSerialAdd] = useState();
   const [payment_typeAdd, setPayment_typeAdd] = useState();
   const [imageAdd, setImageAdd] = useState();
+
+  function change(unix, formatted) {
+    setDateAdd(unix);
+    // console.log(unix); // returns timestamp of the selected value, for example.
+    // console.log(formatted); // returns the selected value in the format you've entered, forexample, "تاریخ: 1396/02/24 ساعت: 18:30".
+  }
+  function DatePickerInput(props) {
+    return <input className="input-add" {...props} />;
+  }
   //api
   const close = () => {
     var data = JSON.stringify({
@@ -34,7 +44,6 @@ export default function Modal() {
       investment_code: code.toString(),
       user_description: description,
     });
-    console.log(code);
     post("user/investment/request", data)
       .then((res) => {
         if (res.data.Code === 200) {
@@ -46,6 +55,7 @@ export default function Modal() {
         if (err.response.data.Code === 400) {
           console.log(err);
           toast.error(err.response.data.Message);
+          setShowModal(false);
         }
       });
   };
@@ -67,6 +77,7 @@ export default function Modal() {
         if (err.response.data.Code === 400) {
           console.log(err);
           toast.error(err.response.data.Message);
+          setShowModal(false);
         }
       });
   };
@@ -95,10 +106,10 @@ export default function Modal() {
         if (err.response.data.Code === 400) {
           console.log(err);
           toast.error(err.response.data.Message);
+          setAddModal(false);
         }
       });
   };
-
   return (
     <div>
       <Toaster position="bottom-center" reverseOrder={false} />
@@ -106,54 +117,75 @@ export default function Modal() {
       {title == "تسویه" ? (
         showModal ? (
           <>
-            <div className=" items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-              <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <button
+              className="opacity-25 fixed inset-0 bg-black"
+              onClick={() => setShowModal(false)}
+            ></button>
+            <div
+              onClick={() => setShowModal(true)}
+              className="lg:items-center sm:items-end flex
+             inset-0 outline-none focus:outline-none fixed"
+            >
+              {/* 
+             lg:overflow-x-hidden lg:overflow-y-auto
+              fixed inset-0  */}
+              <div
+                className="lg:relative lg:w-auto sm:w-full lg:my-6 lg:mx-auto lg:max-w-3xl"
+                onClick={() => setShowModal(true)}
+              >
                 {/*content*/}
-                <div className="border-0 rounded-[25px] shadow-lg relative flex flex-col px-[3rem] py-8 w-[860px] h-fit bg-white outline-none focus:outline-none">
+                <div
+                  className="border-0 lg:rounded-[25px] sm:rounded-tl-[20px] sm:rounded-tr-[20px] shadow-lg lg:relative
+                 flex sm:flex-col lg:px-[3rem] sm:px-4 lg:py-8 lg:w-[860px] h-fit bg-white
+                  outline-none focus:outline-none"
+                >
                   {/*header*/}
-                  <div className="w-full flex flex-col">
-                    <div className="flex items-center justify-center">
+                  <div className="pr-8">
+                    <div className="lg:flex items-center justify-center sm:hidden">
                       <p className="text-[25px] font-DanaBold">تسویه قرارداد</p>
                     </div>
-                    <div
-                      className="flex justify-end -mt-8 "
-                      onClick={() => setShowModal(false)}
+                    <p
+                      className="text-[#444444] text-[16px] sm:font-DanaBold mt-4 sm:flex
+                    lg:flex lg:justify-center"
                     >
-                      <AiOutlineClose className="text-[25px] font-DanaBold cursor-pointer" />
-                    </div>
-                    <p className="text-[#444444] text-[18px] mt-4 flex justify-center">
-                      شما درخواست تمدید قرارداد زیر را دارید. برای درخواست خود
+                      شما درخواست {title} قرارداد زیر را دارید. برای درخواست خود
                       اطمینان دارید؟
                     </p>
                   </div>
                   {/* cards */}
-                  <div className="flex mt-2">
-                    <div className="w-[700px] h-[186px] mt-7 rounded-[10px] font-Dana bg-white  border-solid border-[#D3D4D06] border-[1px]">
+                  <div className="flex lg:flex-row sm:flex-col mt-2">
+                    <div className="lg:w-[700px] lg:h-[186px] lg:mt-7 rounded-[10px] font-Dana bg-white  border-solid border-[#D3D4D06] border-[1px]">
                       <div>
                         <div>
-                          <h1 className="text-[25.38px] pt-6 font-DanaBold mr-[4rem]">
+                          <h1 className="lg:text-[25.38px] sm:text-[20px] pt-4 font-DanaBold flex justify-center">
                             {price} تومان
                           </h1>
                         </div>
-                        <div className="flex justify-between px-8 py-8">
+                        <div className="flex justify-between sm:px-6 sm:py-4 lg:px-8 lg:py-8">
                           <div>
                             <div>
-                              <p className="text-[17px] "> تاریخ: {date}</p>
+                              <p className="lg:text-[17px] sm:text-[14px]">
+                                تاریخ: {date}
+                              </p>
                             </div>
                             <div>
-                              <p className="text-[17px] pt-4"> کد : {code}</p>
+                              <p className="lg:text-[17px] sm:text-[14px] pt-4">
+                                کد: {code}
+                              </p>
                             </div>
                           </div>
-                          <div>
+                          <div className="">
                             <div>
-                              <p className="text-[17px]">{month} ماهه</p>
+                              <p className="lg:text-[17px] sm:text-[14px]">
+                                {month} ماهه
+                              </p>
                             </div>
                             <div>
-                              <p className="text-[18px] pt-4">
+                              <p className="lg:text-[18px] sm:text-[14px] pt-4">
                                 وضعیت:{" "}
                                 <span
                                   className="text-white bg-[#4CAF50]
-                     px-2 py-[4px] mr-1 rounded-[5px]"
+               lg:px-2 lg:py-[4px] sm:px-1 sm:py-0.5 mr-1 rounded-[5px]"
                                 >
                                   {stats}
                                 </span>
@@ -164,15 +196,15 @@ export default function Modal() {
                       </div>
                     </div>
                     <textarea
-                      className="w-[700px] h-[186px] pr-4 outline-none pt-2 mr-8 resize-none  mt-7 border-[#D3D4D06] border-[1px] rounded-[10px]"
+                      className="lg:w-[700px] lg:h-[186px] sm:w-full sm:h-[130px] pr-4 outline-none pt-2 lg:mr-8 resize-none sm:mt-4 lg:mt-7 border-[#D3D4D06] border-[1px] rounded-[10px]"
                       placeholder="اگر توضیحی دارید اینجا بنویسید..."
                       onChange={(e) => setDescription(e.target.value)}
-                    ></textarea>
+                    />
                   </div>
                   <div>
                     <button
                       onClick={close}
-                      className="w-full mt-10 h-[70px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
+                      className="w-full lg:mt-10 sm:my-4 lg:h-[70px] sm:h-[44px] text-white shadow-3xl lg:text-[22px] sm:text-[18px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
                     >
                       ارسال درخواست
                     </button>
@@ -181,59 +213,69 @@ export default function Modal() {
                 {/* Button save */}
               </div>
             </div>
-            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
           </>
         ) : null
       ) : showModal ? (
         <>
-          <div className=" items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+          <div
+            className="lg:items-center sm:items-end flex
+             overflow-x-hidden overflow-y-auto
+              fixed inset-0 z-50 outline-none focus:outline-none"
+          >
+            <div className="lg:relative lg:w-auto sm:w-full lg:my-6 lg:mx-auto lg:max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-[25px] shadow-lg relative flex flex-col px-[3rem] py-8 w-[860px] h-fit bg-white outline-none focus:outline-none">
+              <div
+                className="border-0 lg:rounded-[25px] sm:rounded-tl-[20px] sm:rounded-tr-[20px] shadow-lg lg:relative
+                 flex sm:flex-col lg:px-[3rem] sm:px-4 lg:py-8 lg:w-[860px] h-fit bg-white
+                  outline-none focus:outline-none"
+              >
                 {/*header*/}
-                <div className="w-full flex flex-col">
-                  <div className="flex items-center justify-center">
+                <div className="pr-8">
+                  <div className="lg:flex items-center justify-center sm:hidden">
                     <p className="text-[25px] font-DanaBold">تمدید قرارداد</p>
                   </div>
-                  <div
-                    className="flex justify-end -mt-8 "
-                    onClick={() => setShowModal(false)}
+                  <p
+                    className="text-[#444444] text-[16px] sm:font-DanaBold mt-4 sm:flex
+                    lg:flex lg:justify-center"
                   >
-                    <AiOutlineClose className="text-[25px] font-DanaBold cursor-pointer" />
-                  </div>
-                  <p className="text-[#444444] text-[18px] mt-4 flex justify-center">
-                    شما درخواست تمدید قرارداد زیر را دارید. برای درخواست خود
+                    شما درخواست {title} قرارداد زیر را دارید. برای درخواست خود
                     اطمینان دارید؟
                   </p>
                 </div>
                 {/* cards */}
-                <div className="flex mt-2">
-                  <div className="w-[700px] h-[186px] mt-7 rounded-[10px] font-Dana bg-white  border-solid border-[#D3D4D06] border-[1px]">
+                <div className="flex lg:flex-row sm:flex-col mt-2">
+                  <div className="lg:w-[700px] lg:h-[186px] lg:mt-7 rounded-[10px] font-Dana bg-white  border-solid border-[#D3D4D06] border-[1px]">
                     <div>
                       <div>
-                        <h1 className="text-[25.38px] pt-6 font-DanaBold mr-[4rem]">
+                        <h1 className="lg:text-[25.38px] sm:text-[20px] pt-4 font-DanaBold flex justify-center">
                           {price} تومان
                         </h1>
                       </div>
-                      <div className="flex justify-between px-8 py-8">
+                      <div className="flex justify-between sm:px-6 sm:py-4 lg:px-8 lg:py-8">
                         <div>
                           <div>
-                            <p className="text-[17px] "> تاریخ: {date}</p>
+                            <p className="lg:text-[17px] sm:text-[14px]">
+                              تاریخ: {date}
+                            </p>
                           </div>
                           <div>
-                            <p className="text-[17px] pt-4"> کد : {code}</p>
+                            <p className="lg:text-[17px] sm:text-[14px] pt-4">
+                              کد: {code}
+                            </p>
                           </div>
                         </div>
-                        <div>
+                        <div className="">
                           <div>
-                            <p className="text-[17px]">{month} ماهه</p>
+                            <p className="lg:text-[17px] sm:text-[14px]">
+                              {month} ماهه
+                            </p>
                           </div>
                           <div>
-                            <p className="text-[18px] pt-4">
+                            <p className="lg:text-[18px] sm:text-[14px] pt-4">
                               وضعیت:{" "}
                               <span
                                 className="text-white bg-[#4CAF50]
-             px-2 py-[4px] mr-1 rounded-[5px]"
+               lg:px-2 lg:py-[4px] sm:px-1 sm:py-0.5 mr-1 rounded-[5px]"
                               >
                                 {stats}
                               </span>
@@ -244,15 +286,15 @@ export default function Modal() {
                     </div>
                   </div>
                   <textarea
-                    className="w-[700px] h-[186px] pr-4 outline-none pt-2 mr-8 resize-none  mt-7 border-[#D3D4D06] border-[1px] rounded-[10px]"
+                    className="lg:w-[700px] lg:h-[186px] sm:w-full sm:h-[130px] pr-4 outline-none pt-2 lg:mr-8 resize-none sm:mt-4 lg:mt-7 border-[#D3D4D06] border-[1px] rounded-[10px]"
                     placeholder="اگر توضیحی دارید اینجا بنویسید..."
                     onChange={(e) => setDescription(e.target.value)}
-                  ></textarea>
+                  />
                 </div>
                 <div>
                   <button
                     onClick={extend}
-                    className="w-full mt-10 h-[70px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
+                    className="w-full lg:mt-10 sm:my-4 lg:h-[70px] sm:h-[44px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
                   >
                     ارسال درخواست
                   </button>
@@ -283,12 +325,6 @@ export default function Modal() {
                 <div className="w-full flex flex-col">
                   <div className="flex items-center justify-center">
                     <p className="text-[25px] font-DanaBold">قرار داد جدید</p>
-                  </div>
-                  <div
-                    className="flex justify-end -mt-8 "
-                    onClick={() => setAddModal(false)}
-                  >
-                    <AiOutlineClose className="text-[25px] font-DanaBold cursor-pointer" />
                   </div>
                   <p className="text-[#444444] text-[18px] mt-4 flex justify-center">
                     شما درخواست تمدید قرارداد زیر را دارید. برای درخواست خود
@@ -344,7 +380,6 @@ export default function Modal() {
                         className="input-add"
                         onClick={(e) => setInvestment_typeAdd(e.target.value)}
                       >
-                        <option>انتخاب کنید</option>
                         <option>deadline</option>
                         <option>deadline</option>
                         <option>deadline</option>
@@ -361,12 +396,13 @@ export default function Modal() {
                       <label for="Date" className="text-[17.81px] pr-1">
                         تاریخ
                       </label>
-                      <input
-                        id="Date"
-                        type="date"
-                        className="input-add"
-                        onChange={(e) => setDateAdd(e.target.value)}
-                        value={dateAdd}
+                      <DatePicker
+                        inputComponent={DatePickerInput}
+                        placeholder="انتخاب تاریخ"
+                        format="jYYYY/jMM/jDD"
+                        id="datePicker"
+                        preSelected="1396/05/15"
+                        onChange={change}
                       />
                     </div>
                     <div className="flex flex-col mt-[2rem]">
@@ -393,7 +429,6 @@ export default function Modal() {
                         className="input-add"
                         onClick={(e) => setPayment_typeAdd(e.target.value)}
                       >
-                        <option>انتخاب کنید</option>
                         <option>satna</option>
                         <option>satna</option>
                         <option>satna</option>

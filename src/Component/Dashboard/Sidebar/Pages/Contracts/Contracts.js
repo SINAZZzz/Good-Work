@@ -120,7 +120,7 @@ export default function Contracts({ title }) {
           <p className="text-[18px]">قراردادهای مسدود </p>
         </Link>
       </div>
-      <div
+      {/* <div
         className={`flex  mr-[9rem] -mt-[1px] max-[1300px]:hidden  ${
           (id === 2 && "hidden") || (id === 0 && "hidden")
         }`}
@@ -140,7 +140,7 @@ export default function Contracts({ title }) {
         }`}
       >
         <hr className="bg-[#4F50FA] w-[310px] h-[3.5px] rounded-full" />
-      </div>
+      </div> */}
       {category.length !== 0 ? (
         category.map((item) => {
           return (

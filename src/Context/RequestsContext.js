@@ -7,6 +7,8 @@ export const RequestsContextProvider = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
   const [addModal, setAddModal] = useState(false);
   const [title, setTitle] = useState(" ");
+  const [categoryId, setCategoryId] = useState("");
+  const [Path, setPath] = useState("");
 
   const [price, setPrice] = useState();
   const [date, setDate] = useState();
@@ -37,6 +39,10 @@ export const RequestsContextProvider = ({ children }) => {
         setMonth,
         stats: stats,
         setStats,
+        categoryId: categoryId,
+        setCategoryId,
+        Path: Path,
+        setPath,
       }}
     >
       {children}

@@ -14,6 +14,8 @@ import CardNewMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMe
 import CardAllMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardAllMessages";
 
 import CardBox from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardBox";
+import CloseList from "./Component/Dashboard/Sidebar/Pages/Requests/Component/Pages/CloseList";
+import Add from "./Component/Dashboard/Sidebar/Pages/Requests/Component/Pages/Add";
 
 export default function App() {
   return (
@@ -43,6 +45,8 @@ export default function App() {
           </Route>
 
           <Route path="/dashboard/requests" element={<Requests />} />
+          <Route path="/dashboard/requests/CloseList" element={<CloseList />} />
+          <Route path="/dashboard/requests/Add" element={<Add />} />
           <Route path="/dashboard/contracts" element={<Contracts />}>
             <Route path="/dashboard/contracts/blocked" element={<CardBox />} />
             <Route path="/dashboard/contracts/mturity" element={<CardBox />} />

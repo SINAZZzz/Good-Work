@@ -1,23 +1,35 @@
 import React, { useEffect, useState, useContext } from "react";
-import CardRequestItems from "./Component/CardRequest/CardRequestItems";
 import ContractExtension from "./Component/ContractExtension/ContractExtension";
 import CardRequest from "./Component/CardRequest/CardRequest";
 import Checkmark from "../../../../../assets/Img/Pages/Requests/Checkmark.svg";
 import add from "../../../../../assets/Img/Pages/Requests/add.svg";
 import sync from "../../../../../assets/Img/Pages/Requests/sync.svg";
 
-import { get } from "../../../../../servises";
 import { RequestsContext } from "../../../../../Context/RequestsContext";
-import Modal from "./Component/Modal";
+import ModaL from "./Component/ModaL";
+import { get } from "../../../../../servises";
 
 export default function Requests() {
-  const [investments, setInvestments] = useState([]);
-  const [categoryId, setCategoryId] = useState("");
+  const { title, setTitle, setAddModal, setCategoryId, setPath, Path } =
+    useContext(RequestsContext);
   const [mounted, setMounted] = useState(true);
-  const { title, setTitle, setAddModal } = useContext(RequestsContext);
+  const [investments, setInvestments] = useState([]);
   //handling
   const handleClick = (id) => {
     setCategoryId(id);
+    if (window.innerWidth === 375) {
+      setPath("/dashboard/requests/CloseList");
+    } else {
+      // setAddModal(true);
+    }
+  };
+
+  const handleAdd = () => {
+    if (window.innerWidth === 375) {
+      setPath("/dashboard/requests/Add");
+    } else {
+      setAddModal(true);
+    }
   };
 
   useEffect(() => {
@@ -43,12 +55,12 @@ export default function Requests() {
         console.log(err);
       });
   };
+
   return (
-    <div className="bg-black/5 h-full">
-      <div className="flex pt-[2rem]">
-        <div className="block w-1/2">
-          {/* <CardRequestItems /> */}
-          <div className="pr-8">
+    <div className="bg-black/5 h-full w-full flex">
+      <div className="flex lg:pt-[2rem] lg:w-full">
+        <div className="lg:block lg:w-1/2 sm:w-full">
+          <div className="lg:pr-8 lg:pt-0 sm:pt-4 sm:pr-4">
             <CardRequest
               icon={Checkmark}
               title={"تسویه قرارداد"}
@@ -57,41 +69,48 @@ export default function Requests() {
               }
               handle={() => handleClick("monthly")}
               MouseDown={() => setTitle("تسویه")}
+              path={Path}
             />
             <CardRequest
               icon={sync}
-              margin={"mt-8"}
+              margin={"lg:mt-8 sm:mt-4"}
               title={"تمدید قرارداد"}
               des={
                 "برای تمدید قرارداد روی این گزینه کلیک کنید و در قسمت بعد قراردادی که برای تمدید مدنظر دارید انتخاب کنید."
               }
               handle={() => handleClick("monthly")}
               MouseDown={() => setTitle("تمدید")}
+              path={Path}
             />
             <CardRequest
               icon={add}
-              margin={"mt-8"}
+              margin={"lg:mt-8 sm:mt-4"}
               title={"قرارداد جدید"}
               des={
                 "شما می‌توانید از این طریق به صورت آنلاین درخواست قرارداد جدید بدهید."
               }
-              handle={() => setAddModal(true)}
+              handle={handleAdd}
+              path={Path}
             />
           </div>
         </div>
-        <div>
+        <div className="sm:hidden lg:block lg:w-1/2">
           <div
-            className="w-[520px] border-solid
-       border-[#D3D4D6] border-[1px] h-full px-[4rem]
-        py-8 block  justify-center bg-white rounded-[15px] shadow-Requests"
+            className="lg:w-[520px] lg:h-fit sm:w-full lg:border-solid sm:pt-6
+       lg:border-[#D3D4D6] lg:border-[1px] h-full
+        lg:py-8 lg:px-8 bg-white rounded-[15px] lg:shadow-Requests"
           >
             <div>
-              <h1 className="text-[24px] mr-[34%] font-DanaBold">
-                {title} قرارداد
-              </h1>
-              <p className="text-[18px] mt-3 mr-[6%]">
-                قراردادی که برای {title} مدنظر دارید انتخاب کنید.
-              </p>
+              <div className={`flex pr-10`}>
+                <div className={`flex flex-col`}>
+                  <h1 className="lg:text-[24px] sm:text-[18px] lg:mr-[34%] font-DanaBold">
+                    {title} قرارداد
+                  </h1>
+                  <p className="text-[20px] lg:mt-3">
+                    قراردادی که برای {title} مدنظر دارید انتخاب کنید.
+                  </p>
+                </div>
+              </div>
             </div>
             {investments.length !== 0 ? (
               investments.map((item) => {
@@ -106,7 +125,7 @@ export default function Requests() {
             )}
           </div>
         </div>
-        <Modal />
+        <ModaL />
       </div>
     </div>
   );

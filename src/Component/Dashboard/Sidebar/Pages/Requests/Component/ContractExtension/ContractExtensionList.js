@@ -1,35 +1,20 @@
 import React, { useContext, useEffect } from "react";
 import ContractExtensionItem from "./ContractExtensionItem";
 import { RequestsContext } from "../../../../../../../Context/RequestsContext";
-import Modal from "../Modal";
+import Modal from "../ModaL";
+
+import moment from "jalali-moment";
 
 export default function ContractExtensionList({ item }) {
-  const {
-    setShowModal,
-    setPrice,
-    setDate,
-    setCode,
-    setMonth,
-    setStats,
-    // code,
-    // date,
-    // month,
-    // price,
-    // stats,
-  } = useContext(RequestsContext);
+  const { setShowModal, setPrice, setDate, setCode, setMonth, setStats } =
+    useContext(RequestsContext);
 
-  // useEffect(() => {
-  //   setCode(item.code);
-  //   setDate(item.date);
-  //   setMonth(item.period_amount);
-  //   setPrice(item.amount);
-  //   setStats("سررسید");
-  // }, []);
+  let datE = moment(item.date).locale("fa").format("YYYY/M/D");
 
   const handleClick = () => {
     setShowModal(true);
     setCode(item.code);
-    setDate(item.date);
+    setDate(datE);
     setMonth(item.period_amount);
     setPrice(item.amount);
     setStats("سررسید");
@@ -39,7 +24,7 @@ export default function ContractExtensionList({ item }) {
     <div>
       <ContractExtensionItem
         price={item.amount}
-        date={" تاریخ : " + item.date}
+        date={" تاریخ : " + datE}
         code={" کد : " + item.code}
         month={item.period_amount + " ماهه "}
         stats={"سررسید"}
