@@ -1,10 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { RequestsContext } from "../../../../../../Context/RequestsContext";
-import { ImAttachment } from "react-icons/im";
 import { post } from "../../../../../../servises";
 import toast, { Toaster } from "react-hot-toast";
 import { DatePicker } from "react-advance-jalaali-datepicker";
-// import moment from "moment";
 
 export default function ModaL() {
   const {
@@ -27,10 +25,9 @@ export default function ModaL() {
   const [dateAdd, setDateAdd] = useState();
   const [serialAdd, setSerialAdd] = useState();
   const [payment_typeAdd, setPayment_typeAdd] = useState();
-  const [imageAdd, setImageAdd] = useState();
-
+  const [imageAdd, setImageAdd] = useState("");
   function change(unix, formatted) {
-    setDateAdd(unix);
+    setDateAdd(formatted);
     // console.log(unix); // returns timestamp of the selected value, for example.
     // console.log(formatted); // returns the selected value in the format you've entered, forexample, "تاریخ: 1396/02/24 ساعت: 18:30".
   }
@@ -95,6 +92,7 @@ export default function ModaL() {
       payment_type: payment_typeAdd,
       image: imageAdd,
     });
+
     post("user/investment/request", data)
       .then((res) => {
         if (res.data.Code === 200) {
@@ -106,7 +104,6 @@ export default function ModaL() {
         if (err.response.data.Code === 400) {
           console.log(err);
           toast.error(err.response.data.Message);
-          setAddModal(false);
         }
       });
   };
@@ -117,22 +114,12 @@ export default function ModaL() {
       {title == "تسویه" ? (
         showModal ? (
           <>
-            <button
-              className="opacity-25 fixed inset-0 bg-black"
-              onClick={() => setShowModal(false)}
-            ></button>
             <div
-              onClick={() => setShowModal(true)}
               className="lg:items-center sm:items-end flex
-             inset-0 outline-none focus:outline-none fixed"
+             overflow-x-hidden overflow-y-hidden fixed sm:bottom-0
+              outline-none focus:outline-none z-10 lg:inset-x-[9%] lg:inset-y-[10%]"
             >
-              {/* 
-             lg:overflow-x-hidden lg:overflow-y-auto
-              fixed inset-0  */}
-              <div
-                className="lg:relative lg:w-auto sm:w-full lg:my-6 lg:mx-auto lg:max-w-3xl"
-                onClick={() => setShowModal(true)}
-              >
+              <div className="lg:relative lg:w-auto sm:w-full lg:my-6 lg:mx-auto">
                 {/*content*/}
                 <div
                   className="border-0 lg:rounded-[25px] sm:rounded-tl-[20px] sm:rounded-tr-[20px] shadow-lg lg:relative
@@ -204,7 +191,7 @@ export default function ModaL() {
                   <div>
                     <button
                       onClick={close}
-                      className="w-full lg:mt-10 sm:my-4 lg:h-[70px] sm:h-[44px] text-white shadow-3xl lg:text-[22px] sm:text-[18px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
+                      className="w-full lg:mt-10 sm:my-4 lg:h-[70px] sm:h-[44px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
                     >
                       ارسال درخواست
                     </button>
@@ -213,16 +200,20 @@ export default function ModaL() {
                 {/* Button save */}
               </div>
             </div>
+            <div
+              className="opacity-25 inset-0 z-0 fixed bg-black"
+              onClick={() => setShowModal(false)}
+            ></div>
           </>
         ) : null
       ) : showModal ? (
         <>
           <div
             className="lg:items-center sm:items-end flex
-             overflow-x-hidden overflow-y-auto
-              fixed inset-0 z-50 outline-none focus:outline-none"
+            overflow-x-hidden overflow-y-hidden fixed sm:bottom-0
+             outline-none focus:outline-none z-10 lg:inset-x-[9%] lg:inset-y-[10%]"
           >
-            <div className="lg:relative lg:w-auto sm:w-full lg:my-6 lg:mx-auto lg:max-w-3xl">
+            <div className="lg:relative lg:w-auto sm:w-full lg:my-6 lg:mx-auto">
               {/*content*/}
               <div
                 className="border-0 lg:rounded-[25px] sm:rounded-tl-[20px] sm:rounded-tr-[20px] shadow-lg lg:relative
@@ -303,7 +294,10 @@ export default function ModaL() {
               {/* Button save */}
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div
+            className="opacity-25 inset-0 z-0 fixed bg-black"
+            onClick={() => setShowModal(false)}
+          ></div>
         </>
       ) : null}
       {/* قرارداد جدید*/}
@@ -311,11 +305,11 @@ export default function ModaL() {
         <>
           <div
             className="items-center
-           flex overflow-x-hidden overflow-y-hidden fixed inset-0 
-           z-50 outline-none focus:outline-none"
+           flex overflow-x-hidden overflow-y-hidden fixed w-fit lg:inset-x-[22%] lg:inset-y-[4%]
+           z-10 outline-none focus:outline-none"
           >
             {" "}
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <div className="relative w-auto my-6 mx-auto">
               {/*content*/}
               <div
                 className="border-0
@@ -343,7 +337,6 @@ export default function ModaL() {
                         type="text"
                         className="input-add"
                         onChange={(e) => setPriceAdd(e.target.value)}
-                        value={priceAdd}
                       />
                       <span className="text-[12px] mt-1 pr-1 text-[#444444]">
                         مبلغ قرارداد باید از 50 میلیون تومان بالاتر باشد
@@ -361,7 +354,6 @@ export default function ModaL() {
                         type="text"
                         className="input-add"
                         onChange={(e) => setPeriodAdd(e.target.value)}
-                        value={periodAdd}
                       />
                       <span className="text-[12px] mt-1 pr-1 text-[#444444]">
                         تعداد ماه‌های قرارداد را وارد کنید
@@ -378,7 +370,7 @@ export default function ModaL() {
                       <select
                         id="Learning-profit"
                         className="input-add"
-                        onClick={(e) => setInvestment_typeAdd(e.target.value)}
+                        onChange={(e) => setInvestment_typeAdd(e.target.value)}
                       >
                         <option>deadline</option>
                         <option>deadline</option>
@@ -401,7 +393,7 @@ export default function ModaL() {
                         placeholder="انتخاب تاریخ"
                         format="jYYYY/jMM/jDD"
                         id="datePicker"
-                        preSelected="1396/05/15"
+                        preSelected=""
                         onChange={change}
                       />
                     </div>
@@ -414,7 +406,6 @@ export default function ModaL() {
                         type="text"
                         className="input-add"
                         onChange={(e) => setSerialAdd(e.target.value)}
-                        value={serialAdd}
                       />
                     </div>
                     <div className="flex flex-col mt-[2rem]">
@@ -427,7 +418,7 @@ export default function ModaL() {
                       <select
                         id="Remittance-type"
                         className="input-add"
-                        onClick={(e) => setPayment_typeAdd(e.target.value)}
+                        onChange={(e) => setPayment_typeAdd(e.target.value)}
                       >
                         <option>satna</option>
                         <option>satna</option>
@@ -435,6 +426,17 @@ export default function ModaL() {
                       </select>
                     </div>
                     <div className="flex flex-col mt-[2rem]">
+                      <label for="Serial-code" className="text-[17.81px] pr-1">
+                        سریال یا کد رهگیری
+                      </label>
+                      <input
+                        id="Serial-code"
+                        type="text"
+                        className="input-add"
+                        onChange={(e) => setImageAdd(e.target.value)}
+                      />
+                    </div>
+                    {/* <div className="flex flex-col mt-[2rem]">
                       <label for="Serial-code" className="text-[17.81px] pr-1">
                         سند حواله
                       </label>
@@ -458,7 +460,7 @@ export default function ModaL() {
                       <span className="text-[12px] mt-1 w-[350px] pr-1 text-[#444444]">
                         تصویر رسید واریزی را در این قسمت بارگذاری کنید
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 {/* Button save */}
@@ -473,7 +475,10 @@ export default function ModaL() {
               </div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div
+            className="opacity-25 fixed inset-0 z-0 bg-black"
+            onClick={() => setAddModal(false)}
+          ></div>
         </>
       ) : null}
     </div>
