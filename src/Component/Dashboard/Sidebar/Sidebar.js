@@ -86,7 +86,6 @@ const Sidebar = () => {
            }
            `}
           >
-            {/* fixed */}
             {/* profile */}
             <div>
               <div className={`flex px-5 sm:hidden lg:flex`}>

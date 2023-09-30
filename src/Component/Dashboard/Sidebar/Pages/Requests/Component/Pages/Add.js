@@ -4,6 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { ImAttachment } from "react-icons/im";
 import addW from "../../../../../../../assets/Img/Pages/Requests/addW.svg";
 import { DatePicker } from "react-advance-jalaali-datepicker";
+import { useNavigate } from "react-router-dom";
 
 export default function Add() {
   const [hidden, setHidden] = useState(false);
@@ -16,10 +17,12 @@ export default function Add() {
   const [payment_typeAdd, setPayment_typeAdd] = useState();
   const [imageAdd, setImageAdd] = useState();
 
+  const navigate = useNavigate();
+
   function change(unix, formatted) {
-    setDateAdd(unix);
+    setDateAdd(formatted);
     // console.log(unix); // returns timestamp of the selected value, for example.
-    // console.log(formatted); // returns the selected value in the format you've entered, forexample, "تاریخ: 1396/02/24 ساعت: 18:30".
+    console.log(formatted); // returns the selected value in the format you've entered, forexample, "تاریخ: 1396/02/24 ساعت: 18:30".
   }
   function DatePickerInput(props) {
     return <input className="input-add" {...props} />;
@@ -49,6 +52,9 @@ export default function Add() {
       .then((res) => {
         if (res.data.Code === 200) {
           toast.success(res.data.Message);
+          setTimeout(() => {
+            navigate("/dashboard/requests");
+          }, 2000);
         }
       })
       .catch((err) => {
@@ -110,7 +116,6 @@ export default function Add() {
                     type="text"
                     className="input-add"
                     onChange={(e) => setPriceAdd(e.target.value)}
-                    value={priceAdd}
                   />
                   <span className="text-[12px] mt-1 pr-1 text-[#444444]">
                     مبلغ قرارداد باید از 50 میلیون تومان بالاتر باشد
@@ -125,7 +130,6 @@ export default function Add() {
                     type="text"
                     className="input-add"
                     onChange={(e) => setPeriodAdd(e.target.value)}
-                    value={periodAdd}
                   />
                   <span className="text-[12px] mt-1 pr-1 text-[#444444]">
                     تعداد ماه‌های قرارداد را وارد کنید
@@ -139,7 +143,7 @@ export default function Add() {
                   <select
                     id="Learning-profit"
                     className="input-add"
-                    onClick={(e) => setInvestment_typeAdd(e.target.value)}
+                    onChange={(e) => setInvestment_typeAdd(e.target.value)}
                   >
                     <option>deadline</option>
                     <option>deadline</option>
@@ -163,7 +167,7 @@ export default function Add() {
                       placeholder="انتخاب تاریخ"
                       format="jYYYY/jMM/jDD"
                       id="datePicker"
-                      preSelected="1396/05/15"
+                      preSelected=""
                       onChange={change}
                     />
                   </div>
@@ -176,7 +180,6 @@ export default function Add() {
                       type="text"
                       className="input-add"
                       onChange={(e) => setSerialAdd(e.target.value)}
-                      value={serialAdd}
                     />
                   </div>
                   <div className="flex flex-col mt-[2rem]">
@@ -189,7 +192,7 @@ export default function Add() {
                     <select
                       id="Remittance-type"
                       className="input-add"
-                      onClick={(e) => setPayment_typeAdd(e.target.value)}
+                      onChange={(e) => setPayment_typeAdd(e.target.value)}
                     >
                       <option>satna</option>
                       <option>satna</option>
@@ -197,6 +200,17 @@ export default function Add() {
                     </select>
                   </div>
                   <div className="flex flex-col mt-[2rem]">
+                    <label for="Serial-code" className="text-[17.81px] pr-1">
+                      سریال یا کد رهگیری
+                    </label>
+                    <input
+                      id="Serial-code"
+                      type="text"
+                      className="input-add"
+                      onChange={(e) => setImageAdd(e.target.value)}
+                    />
+                  </div>
+                  {/* <div className="flex flex-col mt-[2rem]">
                     <label for="Serial-code" className="text-[17.81px] pr-1">
                       سند حواله
                     </label>
@@ -220,7 +234,7 @@ export default function Add() {
                     <span className="text-[12px] mt-1 w-[350px] pr-1 text-[#444444]">
                       تصویر رسید واریزی را در این قسمت بارگذاری کنید
                     </span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
