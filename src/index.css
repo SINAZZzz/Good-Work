@@ -59,35 +59,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-/* bold */
-@font-face {
-  font-family: Dana-Bold;
-  font-weight: bold;
-  font-style: normal;
-  src: url("./assets/Fonts/DanaPro(10Wt)/Dana-ExtraBold/dana-extrabold.eot");
-  src: url("./assets/Fonts/DanaPro(10Wt)/Dana-ExtraBold/dana-extrabold.eot")
-      format("embedded-opentype"),
-    url("./assets/Fonts/DanaPro(10Wt)/Dana-ExtraBold/Dana-ExtraBold.woff2")
-      format("woff2"),
-    url("./assets/Fonts/DanaPro(10Wt)/Dana-ExtraBold/Dana-ExtraBold.woff")
-      format("woff"),
-    url("./assets/Fonts/DanaPro(10Wt)/Dana-ExtraBold/Dana-ExtraBold.ttf")
-      format("truetype");
-  font-display: swap;
-}
 /* normal */
 @font-face {
-  font-family: Dana;
+  font-family: YekanBakhF;
   font-weight: normal;
   font-style: normal;
-  src: url("./assets/Fonts/DanaPro(10Wt)/Dana-Regular/dana-regular.eot");
-  src: url("./assets/Fonts/DanaPro(10Wt)/Dana-Regular/dana-regular.eot")
-      format("embedded-opentype"),
-    url("./assets/Fonts/DanaPro(10Wt)/Dana-Regular/Dana-Regular.woff2")
-      format("woff2"),
-    url("./assets/Fonts/DanaPro(10Wt)/Dana-Regular/Dana-Regular.woff")
-      format("woff"),
-    url("./assets/Fonts/DanaPro(10Wt)/Dana-Regular/Dana-Regular.ttf")
-      format("truetype");
-  font-display: swap;
+  src: url("./assets/Fonts/YekanBakhFaNum-VF.ttf");
 }

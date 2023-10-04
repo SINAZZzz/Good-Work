@@ -66,7 +66,7 @@ export default function Add() {
   };
 
   return (
-    <div className="h-full flex flex-col justify-between py-6">
+    <div className="h-full flex flex-col font-YekanBakhF justify-between py-6">
       <Toaster position="bottom-center" reverseOrder={false} />
 
       <div
@@ -96,10 +96,10 @@ export default function Add() {
                 />
               </div>
               <div className={`flex flex-col mr-4`}>
-                <h1 className="lg:text-[24px] sm:text-[18px] lg:mr-[34%] font-DanaBold">
+                <h1 className="lg:text-[24px] font-[700] sm:text-[18px] lg:mr-[34%] font-DanaBold">
                   قرارداد جدید
                 </h1>
-                <p className="lg:text-[18px] sm:text-[13px] lg:mt-3 lg:mr-[6%]">
+                <p className="lg:text-[18px] font-[400] sm:text-[13px] lg:mt-3 lg:mr-[6%]">
                   تا ثبت قرارداد جدید 2 مرحله باقی‌مانده است.
                 </p>
               </div>
@@ -107,8 +107,8 @@ export default function Add() {
             {/* inputs */}
             <div className={`flex mt-[1rem] px-3 py-6 `}>
               <div className={`${hidden === true ? "hidden" : ""} `}>
-                <div className="flex flex-col">
-                  <label for="price" className="text-[17.81px] pr-1">
+                <div className="flex flex-col ">
+                  <label for="price" className="text-[14px] font-[400] pr-1">
                     مبلغ قرارداد{" "}
                   </label>
                   <input
@@ -117,12 +117,15 @@ export default function Add() {
                     className="input-add"
                     onChange={(e) => setPriceAdd(e.target.value)}
                   />
-                  <span className="text-[12px] mt-1 pr-1 text-[#444444]">
+                  <span className="text-[10px] mt-1 pr-1 font-[300] text-[#444444]">
                     مبلغ قرارداد باید از 50 میلیون تومان بالاتر باشد
                   </span>
                 </div>
                 <div className="flex flex-col mt-[3rem]">
-                  <label for="contract-period" className="text-[17.81px] pr-1">
+                  <label
+                    for="contract-period"
+                    className="text-[14px] font-[400] pr-1"
+                  >
                     مدت قرارداد
                   </label>
                   <input
@@ -131,12 +134,15 @@ export default function Add() {
                     className="input-add"
                     onChange={(e) => setPeriodAdd(e.target.value)}
                   />
-                  <span className="text-[12px] mt-1 pr-1 text-[#444444]">
+                  <span className="text-[10px] mt-1 pr-1 font-[300] text-[#444444]">
                     تعداد ماه‌های قرارداد را وارد کنید
                   </span>
                 </div>
                 <div className="flex flex-col mt-[3rem]">
-                  <label for="Learning-profit" className="text-[17.81px] pr-1">
+                  <label
+                    for="Learning-profit"
+                    className="text-[14px] font-[400] pr-1"
+                  >
                     تحصیل سود
                   </label>
 
@@ -149,7 +155,7 @@ export default function Add() {
                     <option>deadline</option>
                     <option>deadline</option>
                   </select>
-                  <span className="text-[12px] mt-1 w-[350px] pr-1 text-[#444444]">
+                  <span className="text-[10px] font-[300] mt-1 w-[350px] pr-1 text-[#444444]">
                     در صورتی که سررسید را انتخاب کنید، سود بیشتری به شما تعلق
                     می‌گیرد
                   </span>
@@ -159,7 +165,7 @@ export default function Add() {
               <div className={`${hidden === false ? "hidden" : ""}`}>
                 <div>
                   <div className="flex flex-col">
-                    <label for="Date" className="text-[17.81px] pr-1">
+                    <label for="Date" className="text-[14px] font-[400] pr-1">
                       تاریخ
                     </label>
                     <DatePicker
@@ -172,7 +178,10 @@ export default function Add() {
                     />
                   </div>
                   <div className="flex flex-col mt-[2rem]">
-                    <label for="Serial-code" className="text-[17.81px] pr-1">
+                    <label
+                      for="Serial-code"
+                      className="text-[14px] font-[400] pr-1"
+                    >
                       سریال یا کد رهگیری
                     </label>
                     <input
@@ -200,7 +209,10 @@ export default function Add() {
                     </select>
                   </div>
                   <div className="flex flex-col mt-[2rem]">
-                    <label for="Serial-code" className="text-[17.81px] pr-1">
+                    <label
+                      for="Serial-code"
+                      className="text-[14px] font-[400] pr-1"
+                    >
                       سریال یا کد رهگیری
                     </label>
                     <input
@@ -246,19 +258,19 @@ export default function Add() {
         <button
           onClick={Next}
           className={`w-[320px] h-[44px]
-                 text-white shadow-3xl text-[16px] 
+                 text-white shadow-3xl text-[16px] font-[800]
                  rounded-[3px] font-DanaBold bg-[#4F50FA]
                  flex justify-center items-center ${
                    hidden === true ? "hidden" : ""
                  }`}
         >
-          مرحله بعدی
+          بعدی
         </button>
         {/* Button save */}
         <button
           onClick={add}
           className={`w-[320px] h-[44px]
-                 text-white shadow-3xl text-[16px] 
+                 text-white shadow-3xl text-[16px] font-[800] 
                  rounded-[3px] font-DanaBold bg-[#4F50FA]
                  flex justify-center items-center
                  ${hidden === false ? "hidden" : ""}`}

@@ -13,22 +13,34 @@ export const SidebarData = [
     id: 0,
   },
   {
-    name: "قراردادها",
-    path: "/dashboard/contracts/blocked",
-    icon: Contracts,
-    id: 1,
+    name: "خانه",
+    path: "/dashboard/Home",
+    icon: Home,
+    id: 0,
   },
+  // {
+  //   name: "قراردادها",
+  //   path: "/dashboard/contracts/blocked",
+  //   icon: Contracts,
+  //   id: 1,
+  // },
   {
     name: "درخواست ها",
     path: "/dashboard/requests",
     icon: Requests,
     id: 2,
   },
+  {
+    name: "خانه",
+    path: "/dashboard/Home",
+    icon: Home,
+    id: 0,
+  },
 ];
 
 export const SettingsData = [
   {
-    name: "تنظیمات", 
+    name: "تنظیمات",
     margin: true,
     path: "",
     icon: Settings,

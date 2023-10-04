@@ -6,7 +6,7 @@ export default function CardRequest(props) {
     <div>
       <div
         className={`${props.margin}
-         bg-white lg:w-[450px] lg:h-[140px] sm:w-[345px] sm:h-[100px]
+         bg-white w-full xl:h-[150px] lg:h-[140px] sm:h-[100px]
           rounded-[15px] shadow-Requests
          lg:p-6 sm:p-3 `}
       >
@@ -20,12 +20,12 @@ export default function CardRequest(props) {
             src={props.icon}
             className="lg:w-[35px] lg:h-[35px] sm:w-[25px] sm:h-[25px]"
           />
-          <p className="font-DanaBold lg:text-[20px] sm:text-[16px] mr-2">
+          <p className="font-YekanBakhF font-[800] lg:text-[20px] sm:text-[16px] mr-2">
             {props.title}
           </p>
         </Link>
         <div>
-          <p className="lg:text-[16px] sm:text-[12px] text-[#444444]">
+          <p className="font-YekanBakhF font-[400] lg:text-[16px] sm:text-[12px] text-[#444444]">
             {props.des}
           </p>
         </div>

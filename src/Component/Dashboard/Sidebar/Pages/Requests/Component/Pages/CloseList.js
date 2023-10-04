@@ -36,13 +36,13 @@ export default function CloseList() {
   return (
     <div>
       <div
-        className="lg:w-[520px] sm:w-full lg:border-solid sm:pt-6
+        className="lg:w-[520px] sm:w-full font-YekanBakhF lg:border-solid sm:pt-6
        lg:border-[#D3D4D6] lg:border-[1px] h-full lg:px-[4rem]
         lg:py-8 lg:block lg:justify-center bg-white rounded-[15px] lg:shadow-Requests"
       >
         <div>
           <div className={`flex pr-7`}>
-            <div className="sm:bg-[#4F50FA] sm:w-[44px] sm:h-[44px] rounded-[5px] flex justify-center items-center">
+            <div className="sm:bg-[#4F50FA]  font-[700] sm:w-[44px] sm:h-[44px] rounded-[5px] flex justify-center items-center">
               {title === "تسویه" ? (
                 <img
                   src={sync}
@@ -58,10 +58,10 @@ export default function CloseList() {
               )}
             </div>
             <div className={`flex flex-col mr-4`}>
-              <h1 className="lg:text-[24px] sm:text-[18px] lg:mr-[34%] font-DanaBold">
+              <h1 className="lg:text-[24px] sm:text-[18px] lg:mr-[34%] font-[700]">
                 {title} قرارداد
               </h1>
-              <p className="lg:text-[18px] sm:text-[13px] lg:mt-3 lg:mr-[6%]">
+              <p className="lg:text-[18px] sm:text-[13px] font-[400] lg:mt-3 lg:mr-[6%]">
                 قراردادی که برای {title} مدنظر دارید انتخاب کنید.
               </p>
             </div>

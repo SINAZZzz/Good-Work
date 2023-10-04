@@ -50,6 +50,11 @@ const Sidebar = () => {
         console.log(err);
       });
   });
+  useEffect(() => {
+    if (Cookies.get("imsToken") === undefined) {
+      navigate("/");
+    }
+  });
   // func exite
   const logout = () => {
     post("user/logout")
@@ -66,7 +71,7 @@ const Sidebar = () => {
   };
   return (
     <div cal>
-      <section className="flex font-Dana h-full ">
+      <section className="flex font-YekanBakhF h-full ">
         <div
           className={`lg:h-full lg:transition-all lg:duration-[200ms] 
             sm:h-[100vh] sm:flex sm:items-end lg:items-stretch
@@ -116,7 +121,7 @@ const Sidebar = () => {
                 lg:pt-1 lg:pb-2 lg:px-4
                 sm:items-center`}
             >
-              <div className="flex lg:flex-col">
+              <div className="flex lg:flex-col sm:w-full justify-around ">
                 {SidebarData?.map((data, index) => (
                   <Link
                     onMouseDown={() => setPath(data.path)}
@@ -124,7 +129,7 @@ const Sidebar = () => {
                     to={path}
                     key={index}
                     className={`button-side lg:flex lg:flex-row lg:mx-0 lg:justify-normal lg:w-full
-                     sm:flex sm:justify-center sm:mx-5 sm:flex-col
+                     sm:flex sm:justify-center sm:flex-col
                      sm:w-[3.5rem] sm:h-[3.5rem]  ${
                        data.path === path && "active-button"
                      }
@@ -145,7 +150,7 @@ const Sidebar = () => {
                       />
                     </div>
                     <h2
-                      className={`whitespace-pre mr-2 lg:text-[15px] sm:text-[11px]  ${
+                      className={`whitespace-pre mr-2 font-YekanBakhF font-[400] lg:text-[15px] sm:text-[11px]  ${
                         !open && "opacity-0 translate-x-28 overflow-hidden"
                       }
                       ${data.path === path && "sm:hidden lg:flex"}`}
@@ -185,14 +190,13 @@ const Sidebar = () => {
                     {SettingsData[0].name}
                   </h2>
                 </button>
-
                 <Link
                   onMouseDown={() => setPath(MessagesData[0].path)}
                   onClick={() => setName(MessagesData[0].name)}
                   to={path}
                   key={MessagesData[0].id}
                   className={`button-side lg:flex lg:flex-row lg:mx-0 lg:justify-normal lg:w-full
-                   sm:flex sm:flex-col sm:justify-center  sm:w-[3.5rem] sm:h-[3.5rem] sm:mx-2
+                    sm:flex-col sm:justify-center  sm:w-[3.5rem] sm:h-[3.5rem] sm:mx-2 sm:hidden
                     ${MessagesData[0].path === path && "active-button"}
                 
                   ${
@@ -211,8 +215,8 @@ const Sidebar = () => {
                     />
                   </div>
                   <h2
-                    className={`whitespace-pre mr-2 lg:text-[15px] sm:text-[11px] first-letter:${
-                      !open && "opacity-0 translate-x-28 overflow-hidden"
+                    className={`whitespace-pre mr-2 lg:text-[15px]  sm:text-[11px] first-letter:${
+                      !open && "opacity-0 translate-x-28  overflow-hidden"
                     }
                     ${MessagesData[0].path === path && "sm:hidden lg:flex"}`}
                   >

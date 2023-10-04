@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         main: [
-          "Dana",
+          "YekanBakhF",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -22,10 +22,9 @@ module.exports = {
           "Segoe UI Symbol",
           "Noto Color Emoji",
         ],
-        primary: "Dana",
-        Dana: "Dana",
-        DanaBold: "Dana-Bold",
-        Montserrat: "Dana",
+        primary: "YekanBakhF",
+        YekanBakhF: "YekanBakhF",
+        Montserrat: "YekanBakhF",
       },
     },
     screens: {

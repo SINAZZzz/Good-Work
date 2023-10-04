@@ -53,11 +53,13 @@ export default function Login() {
 
     return () => clearInterval(interval);
   }, [time]);
-  useEffect(() => {
-    if (Cookies.get("imsToken")) {
-      navigate("/dashboard/home");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (Cookies.get("imsToken")) {
+  //     navigate("/dashboard/home");
+  //   } else {
+  //     navigate("/");
+  //   }
+  // }, []);
 
   function handleSubmitCode(e) {
     const code = num1 + num2 + num3 + num4;
@@ -78,6 +80,8 @@ export default function Login() {
           });
           if (Cookies.get("imsToken")) {
             navigate("/dashboard/home");
+          } else {
+            navigate("/");
           }
         }
       })
@@ -101,7 +105,7 @@ export default function Login() {
       .then((res) => {
         const response = res.data;
         const messageLogin = response.Message;
-        if (response.Code == 200) {
+        if (response.Code === 200) {
           setHidden(true);
           setTime(60);
           toast.success(messageLogin);
@@ -110,7 +114,7 @@ export default function Login() {
       .catch((error) => {
         const response = error.response.data;
         const messageLogin = response.Message;
-        if (response.Code == 400) {
+        if (response.Code === 400) {
           setHidden(false);
           toast.error(messageLogin);
         }

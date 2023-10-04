@@ -58,9 +58,9 @@ export default function Requests() {
 
   return (
     <div className="bg-black/5 h-full w-full flex">
-      <div className="flex lg:pt-[2rem] lg:w-full">
-        <div className="lg:block lg:w-1/2 sm:w-full">
-          <div className="lg:pr-8 lg:pt-0 sm:pt-4 sm:pr-4">
+      <div className="flex lg:pt-[2rem] w-full">
+        <div className="lg:block lg:w-[50%] xl:w-full sm:w-full">
+          <div className="lg:px-8 lg:pt-0 sm:pt-4 sm:px-4">
             <CardRequest
               icon={Checkmark}
               title={"تسویه قرارداد"}
@@ -94,19 +94,19 @@ export default function Requests() {
             />
           </div>
         </div>
-        <div className="sm:hidden lg:block lg:w-1/2">
+        <div className="sm:hidden lg:flex lg:pl-8 lg:w-[50%] lg:justify-center">
           <div
             className="lg:w-[520px] lg:h-fit sm:w-full lg:border-solid sm:pt-6
-       lg:border-[#D3D4D6] lg:border-[1px] h-full
+       lg:border-[#D3D4D6] lg:border-[1px] h-full font-YekanBakhF
         lg:py-8 lg:px-8 bg-white rounded-[15px] lg:shadow-Requests"
           >
             <div>
               <div className={`flex pr-10`}>
                 <div className={`flex flex-col`}>
-                  <h1 className="lg:text-[24px] sm:text-[18px] lg:mr-[34%] font-DanaBold">
+                  <h1 className="lg:text-[24px] sm:text-[18px] lg:mr-[34%]  font-[700]">
                     {title} قرارداد
                   </h1>
-                  <p className="text-[20px] lg:mt-3">
+                  <p className="text-[18px] font-[300] lg:mt-3">
                     قراردادی که برای {title} مدنظر دارید انتخاب کنید.
                   </p>
                 </div>

@@ -108,7 +108,7 @@ export default function ModaL() {
       });
   };
   return (
-    <div>
+    <div className="font-YekanBakhF">
       <Toaster position="bottom-center" reverseOrder={false} />
 
       {title == "تسویه" ? (
@@ -129,10 +129,10 @@ export default function ModaL() {
                   {/*header*/}
                   <div className="pr-8">
                     <div className="lg:flex items-center justify-center sm:hidden">
-                      <p className="text-[25px] font-DanaBold">تسویه قرارداد</p>
+                      <p className="text-[25px]  font-[700]">تسویه قرارداد</p>
                     </div>
                     <p
-                      className="text-[#444444] text-[16px] sm:font-DanaBold mt-4 sm:flex
+                      className="text-[#444444] text-[16px] font-[600] mt-4 sm:flex
                     lg:flex lg:justify-center"
                     >
                       شما درخواست {title} قرارداد زیر را دارید. برای درخواست خود
@@ -144,31 +144,31 @@ export default function ModaL() {
                     <div className="lg:w-[700px] lg:h-[186px] lg:mt-7 rounded-[10px] font-Dana bg-white  border-solid border-[#D3D4D06] border-[1px]">
                       <div>
                         <div>
-                          <h1 className="lg:text-[25.38px] sm:text-[20px] pt-4 font-DanaBold flex justify-center">
+                          <h1 className="text-[20px] font-[700] pt-4 font-DanaBold flex justify-center">
                             {price} تومان
                           </h1>
                         </div>
                         <div className="flex justify-between sm:px-6 sm:py-4 lg:px-8 lg:py-8">
                           <div>
                             <div>
-                              <p className="lg:text-[17px] sm:text-[14px]">
+                              <p className="text-[16px] font-[400]">
                                 تاریخ: {date}
                               </p>
                             </div>
                             <div>
-                              <p className="lg:text-[17px] sm:text-[14px] pt-4">
+                              <p className="text-[16px] font-[400] pt-4">
                                 کد: {code}
                               </p>
                             </div>
                           </div>
                           <div className="">
                             <div>
-                              <p className="lg:text-[17px] sm:text-[14px]">
+                              <p className="text-[16px] font-[400]">
                                 {month} ماهه
                               </p>
                             </div>
                             <div>
-                              <p className="lg:text-[18px] sm:text-[14px] pt-4">
+                              <p className="text-[16px] font-[400] pt-4">
                                 وضعیت:{" "}
                                 <span
                                   className="text-white bg-[#4CAF50]
@@ -191,7 +191,7 @@ export default function ModaL() {
                   <div>
                     <button
                       onClick={close}
-                      className="w-full lg:mt-10 sm:my-4 lg:h-[70px] sm:h-[44px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
+                      className="w-full lg:mt-10 font-[800] sm:my-4 lg:h-[70px] sm:h-[44px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
                     >
                       ارسال درخواست
                     </button>
@@ -223,11 +223,11 @@ export default function ModaL() {
                 {/*header*/}
                 <div className="pr-8">
                   <div className="lg:flex items-center justify-center sm:hidden">
-                    <p className="text-[25px] font-DanaBold">تمدید قرارداد</p>
+                    <p className="text-[25px] font-[700]">تمدید قرارداد</p>
                   </div>
                   <p
                     className="text-[#444444] text-[16px] sm:font-DanaBold mt-4 sm:flex
-                    lg:flex lg:justify-center"
+                    lg:flex lg:justify-center font-[600]"
                   >
                     شما درخواست {title} قرارداد زیر را دارید. برای درخواست خود
                     اطمینان دارید؟
@@ -238,31 +238,31 @@ export default function ModaL() {
                   <div className="lg:w-[700px] lg:h-[186px] lg:mt-7 rounded-[10px] font-Dana bg-white  border-solid border-[#D3D4D06] border-[1px]">
                     <div>
                       <div>
-                        <h1 className="lg:text-[25.38px] sm:text-[20px] pt-4 font-DanaBold flex justify-center">
+                        <h1 className="text-[20px] font-[700] pt-4 font-DanaBold flex justify-center">
                           {price} تومان
                         </h1>
                       </div>
                       <div className="flex justify-between sm:px-6 sm:py-4 lg:px-8 lg:py-8">
                         <div>
                           <div>
-                            <p className="lg:text-[17px] sm:text-[14px]">
+                            <p className="text-[16px] font-[400]">
                               تاریخ: {date}
                             </p>
                           </div>
                           <div>
-                            <p className="lg:text-[17px] sm:text-[14px] pt-4">
+                            <p className="text-[16px] font-[400] pt-4">
                               کد: {code}
                             </p>
                           </div>
                         </div>
                         <div className="">
                           <div>
-                            <p className="lg:text-[17px] sm:text-[14px]">
+                            <p className="text-[16px] font-[400]">
                               {month} ماهه
                             </p>
                           </div>
                           <div>
-                            <p className="lg:text-[18px] sm:text-[14px] pt-4">
+                            <p className="text-[16px] font-[400] pt-4">
                               وضعیت:{" "}
                               <span
                                 className="text-white bg-[#4CAF50]
@@ -285,7 +285,7 @@ export default function ModaL() {
                 <div>
                   <button
                     onClick={extend}
-                    className="w-full lg:mt-10 sm:my-4 lg:h-[70px] sm:h-[44px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
+                    className="w-full lg:mt-10 sm:my-4 font-[800] lg:h-[70px] sm:h-[44px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
                   >
                     ارسال درخواست
                   </button>
@@ -318,9 +318,9 @@ export default function ModaL() {
                 {/*header*/}
                 <div className="w-full flex flex-col">
                   <div className="flex items-center justify-center">
-                    <p className="text-[25px] font-DanaBold">قرار داد جدید</p>
+                    <p className="text-[25px] font-[700]">قرار داد جدید</p>
                   </div>
-                  <p className="text-[#444444] text-[18px] mt-4 flex justify-center">
+                  <p className="text-[#444444] text-[18px] font-[600] mt-4 flex justify-center">
                     شما درخواست تمدید قرارداد زیر را دارید. برای درخواست خود
                     اطمینان دارید؟
                   </p>
@@ -329,7 +329,10 @@ export default function ModaL() {
                 <div className="flex mt-[1rem]">
                   <div>
                     <div className="flex flex-col">
-                      <label for="price" className="text-[17.81px] pr-1">
+                      <label
+                        for="price"
+                        className="text-[17.81px] font-[400] pr-1"
+                      >
                         مبلغ قرارداد{" "}
                       </label>
                       <input
@@ -338,14 +341,14 @@ export default function ModaL() {
                         className="input-add"
                         onChange={(e) => setPriceAdd(e.target.value)}
                       />
-                      <span className="text-[12px] mt-1 pr-1 text-[#444444]">
+                      <span className="text-[12px]  font-[300] mt-1 pr-1 text-[#444444]">
                         مبلغ قرارداد باید از 50 میلیون تومان بالاتر باشد
                       </span>
                     </div>
                     <div className="flex flex-col mt-[3rem]">
                       <label
                         for="contract-period"
-                        className="text-[17.81px] pr-1"
+                        className="text-[17.81px]  font-[400] pr-1"
                       >
                         مدت قرارداد
                       </label>
@@ -467,7 +470,7 @@ export default function ModaL() {
                 <div>
                   <button
                     onClick={add}
-                    className="w-full mt-6 h-[60px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
+                    className="w-full mt-6  font-[800] h-[60px] text-white shadow-3xl text-[22px] rounded-[3px] font-DanaBold bg-[#4F50FA]"
                   >
                     ارسال درخواست
                   </button>
