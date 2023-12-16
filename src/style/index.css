@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input-add {
+    @apply w-[350px] outline-none pr-2 mt-1
+     border-[#00000033] border-[1px] rounded-[5px] h-[44px];
+  }
+  .style-Modal {
+    @apply lg:items-center sm:items-end flex
+             overflow-x-hidden overflow-y-hidden fixed sm:bottom-0 
+              outline-none focus:outline-none z-10
+              lg:inset-x-[5rem] lg:inset-y-[18rem]
+              xl:inset-x-[15rem] xl:inset-y-[5rem]
+              2xl:inset-x-[30rem] 2xl:inset-y-[15rem];
+  }
+  .style-addModal {
+    @apply lg:items-center sm:items-end flex 
+            overflow-x-hidden overflow-y-hidden fixed sm:bottom-0 
+             outline-none focus:outline-none z-10
+              lg:inset-x-[5rem] lg:inset-y-[8rem]
+             xl:inset-x-[14rem] xl:inset-y-[1rem]
+              2xl:inset-x-[21rem] 2xl:inset-y-[8rem];
+  }
+  .style-content-Modal {
+    @apply border-0 lg:rounded-[25px] sm:rounded-tl-[20px] sm:rounded-tr-[20px] lg:relative
+                 flex sm:flex-col lg:px-[3rem] sm:px-4 lg:py-8 lg:w-[860px] h-fit bg-white
+                  outline-none focus:outline-none;
+  }
+  .style-textarea-Modal {
+    @apply lg:w-[700px] lg:h-[186px] 
+    sm:w-full sm:h-[130px] pr-4 outline-none pt-2 lg:mr-8 resize-none sm:mt-4
+     lg:mt-7 border-[#D3D4D06] border-[1px] rounded-[10px];
+  }
+  .style-card-Modal {
+    @apply lg:w-[700px] lg:h-[186px] lg:mt-7 rounded-[10px]
+    bg-white  border-solid border-[#D3D4D06] border-[1px];
+  }
+  .style-button-Modal {
+    @apply w-full lg:mt-10 font-[800] sm:my-4 lg:h-[70px] sm:h-[44px]
+           text-white shadow-3xl text-[22px] rounded-[3px]  bg-[#4F50FA];
+  }
+  .style-Addcontent-Modal {
+    @apply border-0
+    rounded-[25px] relative flex flex-col px-12 py-3 w-[860px]
+     h-fit bg-white outline-none focus:outline-none;
+  }
+  .style-Addbutton-Modal {
+    @apply w-full mt-6  font-[800] h-[60px]
+     text-white shadow-3xl text-[22px] rounded-[3px]  bg-[#4F50FA];
+  }
+}
+
+/* normal */
+@font-face {
+  font-family: YekanBakhF;
+  font-weight: normal;
+  font-style: normal;
+  src: url("../assets/Fonts/YekanBakhFaNum-VF.ttf");
+}

@@ -1,0 +1,86 @@
+[data-theme="investor-panel"] {
+  --first-color: #4f50fa;
+  --second-color: #c5c7d4;
+  --third-color: #f44336;
+  --fourth-color: #4caf50;
+  --bg-color: #f8f8f8;
+  --second-bg-color: #b0f3b3;
+  --third-bg-color: #ccdeec;
+  --fourth-bg-color: #ced4da;
+  --bg-white: #ffffff;
+  --bg-footer: #0a89cf;
+  --bg-color-header: #00c19f;
+  --font-size-title: 18px;
+  --font-size-second-title: 32px;
+  --font-size-general: 12px;
+  --font-size-p: 12px;
+  --font-size-small: 11px;
+  --underline-title-color: #182550;
+  --font-color-general: #6c6c6c;
+  --font-color-white: white;
+  --border-radius-general: 5px;
+  --card-shadow: 0 3px 6px rgba(255, 255, 255, 0.2);
+  --secondary-text-color: #182550;
+  --primary-text-color: #135287;
+  --dark-text-color: black;
+  --default-text-color: #cccccc;
+  --button-radius: 5px;
+  --input-radius: 5px;
+  --input-height: auto;
+  --button-height: auto;
+  --sidebar-name-number-text-color: #182550;
+  --margintop-inputs-hiring: 50px;
+  --nav-bg-color: #00c19f;
+}
+
+$first-color: var(--first-color);
+$second-color: var(--second-color);
+$third-color: var(--third-color);
+$fourth-color: var(--fourth-color);
+$bg-color: var(--bg-color);
+$second-bg-color: var(--second-bg-color);
+$third-bg-color: var(--third-bg-color);
+$fourth-bg-color: var(--fourth-bg-color);
+$bg-white: var(--bg-white);
+$bg-footer: var(--bg-footer);
+$bg-color-header: var(--bg-color-header);
+$font-size-title: var(--font-size-title);
+$font-size-general: var(--font-size-general);
+$font-size-p: var(--font-size-p);
+$font-size-small: var(--font-size-small);
+$underline-title-color: var(--underline-title-color);
+$font-color-general: var(--font-color-general);
+$font-color-white: var(--font-color-white);
+$border-radius-general: var(--border-radius-general);
+$card-shadow: var(--card-shadow);
+$secondary-text-color: var(--secondary-text-color);
+$primary-text-color: var(--primary-text-color);
+$dark-text-color: var(--dark-text-color);
+$default-text-color: var(--default-text-color);
+$button-radius: var(--button-radius);
+$input-radius: var(--input-radius);
+$input-height: var(--input-height);
+$button-height: var(--button-height);
+$sidebar-name-number-text-color: var(--sidebar-name-number-text-color);
+$margintop-inputs-hiring: var(--margintop-inputs-hiring);
+$nav-bg-color: var(--nav-bg-color);
+$font-size-second-title: var(--font-size-second-title);
+
+// *** New Variables ****
+$box-shadow: 0 8px 10px -5px rgba(0, 0, 0, 0.2),
+  0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12);
+
+// Panel layout var
+$panel-header-height: 90px;
+$panel-header-height-small: 40px;
+$panel-footer-height: 90px;
+$panel-layout-min-height: calc(100vh - 90px - 90px);
+
+// Main layout var
+$main-header-height: 60px;
+$main-footer-height: 90px;
+$main-layout-min-height: 100vh;
+
+// Bootstrap size
+$size-xs: 768px;
+$size-lg: 992px;

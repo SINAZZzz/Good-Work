@@ -1,0 +1,26 @@
+.bottomDrawer {
+  .content {
+    height: 410px;
+    .pays {
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      height: 62px;
+      font-size: 14px;
+
+      .date {
+        direction: rtl;
+      }
+    }
+  }
+  .square {
+    position: sticky;
+    top: 0;
+    &__inner {
+      border-top: 7px solid gainsboro;
+      width: 13%;
+      margin: auto;
+      margin-bottom: 15px;
+      border-radius: 28px;
+    }
+  }
+}

@@ -1,59 +1,72 @@
-import React from "react";
-import Login from "./Component/Login/Login";
-import Dashboard from "./Component/Dashboard/Dashboard";
-import { Routes, Route } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
+import { ToastContainer } from "react-toastify";
+import { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+//contexts
+import AppState from "./contexts/AppState";
+import RequestsContextProvider from "./contexts/RequestsContext";
 
-import Home from "./Component/Dashboard/Sidebar/Pages/Home";
-import Messages from "./Component/Dashboard/Sidebar/Pages/Messages";
-import Requests from "./Component/Dashboard/Sidebar/Pages/Requests";
-import Contracts from "./Component/Dashboard/Sidebar/Pages/Contracts";
+//router
 
-import CardDiscount from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardDiscount";
-import CardNotification from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardNotification";
-import CardNewMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardNewMessages";
-import CardAllMessages from "./Component/Dashboard/Sidebar/Pages/Messages/CardMessages/CardAllMessages";
+//components
+import ProfileModal from "components/pages/profile/ProfileModal";
+import AppRouter from "router/router";
 
-import CardBox from "./Component/Dashboard/Sidebar/Pages/Contracts/CardContract/CardBox";
-import CloseList from "./Component/Dashboard/Sidebar/Pages/Requests/Component/Pages/CloseList";
-import Add from "./Component/Dashboard/Sidebar/Pages/Requests/Component/Pages/Add";
+const App = () => {
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "investor-panel");
+  }, []);
+  const matches = useMediaQuery("(max-width:768px)");
 
-export default function App() {
+  // window.addEventListener(
+  //   "popstate",
+  //   function (event) {
+  //     // The popstate event is fired each time when the current history entry changes.
+
+  //     var r = this.alert("You pressed a Back button! Are you sure?!");
+
+  //     if (r == true) {
+  //       // Call Back button programmatically as per user confirmation.
+  //       // history.back();
+  //       console.log("go back");
+  //       // Uncomment below line to redirect to the previous page instead.
+  //       // window.location = document.referrer // Note: IE11 is not supporting this.
+  //     } else {
+  //       // Stay on the current page.
+  //       console.log("Stay");
+
+  //       // history.pushState(null, null, window.location.pathname);
+  //     }
+  //     console.log("no");
+
+  //     // history.pushState(null, null, window.location.pathname);
+  //   },
+  //   false
+  // );
   return (
-    <>
-      <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route exact path="/dashboard/Home" element={<Home />} />
-          <Route path="/dashboard/messages" element={<Messages />}>
-            <Route
-              exact
-              path="/dashboard/messages/Discount"
-              element={<CardDiscount />}
-            />
-            <Route
-              path="/dashboard/messages/Notification"
-              element={<CardNotification />}
-            />
-            <Route
-              path="/dashboard/messages/NewMessages"
-              element={<CardNewMessages />}
-            />
-            <Route
-              path="/dashboard/messages/AllMessages"
-              element={<CardAllMessages />}
-            />
-          </Route>
-
-          <Route path="/dashboard/requests" element={<Requests />} />
-          <Route path="/dashboard/requests/CloseList" element={<CloseList />} />
-          <Route path="/dashboard/requests/Add" element={<Add />} />
-          <Route path="/dashboard/contracts" element={<Contracts />}>
-            <Route path="/dashboard/contracts/blocked" element={<CardBox />} />
-            <Route path="/dashboard/contracts/mturity" element={<CardBox />} />
-            <Route path="/dashboard/contracts/monthly" element={<CardBox />} />
-          </Route>
-        </Route>
-      </Routes>
-    </>
+    <Router>
+      {" "}
+      <AppState>
+        <RequestsContextProvider>
+          <ToastContainer
+            pauseOnFocusLoss
+            theme="colored"
+            rtl
+            autoClose={5000}
+          />
+          <div className="app">
+            {!matches && <ProfileModal />}
+            <AppRouter />
+          </div>
+        </RequestsContextProvider>
+      </AppState>
+    </Router>
   );
-}
+};
+
+export default App;

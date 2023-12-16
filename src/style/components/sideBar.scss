@@ -1,0 +1,98 @@
+@import "../variables";
+.sideBar {
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+  .inner {
+    bottom: 0;
+    overflow: hidden;
+    top: 0;
+    .sideBarItem__selected .sideBarItem {
+      background: $first-color !important;
+
+      color: white;
+      svg {
+        color: white;
+      }
+    }
+
+    .info {
+      font-family: yekanBakh-light;
+      font-size: 14px;
+    }
+    .icon__center {
+      transition: all 0.3s ease-in-out;
+      transition-delay: 0.4s;
+      margin-right: 2px;
+    }
+    .icon__left {
+      transition-delay: 0.4s;
+      transition: all 0.3s ease-in-out;
+      margin-right: 0px;
+    }
+    .title {
+      font-size: 18px;
+      margin-top: 7px;
+    }
+
+    .showTitle {
+      opacity: 1;
+      transition: opacity 0.4s ease-in-out;
+    }
+    .hideTitle {
+      opacity: 0;
+      transition: opacity 0.4s ease-out;
+    }
+
+    .sideBarItem__icon {
+      color: $second-color;
+    }
+
+    .sideBarItem {
+      margin-top: 4px;
+      text-decoration: none;
+      color: black;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $first-color;
+        color: white;
+        svg {
+          color: white;
+        }
+      }
+    }
+
+    .inner__header {
+      cursor: pointer;
+      .name {
+        font-size: 20px;
+      }
+    }
+
+    .settings {
+      cursor: pointer;
+      border-radius: 5px;
+      .icon {
+        color: $second-color;
+      }
+    }
+
+    .inner__footer {
+      cursor: pointer;
+      background-color: $third-color;
+      color: white;
+      border-radius: 5px;
+    }
+  }
+}
+
+.sidebarOpen {
+  width: 310px;
+  transition: width 0.5s;
+}
+.sidebarClose {
+  transition: width 0.5s;
+  width: 80px;
+}

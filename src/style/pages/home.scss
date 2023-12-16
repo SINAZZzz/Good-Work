@@ -1,0 +1,96 @@
+@import "../variables";
+.home {
+  .sec1,
+  .sec2,
+  .sec3 {
+    .moreInfo {
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.5);
+      @media (max-width: $size-xs) {
+        font-size: 8px;
+      }
+    }
+    .right,
+    .left {
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 24px;
+      @media (max-width: $size-xs) {
+        font-size: 13px;
+        margin-top: 10px;
+      }
+    }
+    .icon {
+      width: 67.53px;
+      height: 67.53px;
+      border-radius: 100px;
+      margin-left: 10px;
+      @media (max-width: $size-xs) {
+        width: 36px;
+        height: 36px;
+        svg {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .sec1 {
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 25px;
+
+    .icon {
+      background-color: $second-bg-color;
+      svg {
+        color: $fourth-color;
+      }
+    }
+    @media (max-width: $size-xs) {
+      font-size: 13px;
+    }
+  }
+
+  .sec2 {
+    .right {
+      .icon {
+        background-color: $third-bg-color;
+        svg {
+          color: $first-color;
+        }
+      }
+    }
+
+    .left {
+      .icon {
+        background-color: $second-bg-color;
+        svg {
+          color: $fourth-color;
+        }
+      }
+    }
+  }
+  .sec3 {
+    .right {
+      .icon {
+        background-color: $fourth-bg-color;
+        svg {
+          color: #525252;
+        }
+      }
+    }
+    .left {
+      .icon {
+        background-color: $fourth-bg-color;
+
+        svg {
+          color: #525252;
+        }
+      }
+    }
+  }
+
+  &-carousel {
+    margin-bottom: 67px;
+  }
+}

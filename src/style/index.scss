@@ -1,0 +1,59 @@
+// **********************************************************
+// Font face
+@font-face {
+  font-family: "yekanBakh-regular";
+  src: local("yekanBakh-regular"),
+    url(../assets/Fonts/YEKANBAKHEN04REGULAR.TTF) format("truetype");
+}
+
+@font-face {
+  font-family: "yekanBakh-meduim";
+  src: local("yekanBakh-meduim"),
+    url(../assets/Fonts/YEKANBAKHMEDIUM.TTF) format("truetype");
+}
+
+@font-face {
+  font-family: "yekanBakh-bold";
+  src: local("yekanBakh-bold"),
+    url(../assets/Fonts/YEKANBAKHEN06BOLD.TTF) format("truetype");
+}
+@font-face {
+  font-family: "yekanBakh-light";
+  src: local("yekanBakh-light"),
+    url(../assets/Fonts/YEKANBAKHEN03LIGHT.TTF) format("truetype");
+}
+
+// **********************************************************
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: yekanBakh-regular, sans-serif !important ;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: lightgray !important;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.Toastify__toast {
+  font-family: yekanBakh-regular, sans-serif !important  ;
+}
+.hide-arrow {
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+.text-justify {
+  text-align: justify;
+}

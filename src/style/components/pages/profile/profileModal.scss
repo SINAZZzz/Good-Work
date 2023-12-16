@@ -1,0 +1,108 @@
+@import "../../../variables";
+.profileModal {
+  .modal-content {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+  }
+  .step1 {
+    .closeIcon {
+      cursor: pointer;
+    }
+    .title {
+      font-weight: 900;
+      font-size: 30px;
+      color: black;
+    }
+    .MuiBadge-badge {
+      border-radius: 100px;
+      padding: 12px 3px;
+    }
+
+    .name {
+      font-size: 35px;
+    }
+    .post {
+      font-size: 20px;
+      color: $second-color;
+    }
+
+    .change,
+    .social {
+      cursor: pointer;
+      border: 1px solid lightgray;
+      border-radius: 14px;
+      .icon {
+        background-color: $first-color;
+        color: white;
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .step2 {
+    .closeIcon {
+      cursor: pointer;
+    }
+    .title {
+      font-weight: 900;
+      font-size: 30px;
+      color: black;
+    }
+
+    .address,
+    .phone {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    input,
+    textarea {
+      direction: rtl;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+
+      &:focus,
+      &:focus-within {
+        outline: 0;
+        border: 1px solid $first-color;
+      }
+    }
+
+    button {
+      background-color: $first-color;
+    }
+  }
+
+  .step3 {
+    .closeIcon {
+      cursor: pointer;
+    }
+    .title {
+      font-weight: 900;
+      font-size: 30px;
+      color: black;
+    }
+    button {
+      background-color: $first-color;
+    }
+
+    .telegram {
+      .text {
+        color: $first-color;
+        width: 100px;
+      }
+    }
+    .instagram {
+      .text {
+        color: #bc00a9;
+        width: 100px;
+      }
+    }
+    .whatsApp {
+      .text {
+        color: #57d163;
+        width: 100px;
+      }
+    }
+  }
+}

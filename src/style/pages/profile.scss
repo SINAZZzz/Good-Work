@@ -1,0 +1,147 @@
+@import "../variables";
+.profile {
+  min-height: 100vh;
+  @media (max-width: $size-xs) {
+    background-color: white;
+  }
+
+  &__mobile {
+    padding-bottom: 80px;
+    .mainSection {
+      .user__photo {
+        background: #fcfcfd;
+        min-height: 270px;
+        .MuiBadge-badge {
+          border-radius: 100px;
+          padding: 12px 3px;
+        }
+        .name {
+          font-size: 20px;
+          font-family: yekanBakh-meduim;
+        }
+
+        .post {
+          font-size: 14px;
+        }
+      }
+
+      .header {
+        .title {
+          font-family: yekanBakh-meduim;
+          font-size: 18px;
+          margin-right: 10px;
+        }
+        .hoz__hr {
+          width: 79%;
+          border-bottom: 1px solid #d3d4d6;
+          margin-bottom: 14px;
+          margin-right: auto;
+        }
+
+        .icon {
+          background-color: $first-color;
+          color: white;
+          border-radius: 5px;
+          margin-left: 10px;
+        }
+        .icon_close {
+          background-color: $third-color;
+          color: white;
+          border-radius: 5px;
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .editAddressAndPhone {
+      &__top {
+        .icon {
+          background-color: $first-color;
+          color: white;
+          border-radius: 5px;
+          margin-left: 10px;
+        }
+
+        .title {
+          font-family: yekanBakh-meduim;
+        }
+      }
+
+      .inputs {
+        input,
+        textarea {
+          border-radius: 5px;
+          border: 1px solid #c5c7d4;
+          outline-width: 0;
+          &:focus {
+            border: 1px solid $first-color !important;
+          }
+        }
+        .address {
+          .address__textarea {
+            min-height: 87px;
+            max-height: 87px;
+          }
+
+          .info {
+            font-size: 10px;
+
+            color: #444444;
+          }
+        }
+
+        .changeNumber {
+          .info {
+            font-size: 10px;
+
+            color: #444444;
+          }
+        }
+      }
+    }
+
+    .social {
+      &__top {
+        .icon {
+          background-color: $first-color;
+          color: white;
+          border-radius: 5px;
+          margin-left: 10px;
+        }
+
+        .title {
+          font-family: yekanBakh-meduim;
+        }
+
+        .telegram {
+          direction: ltr;
+          .text {
+            color: $first-color;
+
+            width: 100px;
+          }
+        }
+        .instagram {
+          direction: ltr;
+          .text {
+            color: #bc00a9;
+            width: 100px;
+          }
+        }
+        .whatsApp {
+          direction: ltr;
+          .text {
+            color: #57d163;
+            width: 100px;
+          }
+        }
+      }
+    }
+
+    .save {
+      border-radius: 100px;
+      background-color: $first-color;
+      color: white;
+    }
+  }
+}

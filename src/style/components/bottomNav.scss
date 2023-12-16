@@ -1,0 +1,32 @@
+@import "../variables";
+.bottomNav {
+  background: #fcfcfd;
+  border-top: 0.2px solid rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  right: 0;
+  left: 0;
+  .item {
+    width: 51px;
+    height: 51px;
+    border-radius: 5px;
+    color: #444444;
+    text-decoration: none;
+    font-size: 11px;
+    svg {
+      color: $second-color;
+    }
+    .title {
+      font-size: 11px;
+    }
+    &.active {
+      background-color: $first-color;
+      color: white;
+      align-items: center;
+      .title {
+        display: none;
+      }
+    }
+  }
+}

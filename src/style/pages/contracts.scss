@@ -1,0 +1,193 @@
+@import "../variables";
+.contracts {
+  min-height: 100vh;
+  &__top {
+    border-radius: 10px;
+    position: sticky;
+    top: 5px;
+    border: 1px solid lightgray;
+    box-shadow: 0 -15px 5px 8px #e5e5e5;
+    .category {
+      cursor: pointer;
+      border-bottom: 2px solid white;
+
+      transition: all 250ms ease-in-out;
+      &__selected {
+        border-bottom: 2px solid $first-color;
+        transition: all 250ms ease-in-out;
+        color: $first-color;
+      }
+    }
+  }
+  &__bottom {
+    position: fixed;
+    bottom: 67px;
+    right: 0;
+    left: 0;
+    button {
+      background-color: $second-color;
+      width: 100%;
+      box-shadow: none;
+      border: 0;
+      outline-width: 0;
+      &:focus {
+        box-shadow: none;
+        border: 0;
+        outline-width: 0;
+      }
+      &.category__selected {
+        background-color: $first-color !important;
+      }
+    }
+  }
+
+  &__items {
+    margin-bottom: 100px;
+    .contractsItem {
+      &__item {
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+        .money__amount {
+          font-family: yekanBakh-bold;
+          font-size: 24px;
+          @media (max-width: $size-xs) {
+            text-align: center;
+          }
+        }
+        .money__profit {
+          font-family: yekanBakh-meduim;
+          font-size: 17.5px;
+          color: $fourth-color;
+          @media (max-width: $size-xs) {
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+        .dates {
+          .dates__duration {
+            font-size: 18px;
+            svg {
+              color: $second-color;
+            }
+            @media (max-width: $size-xs) {
+              margin: 0 !important;
+              font-size: 14px;
+              svg {
+                font-size: 20px;
+              }
+            }
+          }
+          .dates__calender {
+            font-size: 18px;
+            svg {
+              color: $second-color;
+            }
+            @media (max-width: $size-xs) {
+              font-size: 14px;
+              svg {
+                font-size: 20px;
+              }
+            }
+          }
+          @media (max-width: $size-xs) {
+            margin: 15px 0;
+            width: 100%;
+            justify-content: space-evenly;
+          }
+        }
+
+        .code {
+          .bgState {
+            margin-top: 10px;
+          }
+          .bgState__green {
+            background-color: $fourth-color;
+            color: white;
+            font-family: yekanBakh-meduim;
+            border-radius: 5px;
+          }
+          .bgState__red {
+            background-color: $third-color;
+            color: white;
+            font-family: yekanBakh-meduim;
+            border-radius: 5px;
+          }
+
+          .code__number {
+            font-size: 18px;
+            svg {
+              color: $second-color;
+            }
+            @media (max-width: $size-xs) {
+              margin-top: 10px;
+              font-size: 14px;
+              svg {
+                font-size: 20px;
+              }
+            }
+          }
+          @media (max-width: $size-xs) {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+          }
+        }
+        .profits {
+          .received__profit,
+          .print__profit {
+            cursor: pointer;
+            font-family: yekanBakh-meduim;
+            color: $first-color;
+            font-size: 15px;
+            @media (max-width: $size-xs) {
+              background-color: $first-color;
+              color: white;
+              padding: 5px;
+              font-size: 14px;
+              border-radius: 4px;
+              svg {
+                font-size: 15px;
+              }
+            }
+          }
+
+          @media (max-width: $size-xs) {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            flex-wrap: wrap;
+          }
+        }
+      }
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+    }
+  }
+
+  @media (max-width: $size-xs) {
+    background-color: white;
+  }
+}
+
+.contractsItem__modal {
+  .title {
+    background-color: #eeeeee;
+  }
+}
+.contractsItemDetails {
+  &__money {
+    font-family: yekanBakh-meduim;
+    font-size: 36px;
+  }
+
+  color: #444444;
+  .square {
+    border-top: 7px solid gainsboro;
+    width: 13%;
+    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 28px;
+  }
+}
